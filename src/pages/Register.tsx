@@ -38,7 +38,7 @@ export default function Register() {
     if (!validate()) return;
     setIsSubmitting(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || '';
+      const API_URL = "https://sta-backend-lwvz.onrender.com";
       const response = await fetch(`${API_URL}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
