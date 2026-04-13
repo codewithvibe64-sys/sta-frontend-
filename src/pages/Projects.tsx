@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { X, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Project {
   id: string;
@@ -33,20 +34,20 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] bg-[#0f0f0f] overflow-y-auto selection:bg-[#e03a2f] selection:text-white"
+      className="fixed inset-0 z-[100] bg-background overflow-y-auto selection:bg-accent selection:text-background"
     >
       {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-[110] px-6 md:px-12 py-8 flex justify-between items-center bg-[#0f0f0f]/80 backdrop-blur-md border-b border-[#1c1b1b]">
+      <header className="fixed top-0 left-0 right-0 z-[110] px-6 md:px-12 py-8 flex justify-between items-center bg-background/80 backdrop-blur-md border-b border-border">
         <button 
           onClick={onClose}
-          className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-[#888888] hover:text-[#f5f5f5] transition-colors"
+          className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted hover:text-foreground transition-colors"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           Back to Projects
         </button>
         <button 
           onClick={onClose}
-          className="text-[#888888] hover:text-[#e03a2f] transition-colors"
+          className="text-muted hover:text-accent transition-colors"
         >
           <X size={24} />
         </button>
@@ -54,7 +55,7 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
 
       <div className="pt-32 pb-24">
         {/* A. HERO IMAGE */}
-        <section className="w-full aspect-[21/9] mb-24 overflow-hidden bg-[#131313]">
+        <section className="w-full aspect-[21/9] mb-24 overflow-hidden bg-background">
           <img
             src={project.img}
             alt={project.title}
@@ -65,59 +66,58 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
 
         {/* B. PROJECT INFO */}
         <section className="px-6 md:px-12 mb-32">
-          <div className="flex flex-col md:grid md:grid-cols-12 gap-12">
-            <div className="md:col-span-8">
-              <span className="text-[#e03a2f] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Case Study {project.id}</span>
-              <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter leading-[0.9] uppercase text-[#f5f5f5] mb-12">
+          <div className="grid grid-cols-12 gap-12">
+            <div className="col-span-12 md:col-span-8">
+              <span className="text-accent text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Case Study {project.id}</span>
+              <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter leading-[0.9] uppercase text-foreground mb-12">
                 {project.title}
               </h1>
             </div>
-            <div className="md:col-span-4 flex flex-col justify-end">
-              <div className="border-l border-[#1c1b1b] pl-8 space-y-4">
+            <div className="col-span-12 md:col-span-4 flex flex-col justify-end">
+              <div className="border-l border-border pl-8 space-y-4">
                 <div>
-                  <span className="block text-[10px] font-bold uppercase tracking-widest text-[#444444]">Location</span>
-                  <span className="text-sm font-bold uppercase text-[#f5f5f5]">{project.location.split('|')[0]}</span>
+                  <span className="block text-[10px] font-bold uppercase tracking-widest text-muted/60">Location</span>
+                  <span className="text-sm font-bold uppercase text-foreground">{project.location.split('|')[0]}</span>
                 </div>
                 <div>
-                  <span className="block text-[10px] font-bold uppercase tracking-widest text-[#444444]">Year</span>
-                  <span className="text-sm font-bold uppercase text-[#f5f5f5]">{project.year}</span>
+                  <span className="block text-[10px] font-bold uppercase tracking-widest text-muted/60">Year</span>
+                  <span className="text-sm font-bold uppercase text-foreground">{project.year}</span>
                 </div>
                 <div>
-                  <span className="block text-[10px] font-bold uppercase tracking-widest text-[#444444]">Category</span>
-                  <span className="text-sm font-bold uppercase text-[#f5f5f5]">{project.category}</span>
+                  <span className="block text-[10px] font-bold uppercase tracking-widest text-muted/60">Category</span>
+                  <span className="text-sm font-bold uppercase text-foreground">{project.category}</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* C. SECTIONS */}
         <section className="px-6 md:px-12 mb-40">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-40">
             <div className="space-y-24">
               <div>
-                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8">01 / Context</h2>
-                <p className="text-xl md:text-2xl text-[#888888] leading-relaxed font-medium">
+                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">01 / Context</h2>
+                <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.context}
                 </p>
               </div>
               <div>
-                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8">02 / The Problem</h2>
-                <p className="text-xl md:text-2xl text-[#888888] leading-relaxed font-medium">
+                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">02 / The Problem</h2>
+                <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.problem}
                 </p>
               </div>
             </div>
             <div className="space-y-24">
               <div>
-                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8">03 / Concept & Approach</h2>
-                <p className="text-xl md:text-2xl text-[#888888] leading-relaxed font-medium">
+                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">03 / Concept & Approach</h2>
+                <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.concept}
                 </p>
               </div>
               <div>
-                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8">04 / The Solution</h2>
-                <p className="text-xl md:text-2xl text-[#888888] leading-relaxed font-medium">
+                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">04 / The Solution</h2>
+                <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.solution}
                 </p>
               </div>
@@ -125,12 +125,11 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
           </div>
         </section>
 
-        {/* IMAGE GALLERY */}
         <section className="px-6 md:px-12">
-          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-16 text-center">Visual Documentation</h2>
+          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted/60 mb-16 text-center">Visual Documentation</h2>
           <div className="space-y-12">
             {project.gallery.map((img, i) => (
-              <div key={i} className="w-full bg-[#131313] overflow-hidden">
+              <div key={i} className="w-full bg-background overflow-hidden">
                 <img
                   src={img}
                   alt={`${project.title} documentation ${i + 1}`}
@@ -142,14 +141,13 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
           </div>
         </section>
 
-        {/* Footer Navigation */}
-        <footer className="mt-40 px-6 md:px-12 py-24 border-t border-[#1c1b1b] text-center">
+        <footer className="mt-40 px-6 md:px-12 py-24 border-t border-border text-center">
           <button 
             onClick={onClose}
-            className="group inline-flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-[#e03a2f] transition-colors"
+            className="group inline-flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-accent transition-colors"
           >
             Close Case Study
-            <div className="w-12 h-px bg-[#444444] group-hover:bg-[#e03a2f] group-hover:w-20 transition-all duration-500"></div>
+            <div className="w-12 h-px bg-border group-hover:bg-accent group-hover:w-20 transition-all duration-500"></div>
           </button>
         </footer>
       </div>
@@ -163,20 +161,20 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
   return (
     <div className="space-y-8">
       {/* Tab Switcher */}
-      <div className="flex gap-8 border-b border-[#1c1b1b] pb-2">
+      <div className="flex gap-8 border-b border-border pb-2">
         {["overview", "technical"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all relative pb-2 ${
-              activeTab === tab ? "text-[#f5f5f5]" : "text-[#888888] hover:text-[#f5f5f5]"
+              activeTab === tab ? "text-foreground" : "text-muted hover:text-foreground"
             }`}
           >
             {tab}
             {activeTab === tab && (
               <motion.div
                 layoutId="activeTab"
-                className="absolute bottom-[-1px] left-0 right-0 h-px bg-[#e03a2f]"
+                className="absolute bottom-[-1px] left-0 right-0 h-px bg-accent"
               />
             )}
           </button>
@@ -195,23 +193,23 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
           {activeTab === "overview" ? (
             <>
               <div>
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#e03a2f] mb-2">Context</h4>
-                <p className="text-sm text-[#888888] leading-relaxed">{project.context}</p>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-accent mb-2">Context</h4>
+                <p className="text-sm text-muted leading-relaxed">{project.context}</p>
               </div>
               <div>
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#e03a2f] mb-2">The Problem</h4>
-                <p className="text-sm text-[#888888] leading-relaxed">{project.problem}</p>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-accent mb-2">The Problem</h4>
+                <p className="text-sm text-muted leading-relaxed">{project.problem}</p>
               </div>
             </>
           ) : (
             <>
               <div>
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#e03a2f] mb-2">Approach</h4>
-                <p className="text-sm text-[#888888] leading-relaxed">{project.approach}</p>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-accent mb-2">Approach</h4>
+                <p className="text-sm text-muted leading-relaxed">{project.approach}</p>
               </div>
               <div>
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#e03a2f] mb-2">Execution</h4>
-                <p className="text-sm text-[#888888] leading-relaxed">{project.execution}</p>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.1em] text-accent mb-2">Execution</h4>
+                <p className="text-sm text-muted leading-relaxed">{project.execution}</p>
               </div>
             </>
           )}
@@ -221,7 +219,7 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
       <div className="pt-6">
         <button 
           onClick={onViewCaseStudy}
-          className="bg-[#f5f5f5] text-[#0f0f0f] px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-[#e03a2f] hover:text-white transition-all duration-400"
+          className="bg-foreground text-background px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-accent hover:text-background transition-all duration-400"
         >
           View Full Case Study
         </button>
@@ -233,6 +231,7 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const navigate = useNavigate();
 
   const projects: Project[] = [
     {
@@ -315,18 +314,18 @@ export default function Projects() {
   const filters = ["All", "Architecture", "Interior", "Design Lab"];
 
   return (
-    <div className="pt-40 pb-32 selection:bg-[#e03a2f] selection:text-white">
+    <div className="pt-40 pb-32 selection:bg-accent selection:text-background">
       {/* Hero Section */}
       <section className="px-6 md:px-12 mb-32">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase max-w-5xl text-[#f5f5f5]"
+          className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase max-w-5xl text-foreground"
         >
-          Defining the <br/><span className="text-[#e03a2f]">Silent</span> Monolith.
+          Defining the <br/><span className="text-accent">Silent</span> Monolith.
         </motion.h1>
-        <p className="mt-12 text-[#888888] text-xl max-w-2xl leading-relaxed font-medium">
+        <p className="mt-12 text-muted text-xl max-w-2xl leading-relaxed font-medium">
           Our portfolio is a testament to architectural permanence. We design spaces that command attention through restraint, precision, and structural honesty.
         </p>
       </section>
@@ -339,7 +338,7 @@ export default function Projects() {
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`font-bold uppercase tracking-[0.4em] text-[10px] transition-all pb-2 border-b ${
-                activeFilter === filter ? "text-[#e03a2f] border-[#e03a2f]" : "text-[#444444] border-transparent hover:text-[#f5f5f5]"
+                activeFilter === filter ? "text-accent border-accent" : "text-muted/60 border-transparent hover:text-foreground"
               }`}
             >
               {filter === "All" ? "All Projects" : filter}
@@ -358,9 +357,9 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.2, 0, 0, 1] }}
-            className="flex flex-col lg:grid lg:grid-cols-12 gap-12 group"
+            className="grid grid-cols-12 gap-12 group"
           >
-            <div className={`lg:col-span-8 relative overflow-hidden aspect-[16/9] bg-[#131313] ${project.reverse ? 'lg:order-2' : ''}`}>
+            <div className={`col-span-12 lg:col-span-8 relative overflow-hidden aspect-[16/9] bg-background ${project.reverse ? 'lg:order-2' : ''}`}>
               <img
                 alt={project.title}
                 className="w-full h-full object-cover transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover:scale-105"
@@ -368,13 +367,13 @@ export default function Projects() {
                 src={project.img}
               />
             </div>
-            <div className={`lg:col-span-4 flex flex-col justify-center ${project.reverse ? 'lg:order-1' : ''}`}>
+            <div className={`col-span-12 lg:col-span-4 flex flex-col justify-center ${project.reverse ? 'lg:order-1' : ''}`}>
               <div className="flex items-center gap-6 mb-8">
-                <span className="text-[#e03a2f] text-[10px] font-bold uppercase tracking-[0.4em]">Project {project.id}</span>
-                <div className="h-px flex-1 bg-[#1c1b1b]"></div>
+                <span className="text-accent text-[10px] font-bold uppercase tracking-[0.4em]">Project {project.id}</span>
+                <div className="h-px flex-1 bg-border"></div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 uppercase group-hover:text-[#e03a2f] transition-colors duration-500 leading-none">{project.title}</h2>
-              <p className="text-[#444444] text-[10px] font-bold uppercase tracking-[0.3em] mb-12">{project.location}</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 uppercase group-hover:text-accent transition-colors duration-500 leading-none">{project.title}</h2>
+              <p className="text-muted/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-12">{project.location}</p>
               <ProjectDetails project={project} onViewCaseStudy={() => setSelectedProject(project)} />
             </div>
           </motion.article>
@@ -392,14 +391,17 @@ export default function Projects() {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="mt-64 px-6 md:px-12 py-48 bg-[#131313] border-y border-[#1c1b1b] text-center">
-        <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#e03a2f] mb-12 block">Inquiry</span>
+      <section className="mt-64 px-6 md:px-12 py-48 bg-background border-y border-border text-center">
+        <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent mb-12 block">Inquiry</span>
         <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-16 max-w-4xl mx-auto uppercase leading-[0.9]">
           We specialize in challenging sites and radical material honesty.
         </h3>
-        <button className="group inline-flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-[#e03a2f] transition-colors">
-          Start a Conversation
-          <div className="w-12 h-px bg-[#444444] group-hover:bg-[#e03a2f] group-hover:w-20 transition-all duration-500"></div>
+        <button 
+          onClick={() => navigate("/contact")}
+          className="group inline-flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-accent transition-colors"
+        >
+          START A CONVERSATION
+          <div className="w-12 h-px bg-border group-hover:bg-accent group-hover:w-20 transition-all duration-500"></div>
         </button>
       </section>
     </div>
