@@ -65,14 +65,14 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
 
         {/* B. PROJECT INFO */}
         <section className="px-6 md:px-12 mb-32">
-          <div className="grid grid-cols-12 gap-12">
-            <div className="col-span-12 md:col-span-8">
+          <div className="flex flex-col md:grid md:grid-cols-12 gap-12">
+            <div className="md:col-span-8">
               <span className="text-[#e03a2f] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Case Study {project.id}</span>
               <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter leading-[0.9] uppercase text-[#f5f5f5] mb-12">
                 {project.title}
               </h1>
             </div>
-            <div className="col-span-12 md:col-span-4 flex flex-col justify-end">
+            <div className="md:col-span-4 flex flex-col justify-end">
               <div className="border-l border-[#1c1b1b] pl-8 space-y-4">
                 <div>
                   <span className="block text-[10px] font-bold uppercase tracking-widest text-[#444444]">Location</span>
@@ -358,9 +358,9 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.2, 0, 0, 1] }}
-            className="grid grid-cols-12 gap-12 group"
+            className="flex flex-col lg:grid lg:grid-cols-12 gap-12 group"
           >
-            <div className={`col-span-12 lg:col-span-8 relative overflow-hidden aspect-[16/9] bg-[#131313] ${project.reverse ? 'lg:order-2' : ''}`}>
+            <div className={`lg:col-span-8 relative overflow-hidden aspect-[16/9] bg-[#131313] ${project.reverse ? 'lg:order-2' : ''}`}>
               <img
                 alt={project.title}
                 className="w-full h-full object-cover transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover:scale-105"
@@ -368,7 +368,7 @@ export default function Projects() {
                 src={project.img}
               />
             </div>
-            <div className={`col-span-12 lg:col-span-4 flex flex-col justify-center ${project.reverse ? 'lg:order-1' : ''}`}>
+            <div className={`lg:col-span-4 flex flex-col justify-center ${project.reverse ? 'lg:order-1' : ''}`}>
               <div className="flex items-center gap-6 mb-8">
                 <span className="text-[#e03a2f] text-[10px] font-bold uppercase tracking-[0.4em]">Project {project.id}</span>
                 <div className="h-px flex-1 bg-[#1c1b1b]"></div>

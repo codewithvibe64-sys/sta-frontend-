@@ -279,9 +279,9 @@ export default function DesignLab() {
         </div>
       </section>
 
-      <div className="px-6 md:px-12 pb-24 grid grid-cols-12 gap-8">
+      <div className="px-6 md:px-12 pb-24 flex flex-col lg:grid lg:grid-cols-12 gap-8">
         {/* Main Interface */}
-        <div className="col-span-12 lg:col-span-8 bg-[#1c1b1b] border border-[#353534] flex flex-col h-[500px] md:h-[700px] relative overflow-hidden">
+        <div className="lg:col-span-8 bg-[#1c1b1b] border border-[#353534] flex flex-col h-[500px] md:h-[700px] relative overflow-hidden">
           
           <AnimatePresence mode="wait">
             {activeTab === "chat" && (
@@ -493,7 +493,7 @@ export default function DesignLab() {
         </div>
 
         {/* Sidebar / Tools */}
-        <div className="col-span-12 lg:col-span-4 space-y-8">
+        <div className="lg:col-span-4 space-y-8">
           <div className="bg-[#1c1b1b] border border-[#353534] p-8">
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#e03a2f] mb-6 flex items-center gap-2">
               <Zap size={12} /> System Status

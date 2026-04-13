@@ -2,19 +2,19 @@ export default function Legal() {
   return (
     <main className="pt-48 pb-32 selection:bg-[#e03a2f] selection:text-white">
       <section className="max-w-screen-xl mx-auto px-12">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-8">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-8">
+          <div className="md:col-span-8">
             <h1 className="text-[3.5rem] font-bold tracking-[-0.02em] leading-tight mb-8 uppercase">LEGAL &amp;<br/>IDENTITY</h1>
             <div className="w-24 h-1 bg-[#e03a2f] mb-24"></div>
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-8 mb-40" id="about-us">
-          <div className="col-span-12 md:col-span-3">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-8 mb-40" id="about-us">
+          <div className="md:col-span-3">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e03a2f]">IDENTITY</span>
             <h2 className="text-2xl font-bold mt-4">About Us</h2>
           </div>
-          <div className="col-span-12 md:col-start-5 md:col-span-7">
+          <div className="md:col-start-5 md:col-span-7">
             <div className="space-y-8 text-[#f5f5f5] leading-relaxed text-lg">
               <p>
                 STUDIO TACTILE is an architectural collective founded on the principle of <span className="text-[#e03a2f] font-bold">Material Permanence</span>. We believe that architecture should be felt as much as it is seen. Our practice operates at the intersection of cinematic brutalism and mathematical precision, creating spaces that act as silent monoliths in an ever-changing urban landscape.
@@ -64,12 +64,12 @@ export default function Legal() {
 
         <div className="w-full h-px bg-surface-container-low mb-40"></div>
 
-        <div className="grid grid-cols-12 gap-8 mb-40" id="privacy-policy">
-          <div className="col-span-12 md:col-span-3">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-8 mb-40" id="privacy-policy">
+          <div className="md:col-span-3">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e03a2f]">TRANSPARENCY</span>
             <h2 className="text-2xl font-bold mt-4">Privacy Policy</h2>
           </div>
-          <div className="col-span-12 md:col-start-5 md:col-span-7">
+          <div className="md:col-start-5 md:col-span-7">
             <div className="space-y-16">
               <section>
                 <h3 className="text-lg font-bold mb-6 flex items-center gap-4">
@@ -107,12 +107,12 @@ export default function Legal() {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-8" id="terms-conditions">
-          <div className="col-span-12 md:col-span-3">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-8" id="terms-conditions">
+          <div className="md:col-span-3">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e03a2f]">FRAMEWORK</span>
             <h2 className="text-2xl font-bold mt-4">Terms &amp; Conditions</h2>
           </div>
-          <div className="col-span-12 md:col-start-5 md:col-span-7">
+          <div className="md:col-start-5 md:col-span-7">
             <div className="space-y-12">
               <div className="p-12 bg-surface-container-low border-l-4 border-[#e03a2f]">
                 <h4 className="font-bold mb-4 uppercase tracking-tighter text-xl">Engagement Mandate</h4>

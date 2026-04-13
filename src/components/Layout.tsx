@@ -10,6 +10,31 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+
+  // Auto-hide header on scroll
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 50) {
+        setIsHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setIsHeaderVisible(false);
+        // Also close menu if someone scrolls down while it's open
+        if (isMenuOpen) setIsMenuOpen(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMenuOpen]);
 
   // Close menu on route change
   useEffect(() => {
@@ -39,7 +64,11 @@ export default function Layout({ children }: LayoutProps) {
       <div className="grain"></div>
       
       {/* TopNavBar */}
-      <header className="fixed top-0 w-full z-50 bg-[#0f0f0f]/80 backdrop-blur-md flex justify-between items-center px-6 md:px-12 py-8">
+      <header 
+        className={`fixed top-0 w-full z-50 bg-[#0f0f0f]/80 backdrop-blur-md flex justify-between items-center px-6 md:px-12 py-6 md:py-8 transition-transform duration-300 ease-in-out ${
+          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
         <Link to="/" className="text-xl font-bold tracking-tighter text-[#f5f5f5]">STUDIO TACTILE</Link>
         
         {/* Desktop Nav */}

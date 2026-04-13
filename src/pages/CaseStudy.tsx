@@ -66,8 +66,8 @@ export default function CaseStudy() {
           <ArrowLeft size={14} />
           Back to Projects
         </Link>
-        <div className="grid grid-cols-12 gap-12 items-end">
-          <div className="col-span-12 md:col-span-8">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-12 items-end">
+          <div className="md:col-span-8">
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-6 block">{project.category} / Case Study {project.id}</span>
             <h1 className="text-[clamp(2.5rem,8vw,6rem)] font-black tracking-tighter leading-[0.9] uppercase mb-8">{project.title}</h1>
             <p className="text-[#888888] text-xl font-medium tracking-tight uppercase">{project.location}</p>
@@ -92,8 +92,8 @@ export default function CaseStudy() {
 
       {/* Content Grid */}
       <section className="px-6 md:px-12 mb-40">
-        <div className="grid grid-cols-12 gap-12">
-          <div className="col-span-12 md:col-span-4 space-y-12">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-12">
+          <div className="md:col-span-4 space-y-12">
             <div>
               <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-4">Context</h3>
               <p className="text-[#f5f5f5] leading-relaxed">{project.context}</p>
@@ -103,7 +103,7 @@ export default function CaseStudy() {
               <p className="text-[#f5f5f5] leading-relaxed">{project.problem}</p>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-7 md:col-start-6 space-y-24">
+          <div className="md:col-span-7 md:col-start-6 space-y-24">
             <div>
               <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8">The Approach</h3>
               <p className="text-2xl md:text-3xl font-bold tracking-tight leading-snug uppercase">{project.approach}</p>

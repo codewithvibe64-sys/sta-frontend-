@@ -126,8 +126,8 @@ export default function Studio() {
         className="px-4 md:px-12 mb-24 md:mb-40"
         aria-labelledby="studio-hero-title"
       >
-        <div className="grid grid-cols-12 gap-8 md:gap-12">
-          <header className="col-span-12 md:col-span-8">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-12">
+          <header className="md:col-span-8">
             <motion.h1
               id="studio-hero-title"
               initial={{ opacity: 0, y: 20 }}
@@ -146,7 +146,7 @@ export default function Studio() {
             </p>
           </header>
 
-          <aside className="col-span-12 md:col-span-4 flex flex-col justify-end">
+          <aside className="md:col-span-4 flex flex-col justify-end">
             <div className="border-l border-[#e03a2f] pl-6 md:pl-8 py-2">
               <span className="block font-bold uppercase tracking-[0.4em] text-[10px] text-[#e03a2f] mb-4">
                 Philosophy
@@ -215,8 +215,8 @@ export default function Studio() {
 
       {/* 3. CLIENTS SECTION */}
       <section className="px-4 md:px-12 mb-24 md:mb-40" aria-labelledby="studio-clients-title">
-        <div className="grid grid-cols-12 gap-12 mb-16">
-          <div className="col-span-12 md:col-span-4">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-12 mb-16">
+          <div className="md:col-span-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8 block">Trust</span>
             <h2 id="studio-clients-title" className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none text-[#f5f5f5]">Selected Clients.</h2>
           </div>
@@ -258,7 +258,7 @@ export default function Studio() {
         <div className="bg-[#131313] border border-[#1c1b1b] p-8 md:p-24 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#e03a2f]/5 blur-[120px]"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 relative z-10">
+          <div className="flex flex-col md:grid md:grid-cols-12 gap-12 md:gap-24 relative z-10">
             {/* Left Column: Job List */}
             <div className="md:col-span-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-8 block">Careers</span>

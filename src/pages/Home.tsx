@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <motion.img
+          {/* <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.4 }}
             transition={{ duration: 2, ease: "easeOut" }}
@@ -15,7 +15,7 @@ export default function Home() {
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtRQW80Q4EhEjL2M8VM5W9F9cLquaBG127tCuAq9uDVTDO3t8PJ2jqq61qLQeQU0_6wX31oc86tIK9SuoZPUW4R2TKs4So1OGWpQ193GYnyk64VzchkzYi_z4u_yXj5PCuyhlxAVENPBitFkY_2Z78ZJVFPlA0lMON__O6ZbSPjylyXjvxD8P0i41G397vr9_SU6KijdyDYdIUD-LNkYaSpgYcX3I0p8aRDuWxuodK7XfDiFRJW3f1xg5wX4g6TS1VgOBH0BPJLHY"
-          />
+          /> */}
         </div>
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -58,8 +58,8 @@ export default function Home() {
       </section>
 
       {/* Who We Are / Why Us */}
-      <section className="px-6 md:px-12 py-24 md:py-32 grid grid-cols-12 gap-12 md:gap-24">
-        <div className="col-span-12 lg:col-span-5 space-y-8 md:space-y-12">
+      <section className="px-6 md:px-12 py-24 md:py-32 flex flex-col lg:grid lg:grid-cols-12 gap-12 md:gap-24">
+        <div className="lg:col-span-5 space-y-8 md:space-y-12">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#e03a2f] mb-6">Manifesto</div>
             <h3 className="text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] uppercase break-words">Who is Studio Tactile?</h3>
@@ -71,7 +71,7 @@ export default function Home() {
             Founded on the belief that a building should feel as though it grew from its site, rather than being placed upon it. We balance technical precision with emotional resonance.
           </p>
         </div>
-        <div className="col-span-12 lg:col-span-6 lg:col-start-7 grid grid-cols-1 gap-12 md:gap-16">
+        <div className="lg:col-span-6 lg:col-start-7 grid grid-cols-1 gap-12 md:gap-16">
           <div className="border-l-2 border-outline-variant/20 pl-8 pb-8 hover:border-[#e03a2f] transition-colors duration-500">
             <div className="text-[10px] font-bold uppercase text-[#888888] mb-2 tracking-widest">01. Planning</div>
             <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Mathematical Rigor</h4>
@@ -92,8 +92,8 @@ export default function Home() {
 
       {/* Featured Project: The Obsidian Void */}
       <section className="bg-surface-container-lowest">
-        <div className="grid grid-cols-12 min-h-[800px]">
-          <div className="col-span-12 md:col-span-8 overflow-hidden">
+        <div className="flex flex-col md:grid md:grid-cols-12 min-h-[800px]">
+          <div className="md:col-span-8 overflow-hidden h-[500px] md:h-auto">
             <img
               alt="Monolithic black modern house with large glass windows reflecting a dramatic mountain landscape at twilight"
               className="w-full h-full object-cover"
@@ -101,7 +101,7 @@ export default function Home() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxmnWwgs8U8jZK8O6HfU25j-M6y0bPdfLcU05MNEm5JM258kBqOqv9E9LqDWMExzgf9k_7ngNrk7pnw_ZuFjiYJWQX4rZkOsPuOI4w9vEZ04zTG4TjOIXVqg1vf_WnhQe0-mXz43NhkHZb7V91v2Ab54rJj_kq1aZEYYf6mbjXXwrT30EzzC4XCB8Pw72Lb3oY2AX-BII9-cvfzq3nm00t3T7j8nnDynmmbASXIltIGzxPy1nnFUNQ0oLFBdRZagW1NzKjR5_L_OQ"
             />
           </div>
-          <div className="col-span-12 md:col-span-4 p-16 flex flex-col justify-center">
+          <div className="md:col-span-4 p-8 md:p-16 flex flex-col justify-center">
             <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#e03a2f] mb-4">Featured Work</div>
             <h2 className="text-4xl font-bold mb-8 tracking-tighter uppercase">The Obsidian Void</h2>
             <p className="text-[#888888] mb-12 leading-relaxed">

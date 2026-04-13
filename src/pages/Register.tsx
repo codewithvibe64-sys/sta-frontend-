@@ -68,8 +68,8 @@ export default function Register() {
 
   return (
     <main className="pt-40 pb-32 selection:bg-[#e03a2f] selection:text-white">
-      <div className="grid grid-cols-12 gap-x-12 px-6 md:px-12">
-        <div className="col-span-12 lg:col-span-5 mb-24 lg:mb-0 flex flex-col justify-center">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-x-12 px-6 md:px-12">
+        <div className="lg:col-span-5 mb-24 lg:mb-0 flex flex-col justify-center">
           <div>
             <span className="text-[#e03a2f] font-bold uppercase tracking-[0.4em] text-[10px] block mb-8">Registration</span>
             <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-black leading-[0.9] tracking-tighter text-[#f5f5f5] mb-12 uppercase">
@@ -87,7 +87,7 @@ export default function Register() {
           </div>
         </div>
 
-        <div className="col-span-12 lg:col-start-7 lg:col-span-6 bg-[#131313] border border-[#1c1b1b] p-8 md:p-16 relative overflow-hidden">
+        <div className="lg:col-start-7 lg:col-span-6 bg-[#131313] border border-[#1c1b1b] p-8 md:p-16 relative overflow-hidden">
           <AnimatePresence mode="wait">
             {isSubmitting && (
               <motion.div 

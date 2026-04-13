@@ -75,8 +75,8 @@ export default function Journal() {
     <div className="pt-40 pb-20 selection:bg-[#e03a2f] selection:text-white">
       {/* Hero Section */}
       <section className="px-6 md:px-12 mb-40">
-        <div className="grid grid-cols-12 gap-12 items-end">
-          <div className="col-span-12 md:col-span-8">
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-12 items-end">
+          <div className="md:col-span-8">
             <span className="font-bold uppercase tracking-[0.4em] text-[10px] text-[#e03a2f] mb-8 block">The Journal — Vol. 04</span>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export default function Journal() {
               An editorial collection of architectural philosophies, industry shifts, and the quiet pursuit of tactile excellence.
             </p>
           </div>
-          <div className="col-span-12 md:col-span-4 flex md:justify-end">
+          <div className="md:col-span-4 flex md:justify-end">
             <div className="flex gap-12 text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444]">
               <span 
                 onClick={() => setActiveTab("Articles")}
@@ -117,8 +117,8 @@ export default function Journal() {
         >
           {/* Featured Thought Piece */}
           <section className="px-6 md:px-12 mb-40">
-            <div className="grid grid-cols-12 gap-0 bg-[#131313] border border-[#1c1b1b]">
-              <div className="col-span-12 lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden">
+            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-0 bg-[#131313] border border-[#1c1b1b]">
+              <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden">
                 <img
                   alt={featuredArticle.title}
                   className="w-full h-full object-cover brightness-75 hover:scale-105 transition-transform duration-[2000ms]"
@@ -126,7 +126,7 @@ export default function Journal() {
                   src={featuredArticle.img}
                 />
               </div>
-              <div className="col-span-12 lg:col-span-5 p-12 md:p-20 flex flex-col justify-center">
+              <div className="lg:col-span-5 p-12 md:p-20 flex flex-col justify-center">
                 <div className="flex items-center gap-6 mb-12">
                   <div className="w-12 h-px bg-[#e03a2f]"></div>
                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444]">{featuredArticle.cat}</span>

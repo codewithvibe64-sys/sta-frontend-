@@ -1,59 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+:root {
+  --bg: #0f0f0f;
+  --text: #f5f5f5;
+  --muted: #888888;
+  --border: #222222;
+  --accent: #e03a2f;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-headline: "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-label: "Inter", sans-serif;
 
-  --color-surface-container-high: #2a2a2a;
-  --color-outline: #ab8984;
-  --color-error-container: #93000a;
-  --color-surface-container-low: #1c1b1b;
-  --color-inverse-surface: #e5e2e1;
-  --color-inverse-on-surface: #313030;
-  --color-on-secondary: #303031;
-  --color-on-background: #e5e2e1;
-  --color-surface-container-highest: #353534;
-  --color-on-tertiary-container: #2a2a2a;
-  --color-tertiary-container: #929090;
-  --color-on-secondary-fixed: #1b1c1c;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface-variant: #353534;
-  --color-secondary-container: #464747;
-  --color-on-secondary-container: #b5b5b5;
-  --color-on-primary: #690003;
-  --color-on-secondary-fixed-variant: #464747;
-  --color-tertiary: #c8c6c5;
-  --color-on-tertiary: #303030;
-  --color-surface-dim: #131313;
-  --color-tertiary-fixed: #e5e2e1;
-  --color-on-primary-container: #5c0002;
-  --color-on-primary-fixed-variant: #930006;
-  --color-on-primary-fixed: #410001;
-  --color-secondary: #c7c6c6;
-  --color-primary-container: #ff5546;
-  --color-primary-fixed: #ffdad5;
-  --color-on-surface-variant: #e4beb8;
-  --color-tertiary-fixed-dim: #c8c6c5;
-  --color-on-error-container: #ffdad6;
-  --color-on-tertiary-fixed: #1b1c1c;
-  --color-surface: #131313;
-  --color-on-error: #690005;
-  --color-background: #131313;
-  --color-outline-variant: #5b403c;
-  --color-secondary-fixed: #e3e2e2;
-  --color-surface-container: #201f1f;
-  --color-secondary-fixed-dim: #c7c6c6;
-  --color-error: #ffb4ab;
-  --color-on-surface: #e5e2e1;
-  --color-surface-bright: #3a3939;
-  --color-inverse-primary: #b91c18;
-  --color-primary: #ffb4aa;
-  --color-on-tertiary-fixed-variant: #474746;
-  --color-surface-tint: #ffb4aa;
-  --color-primary-fixed-dim: #ffb4aa;
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+
+  /* Mapping existing semantic colors to variables for theme support */
+  --color-surface-container-high: var(--border);
+  --color-surface-container-low: var(--border);
+  --color-surface-container-lowest: var(--bg);
+  --color-surface-dim: var(--bg);
+  --color-surface: var(--bg);
+  --color-on-surface: var(--text);
+  --color-on-background: var(--text);
+  --color-outline: var(--border);
+  --color-outline-variant: var(--border);
 }
 
 @layer base {
@@ -62,7 +39,9 @@
     overflow-x: hidden;
   }
   body {
-    @apply bg-[#0f0f0f] text-[#f5f5f5] font-sans antialiased;
+    background-color: var(--bg);
+    color: var(--text);
+    @apply font-sans antialiased;
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
