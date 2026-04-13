@@ -139,7 +139,7 @@ export default function Layout({ children }: LayoutProps) {
 
           <div className="md:col-span-4 flex md:justify-end gap-8 items-center">
             <a href="https://instagram.com/studiotactile" target="_blank" rel="noopener noreferrer" className="text-[#888888] hover:text-[#f5f5f5] transition-colors text-[10px] font-bold tracking-widest">INSTAGRAM</a>
-            <a href="https://linkedin.com/company/studiotactile" target="_blank" rel="noopener noreferrer" className="text-[#888888] hover:text-[#f5f5f5] transition-colors text-[10px] font-bold tracking-widest">LINKEDIN</a>
+            <a href="https://www.linkedin.com/company/studio-tactile-architects" target="_blank" rel="noopener noreferrer" className="text-[#888888] hover:text-[#f5f5f5] transition-colors text-[10px] font-bold tracking-widest">LINKEDIN</a>
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="ml-4 w-10 h-10 border border-[#1c1b1b] flex items-center justify-center text-[#888888] hover:text-[#e03a2f] hover:border-[#e03a2f] transition-all duration-400"
