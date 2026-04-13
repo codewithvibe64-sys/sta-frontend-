@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {/* <motion.img
+           <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.4 }}
             transition={{ duration: 2, ease: "easeOut" }}
@@ -15,7 +15,7 @@ export default function Home() {
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtRQW80Q4EhEjL2M8VM5W9F9cLquaBG127tCuAq9uDVTDO3t8PJ2jqq61qLQeQU0_6wX31oc86tIK9SuoZPUW4R2TKs4So1OGWpQ193GYnyk64VzchkzYi_z4u_yXj5PCuyhlxAVENPBitFkY_2Z78ZJVFPlA0lMON__O6ZbSPjylyXjvxD8P0i41G397vr9_SU6KijdyDYdIUD-LNkYaSpgYcX3I0p8aRDuWxuodK7XfDiFRJW3f1xg5wX4g6TS1VgOBH0BPJLHY"
-          /> */}
+          /> 
         </div>
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -31,7 +31,7 @@ export default function Home() {
             <p className="text-lg text-[#888888] max-w-xl font-medium leading-relaxed">
               Architecture is the silent stage for human life. We sculpt light, air, and material to create permanent anchors in an ephemeral world.
             </p>
-            <Link to="/portfolio" className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-[#e03a2f] transition-colors duration-500">
+            <Link to="/projects" className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-[#e03a2f] transition-colors duration-500">
               Explore Works
               <div className="w-12 h-[1px] bg-[#444444] group-hover:bg-[#e03a2f] group-hover:w-20 transition-all duration-500"></div>
             </Link>
