@@ -1,22 +1,91 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+// --- Local hero images (4 images for slideshow) ---
+import heroImg1 from "../imges/Files/01- Architecture/Dinesh residence@ coimbatore/1.jpg";
+import heroImg2 from "../imges/Files/01- Architecture/Aiswarya Residence _ thanjavur/Render images/1.1.jpg";
+import heroImg3 from "../imges/Files/02- interior/Thanjavur _ interior/Living Room OP 1 (1).png";
+import heroImg4 from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/1.1.jpg";
+
+// --- Service card images ---
+import svcArchitecture from "../imges/Files/01- Architecture/Dinesh residence@ coimbatore/Model 1.1.png";
+import svcInterior from "../imges/Files/02- interior/Mohan  Residence- Chennai/01 (1).png";
+import svcRenovation from "../imges/Files/01- Architecture/Aiswarya Residence _ thanjavur/On site images/01 (3).jpeg";
+import svcTurnkey from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/3.1.jpg";
+import svcVastu from "../imges/Files/01- Architecture/Weekend House@ Kovalam/01.jpg";
+import svcDesign from "../imges/Files/03-Design Lab/Small Shop @ kumbakonam/view 1.jpg";
+import featuredImg from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/5.1.jpg";
+import portfolioImg1 from "../imges/Files/01- Architecture/Aiswarya Residence _ thanjavur/Render images/2.2.jpg";
+import portfolioImg2 from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/4.1.jpg";
+
+const heroSlides = [
+  { src: heroImg1, label: "Dinesh Residence · Coimbatore" },
+  { src: heroImg2, label: "Aiswarya Residence · Thanjavur" },
+  { src: heroImg3, label: "A1 Travels Interior · Chennai" },
+  { src: heroImg4, label: "A1 Travels Interior · Chennai" },
+];
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-advance every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-background selection:bg-[#e03a2f] selection:text-white">
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 pt-32 overflow-hidden">
+      <section className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 pt-32 overflow-hidden group/hero">
+        {/* Slideshow Background */}
         <div className="absolute inset-0 z-0">
-           <motion.img
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.4 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            alt="Minimalist concrete architecture"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtRQW80Q4EhEjL2M8VM5W9F9cLquaBG127tCuAq9uDVTDO3t8PJ2jqq61qLQeQU0_6wX31oc86tIK9SuoZPUW4R2TKs4So1OGWpQ193GYnyk64VzchkzYi_z4u_yXj5PCuyhlxAVENPBitFkY_2Z78ZJVFPlA0lMON__O6ZbSPjylyXjvxD8P0i41G397vr9_SU6KijdyDYdIUD-LNkYaSpgYcX3I0p8aRDuWxuodK7XfDiFRJW3f1xg5wX4g6TS1VgOBH0BPJLHY"
-          /> 
+          <AnimatePresence mode="sync">
+            <motion.img
+              key={currentSlide}
+              src={heroSlides[currentSlide].src}
+              alt={heroSlides[currentSlide].label}
+              className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover/hero:grayscale-0 group-hover/hero:brightness-100 transition-all duration-700 ease-in-out"
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -80 }}
+              transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+            />
+          </AnimatePresence>
+          {/* Dark overlay — lightens on hover to reveal full color */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/40 to-black/40 z-10 group-hover/hero:via-[#0f0f0f]/10 group-hover/hero:to-transparent transition-all duration-700" />
         </div>
+
+        {/* Slide indicators */}
+        <div className="absolute bottom-8 right-6 md:right-12 z-20 flex items-center gap-3">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`transition-all duration-500 rounded-full ${
+                i === currentSlide
+                  ? "w-8 h-[3px] bg-[#e03a2f]"
+                  : "w-[3px] h-[3px] bg-[#444444] hover:bg-[#888888]"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Current project label */}
+        <motion.div
+          key={`label-${currentSlide}`}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute bottom-8 left-6 md:left-12 z-20 text-[10px] font-bold uppercase tracking-[0.3em] text-[#444444]"
+        >
+          {heroSlides[currentSlide].label}
+        </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,10 +164,9 @@ export default function Home() {
         <div className="flex flex-col md:grid md:grid-cols-12 min-h-[800px]">
           <div className="md:col-span-8 overflow-hidden h-[500px] md:h-auto">
             <img
-              alt="Monolithic black modern house with large glass windows reflecting a dramatic mountain landscape at twilight"
+              alt="Delta Masala Interior Render - Kumbakonam"
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxmnWwgs8U8jZK8O6HfU25j-M6y0bPdfLcU05MNEm5JM258kBqOqv9E9LqDWMExzgf9k_7ngNrk7pnw_ZuFjiYJWQX4rZkOsPuOI4w9vEZ04zTG4TjOIXVqg1vf_WnhQe0-mXz43NhkHZb7V91v2Ab54rJj_kq1aZEYYf6mbjXXwrT30EzzC4XCB8Pw72Lb3oY2AX-BII9-cvfzq3nm00t3T7j8nnDynmmbASXIltIGzxPy1nnFUNQ0oLFBdRZagW1NzKjR5_L_OQ"
+              src={featuredImg}
             />
           </div>
           <div className="md:col-span-4 p-8 md:p-16 flex flex-col justify-center">
@@ -107,9 +175,9 @@ export default function Home() {
             <p className="text-[#888888] mb-12 leading-relaxed">
               A private residence carved into the basalt cliffs of the coast. A study in total darkness and strategic punctures of light.
             </p>
-            <button className="self-start border-b border-[#f5f5f5] pb-2 text-[10px] font-bold tracking-widest uppercase hover:text-[#e03a2f] hover:border-[#e03a2f] transition-all">
+            <Link to="/projects" className="self-start border-b border-[#f5f5f5] pb-2 text-[10px] font-bold tracking-widest uppercase hover:text-[#e03a2f] hover:border-[#e03a2f] transition-all">
               View Project Details
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -122,17 +190,28 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
           {[
-            { title: "Architecture", desc: "Structural foundations and spatial volume." },
-            { title: "Interior", desc: "Human-scale environments and bespoke textures." },
-            { title: "Renovation", desc: "Restructuring the legacy of existing bones." },
-            { title: "Turnkey", desc: "Total project management from site to keys." },
-            { title: "Vastu", desc: "Ancient geometry met with modern utility." },
-            { title: "Design Strategy", desc: "Visionary consulting for developers and estates." },
+            { title: "Architecture", desc: "Structural foundations and spatial volume.", img: svcArchitecture },
+            { title: "Interior", desc: "Human-scale environments and bespoke textures.", img: svcInterior },
+            { title: "Renovation", desc: "Restructuring the legacy of existing bones.", img: svcRenovation },
+            { title: "Turnkey", desc: "Total project management from site to keys.", img: svcTurnkey },
+            { title: "Vastu", desc: "Ancient geometry met with modern utility.", img: svcVastu },
+            { title: "Design Strategy", desc: "Visionary consulting for developers and estates.", img: svcDesign },
           ].map((service, i) => (
-            <div key={i} className="bg-surface-container-low p-12 aspect-square flex flex-col justify-end group hover:bg-[#e03a2f] transition-colors duration-500 cursor-default">
-              <div>
-                <h3 className="text-2xl font-bold mb-2 uppercase group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-sm text-[#888888] group-hover:text-white/80 transition-colors">{service.desc}</p>
+            <div key={i} className="relative aspect-square overflow-hidden flex flex-col justify-end group cursor-default">
+              {/* Background image — grayscale by default, full color on hover, zoom + rotate */}
+              <img
+                src={service.img}
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 transition-all duration-700 ease-in-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 group-hover:rotate-3"
+              />
+              {/* Dark overlay — fades away on hover to reveal full color */}
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/10 transition-all duration-700" />
+              {/* Bottom gradient for text readability always */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
+              {/* Text content */}
+              <div className="relative z-10 p-10">
+                <h3 className="text-2xl font-bold mb-2 uppercase text-white transition-colors">{service.title}</h3>
+                <p className="text-sm text-white/70 group-hover:text-white/90 transition-colors">{service.desc}</p>
               </div>
             </div>
           ))}
@@ -171,15 +250,15 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
           <Link to="/projects" className="group relative aspect-video overflow-hidden bg-[#131313]">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV7B0-IPTTC5IspXaoI4tqgHWSdwur30aZuxWTpVmWi0H5ZHAjvsUZFTBdKiIt_uX2t7xlb6j3XuOAXqHeZqVdXzGzM9OLObq_BwedLdQvoQPRPGwXs0gt5Pz-CyrE1Ber_A6OKIOLMylb5y4TFGq-0UVbdGy1MChhW85Bb5FV9KNlR07azgf_yMFR1bvWL8ETUxez7j6blDbXTEmZXaSKpkRKXnNQe3OIr2wUuW89d2yOt_XBVByoI2esZc03d742jm6FYOjsBL4" alt="Vanguard HQ" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer" />
+            <img src={portfolioImg1} alt="Aiswarya Residence" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Vanguard HQ</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Aiswarya Residence</span>
             </div>
           </Link>
           <Link to="/projects" className="group relative aspect-video overflow-hidden bg-[#131313]">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk-uy2_Lsr4EgmaENfbR93rFMkngi_AcQAyXRkDxKtAJqbnUL__WIRLITPP3vHef5HPgUC68w9uEqrwsswqiaO_5fkt6-oRgYdghM3uU7M2wyGc4DXJMeyzOp4HQATLevvDZ2dU97tS-aiRymmxZlxL3DpAaO2zeFmHfBZtQwb5MlMujSABiXxZUnGdj4Avbwa1x-Hq6qpdhmg5FMwkKuW6nHyK6NcUWY-9ytQ34MFhM9fpaxPlTR9IBVGW0eck18g1Rob5U6fn5s" alt="Kinetic Atrium" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer" />
+            <img src={portfolioImg2} alt="Delta Masala Interior" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Kinetic Atrium</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Delta Masala Interior</span>
             </div>
           </Link>
         </div>
