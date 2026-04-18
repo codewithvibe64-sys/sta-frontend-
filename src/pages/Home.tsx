@@ -2,22 +2,24 @@ import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-// --- Local hero images (4 images for slideshow) ---
-import heroImg1 from "../imges/Files/01- Architecture/Dinesh residence@ coimbatore/1.jpg";
-import heroImg2 from "../imges/Files/01- Architecture/Aiswarya Residence _ thanjavur/Render images/1.1.jpg";
-import heroImg3 from "../imges/Files/02- interior/Thanjavur _ interior/Living Room OP 1 (1).png";
-import heroImg4 from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/1.1.jpg";
+// --- Hero slideshow images (served from /public/images/) ---
+const heroImg1 = "/images/hero1.jpg";
+const heroImg2 = "/images/hero2.jpg";
+const heroImg3 = "/images/hero3.png";
+const heroImg4 = "/images/hero4.jpg";
 
 // --- Service card images ---
-import svcArchitecture from "../imges/Files/01- Architecture/Dinesh residence@ coimbatore/Model 1.1.png";
-import svcInterior from "../imges/Files/02- interior/Mohan  Residence- Chennai/01 (1).png";
-import svcRenovation from "../imges/Files/01- Architecture/Aiswarya Residence _ thanjavur/On site images/01 (3).jpeg";
-import svcTurnkey from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/3.1.jpg";
-import svcVastu from "../imges/Files/01- Architecture/Weekend House@ Kovalam/01.jpg";
-import svcDesign from "../imges/Files/03-Design Lab/Small Shop @ kumbakonam/view 1.jpg";
-import featuredImg from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/5.1.jpg";
-import portfolioImg1 from "../imges/Files/01- Architecture/Aiswarya Residence _ thanjavur/Render images/2.2.jpg";
-import portfolioImg2 from "../imges/Files/02- interior/Delta Masala _ interior @ kumbakonam/Render/4.1.jpg";
+const svcArchitecture = "/images/svc-architecture.png";
+const svcInterior     = "/images/svc-interior.png";
+const svcRenovation   = "/images/svc-renovation.jpeg";
+const svcTurnkey      = "/images/svc-turnkey.jpg";
+const svcVastu        = "/images/svc-vastu.jpg";
+const svcDesign       = "/images/svc-design.jpg";
+
+// --- Featured + Portfolio images ---
+const featuredImg  = "/images/featured.jpg";
+const portfolioImg1 = "/images/portfolio1.jpg";
+const portfolioImg2 = "/images/portfolio2.jpg";
 
 const heroSlides = [
   { src: heroImg1, label: "Dinesh Residence · Coimbatore" },
