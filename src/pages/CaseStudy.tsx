@@ -16,10 +16,10 @@ export default function CaseStudy() {
       problem: "How to create a sanctuary that feels open to the landscape while providing absolute thermal and psychological security.",
       approach: "Subterranean Integration. We carved the living spaces into the basalt bedrock, using the earth's natural thermal mass to regulate temperature. The exterior is clad in charred timber and black volcanic stone, allowing the structure to disappear into the landscape during the long winter nights.",
       execution: "Cast-in-place concrete with exposed aggregate. The interior features raw basalt floors and hand-applied plaster walls. Custom steel apertures frame specific views of the North Atlantic, acting as cinematic lenses for the changing light.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBG0QDLhGXXFEK_tSY4XwRAKYDHO2ECH2O1stbwsVkzxEi_HFtA_l1BmGmWxhNeRccFEdL5BrcM9wfGCqQaLSHLqNqcaPDSXfvv6SwbpOIRVyVVKtYkK65m29EZ_8A0HagiNGl3Ar2XOsYlN64L1le5W0m_UdLUHR-arROfVxsRTFWeO0kl94cyLfdhRxPyhSJHSqua19QycMJ8QTdPtLVKHH034XhAlvbpCASBXmpRSCIkey6Wr_4o3Sj3d7B7KZPSSZ1JzMv_Djs",
+      img: "/images/portfolio1.jpg",
       gallery: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDtRQW80Q4EhEjL2M8VM5W9F9cLquaBG127tCuAq9uDVTDO3t8PJ2jqq61qLQeQU0_6wX31oc86tIK9SuoZPUW4R2TKs4So1OGWpQ193GYnyk64VzchkzYi_z4u_yXj5PCuyhlxAVENPBitFkY_2Z78ZJVFPlA0lMON__O6ZbSPjylyXjvxD8P0i41G397vr9_SU6KijdyDYdIUD-LNkYaSpgYcX3I0p8aRDuWxuodK7XfDiFRJW3f1xg5wX4g6TS1VgOBH0BPJLHY",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBeaJxm2n3e6gRGBcqX6ruVOOsxawIk_L1ia4QlrzGbTE9lSPj5guTtlBzQQlzxFVrzjhLwjwIEWb5KS7fQPneRLeDnH2VRHRyYcKMYhS1Fw6XyfqJUSXcPolLlvLjZdDja2lCo5JsB7_xFDf208rLG5pq2oU1K38CfgqSaNWLqP_t7drpmSVD9kotZpcvjP_LwW7Z5NuIyURaCYHQPeWn1bmRO5GGM_F1u6l19ZHZuWRCx7D7CwfbDDvAGCiL2eFrLPNd3z9Oa3Dk"
+        "/images/hero1.jpg",
+        "/images/svc-architecture.png"
       ]
     },
     {
@@ -31,7 +31,12 @@ export default function CaseStudy() {
       problem: "Converting a rigid, windowless shell into a vibrant, collaborative workspace without losing its brutalist soul.",
       approach: "Atrium Insertion. We cut a massive central void through the three-story concrete structure, allowing natural light to penetrate the core. This void serves as the social heart of the building, connected by a series of suspended steel walkways.",
       execution: "The original board-marked concrete was sandblasted and left exposed. New interventions are clearly defined by their material palette: cold-rolled steel, industrial glass, and recycled rubber flooring. The contrast between the heavy historical shell and the light modern inserts defines the spatial experience.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBV7B0-IPTTC5IspXaoI4tqgHWSdwur30aZuxWTpVmWi0H5ZHAjvsUZFTBdKiIt_uX2t7xlb6j3XuOAXqHeZqVdXzGzM9OLObq_BwedLdQvoQPRPGwXs0gt5Pz-CyrE1Ber_A6OKIOLMylb5y4TFGq-0UVbdGy1MChhW85Bb5FV9KNlR07azgf_yMFR1bvWL8ETUxez7j6blDbXTEmZXaSKpkRKXnNQe3OIr2wUuW89d2yOt_XBVByoI2esZc03d742jm6FYOjsBL4"
+      img: "/images/portfolio2.jpg",
+      reverse: true,
+      gallery: [
+        "/images/hero2.jpg",
+        "/images/svc-renovation.jpeg"
+      ]
     },
     {
       id: "03",
@@ -42,18 +47,24 @@ export default function CaseStudy() {
       problem: "Designing a space that actively participates in the art display rather than serving as a passive container.",
       approach: "Light Well Modulation. We designed a series of motorized ceiling apertures that respond to the sun's position, constantly shifting the shadow patterns on the limestone walls. The space becomes a living sundial.",
       execution: "Honed limestone walls with recessed basalt accents. The floor is a continuous pour of polished concrete with local river stone aggregate. The precision of the mechanical light wells contrasts with the raw, earthy textures of the primary surfaces.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCk-uy2_Lsr4EgmaENfbR93rFMkngi_AcQAyXRkDxKtAJqbnUL__WIRLITPP3vHef5HPgUC68w9uEqrwsswqiaO_5fkt6-oRgYdghM3uU7M2wyGc4DXJMeyzOp4HQATLevvDZ2dU97tS-aiRymmxZlxL3DpAaO2zeFmHfBZtQwb5MlMujSABiXxZUnGdj4Avbwa1x-Hq6qpdhmg5FMwkKuW6nHyK6NcUWY-9ytQ34MFhM9fpaxPlTR9IBVGW0eck18g1Rob5U6fn5s"
+      img: "/images/svc-interior.png",
+      gallery: [
+        "/images/hero3.png"
+      ]
     },
     {
       id: "04",
-      title: "AI Concept: Monolith",
+      title: "AI Generative Pavilion",
       category: "Design Lab",
-      location: "Digital Space | 2025",
+      location: "Virtual / Experimental | 2025",
       context: "An experimental exploration of AI-generated architectural forms using Studio Tactile's design DNA.",
       problem: "Can machine intelligence replicate the 'Silent Monolith' philosophy without human intervention?",
       approach: "Algorithmic Brutalism. We trained a custom neural network on our archive of physical models and technical drawings. The AI was tasked with generating forms that prioritize mass, shadow, and structural honesty.",
       execution: "Neural Rendering. The resulting forms were rendered using advanced path-tracing algorithms to simulate the behavior of light on raw concrete and weathered steel. This project serves as a bridge between our physical practice and the future of computational design.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC36FwbRYgTEniAUkPtcUi2gBhSntQ4ZkOnzJ90jdOB7FEJbXfFj0BhtSzRXwg_kCy0xPSzG_69mAF6wpuldVa90IYkg48ct7t-IMGYxWzlxb-sWJMWG4oW1QsOWBOYaYAI2QTeobGas1iEW4qVHzsziYti7x1HEdA_dNBSs8qh1D0sxEylCm0vS1CqxjQmWBvnMnaeYCuMpG0idvngg3egIal3YynGiFj2GTRoNgokIiffxOY7iOPTpzSiyYz5MFIJNAa8spC1dgM"
+      img: "/images/featured.jpg",
+      gallery: [
+        "/images/hero4.jpg"
+      ]
     }
   ];
 

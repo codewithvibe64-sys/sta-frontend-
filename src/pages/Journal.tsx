@@ -33,7 +33,7 @@ export default function Journal() {
       excerpt: "How can something as weightless as a photon define the physical gravity of a room? We explore the tension between concrete mass and the ephemeral nature of natural light.",
       content: "Light is the most fundamental material in architecture. It is the only element that can transform a static space into a dynamic experience. In this exploration, we delve into the technical and philosophical implications of using 'void' as a structural tool. By strategically placing openings and managing reflections, we can create a sense of 'weight' that rivals the most massive concrete walls. This article examines three case studies where light was used not just for visibility, but as a primary sculpting medium.\n\nThe interaction between shadow and surface creates a tactile quality that defines the user's perception of space. We discuss the use of aggregate textures to catch light and the importance of orientation in achieving cinematic results.",
       tags: ["Philosophy", "Materials"],
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC36FwbRYgTEniAUkPtcUi2gBhSntQ4ZkOnzJ90jdOB7FEJbXfFj0BhtSzRXwg_kCy0xPSzG_69mAF6wpuldVa90IYkg48ct7t-IMGYxWzlxb-sWJMWG4oW1QsOWBOYaYAI2QTeobGas1iEW4qVHzsziYti7x1HEdA_dNBSs8qh1D0sxEylCm0vS1CqxjQmWBvnMnaeYCuMpG0idvngg3egIal3YynGiFj2GTRoNgokIiffxOY7iOPTpzSiyYz5MFIJNAa8spC1dgM"
+      img: "/images/Model_1.4.png"
     },
     {
       id: "1",
@@ -43,7 +43,7 @@ export default function Journal() {
       excerpt: "From thermal bridging to acoustic isolation, we break down the technical oversights that compromise luxury living environments.",
       content: "Modern luxury is often defined by aesthetics, but true comfort lies in the invisible details. Thermal bridging remains one of the most common failures in contemporary design, leading to energy loss and structural degradation. Acoustic isolation is another critical factor often overlooked in open-plan layouts. This article provides a comprehensive guide to avoiding these pitfalls through rigorous technical planning and material selection.\n\nWe analyze the impact of high-performance glazing, the necessity of continuous insulation layers, and the role of smart home integration in maintaining environmental stability. By addressing these 'invisible' factors early in the design phase, we ensure that the final result is as functional as it is beautiful.",
       tags: ["Sustainability", "Materials"],
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDFj79wjX2ApTEwtOAp9Ii1ehhSGmL8JpDntv_LQiH0r1Fh1AQqNBq2p-BAZhPOt7D96ILbopjEZbqk-Iij4zmnD3aP3xS1lb_D58OWKoisK66ZozAA2v0_pHJ5LZNauxT899WDolf0TNw29FclhHARiIGgGiU1h7Ed-TXnDYJjzthzswlwoDNIBfbbK60lhBvdVCu_mF1tcMRqPIol6-y0oDYx1Y43PXJaGkXM0MVbtSmejDOLxRflUUKq8HV6oi8Z5odVd_jd26o"
+      img: "/images/Living_Room_OP_1_(2).png"
     },
     {
       id: "2",
@@ -53,7 +53,7 @@ export default function Journal() {
       excerpt: "Challenging the cold reputation of the monolith. An exploration of aggregate textures and human-scale finishes in urban sites.",
       content: "Concrete is often viewed as a cold, industrial material. However, when handled with sensitivity, it can possess a profound warmth and tactile richness. Tactile Brutalism is an approach that emphasizes the human-scale experience of concrete surfaces. By experimenting with different aggregate mixes and formwork textures, we can create buildings that feel grounded and welcoming.\n\nThis piece explores the history of brutalist architecture and its modern resurgence. We look at how contemporary techniques allow for greater precision and variety in concrete finishes, making it a viable choice for high-end residential projects. The key lies in the balance between monumental scale and intimate detail.",
       tags: ["Brutalism", "Materials"],
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC93_A_mNMFciSwuzOfIBg6K8UK8mrpnh3qGkduDwjthWwddMz1r2o10LKh7OTA2CgASjWGWWn8T-F2-bDarqEBmAN3dzCJy-JvMZlsSHHeeEbulhgIsv08vQqtKpJ_12stNQU5kR_lZXOj83Wt1QksuegE6vHXxlukZvxMlggpRyzUGSkIK3QyYgjZf4GPmmO87Z2_sYoyD11-E-_gvRNm1f_AFFVUV5R8PUHrDm7TqnTVsqVPi18nUT0zdhG94ei5z0dqiiJuT2c"
+      img: "/images/kitchen_2_op_2_(3).png"
     }
   ];
 
@@ -74,31 +74,44 @@ export default function Journal() {
   return (
     <div className="pt-40 pb-20 selection:bg-[#e03a2f] selection:text-white">
       {/* Hero Section */}
-      <section className="px-6 md:px-12 mb-40">
-        <div className="flex flex-col md:grid md:grid-cols-12 gap-12 items-end">
+      <section className="px-6 md:px-12 mb-40 relative min-h-[50vh] flex flex-col justify-center group/hero">
+        {/* Background Image Behind the Text */}
+        <div className="absolute inset-0 md:left-1/4 -z-10 opacity-25 pointer-events-none overflow-hidden">
+          <img
+            src="/images/IMG_20220907_201623.jpg"
+            alt="Journal Background"
+            className="w-full h-[120%] object-cover object-center grayscale brightness-75 transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover/hero:grayscale-0 group-hover/hero:brightness-100 group-hover/hero:scale-105"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)'
+            }}
+          />
+        </div>
+
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-12 items-end relative z-10">
           <div className="md:col-span-8">
-            <span className="font-bold uppercase tracking-[0.4em] text-[10px] text-[#e03a2f] mb-8 block">The Journal — Vol. 04</span>
-            <motion.h1 
+            <span className="font-bold uppercase tracking-[0.4em] text-[10px] text-[#e03a2f] mb-8 block drop-shadow-md">The Journal — Vol. 04</span>
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase mb-12"
+              className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase mb-12 drop-shadow-2xl mix-blend-plus-lighter"
             >
-              Thoughts on <br/><span className="text-[#e03a2f]">Permanence.</span>
+              Thoughts on <br /><span className="text-[#e03a2f] drop-shadow-2xl">Permanence.</span>
             </motion.h1>
-            <p className="text-[#888888] text-xl leading-relaxed max-w-xl font-medium">
+            <p className="text-[#888888] text-xl leading-relaxed max-w-xl font-medium drop-shadow-lg backdrop-blur-sm bg-black/10 p-4 -ml-4 rounded-lg">
               An editorial collection of architectural philosophies, industry shifts, and the quiet pursuit of tactile excellence.
             </p>
           </div>
           <div className="md:col-span-4 flex md:justify-end">
             <div className="flex gap-12 text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444]">
-              <span 
+              <span
                 onClick={() => setActiveTab("Articles")}
                 className={`${activeTab === "Articles" ? "text-[#f5f5f5] border-b border-[#e03a2f]" : "hover:text-[#f5f5f5]"} cursor-pointer transition-colors`}
               >
                 Articles
               </span>
-              <span 
+              <span
                 onClick={() => setActiveTab("Recognition")}
                 className={`${activeTab === "Recognition" ? "text-[#f5f5f5] border-b border-[#e03a2f]" : "hover:text-[#f5f5f5]"} cursor-pointer transition-colors`}
               >
@@ -121,7 +134,7 @@ export default function Journal() {
               <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden">
                 <img
                   alt={featuredArticle.title}
-                  className="w-full h-full object-cover brightness-75 hover:scale-105 transition-transform duration-[2000ms]"
+                  className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 hover:scale-105 transition-all duration-[2000ms]"
                   referrerPolicy="no-referrer"
                   src={featuredArticle.img}
                 />
@@ -135,7 +148,7 @@ export default function Journal() {
                 <p className="text-[#888888] mb-12 leading-relaxed text-lg">
                   {featuredArticle.excerpt}
                 </p>
-                <button 
+                <button
                   onClick={() => setSelectedArticle(featuredArticle)}
                   className="group flex items-center gap-6 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-[#e03a2f] transition-colors"
                 >
@@ -149,8 +162,8 @@ export default function Journal() {
           {/* Insights & Technicals Grid */}
           <section className="px-6 md:px-12 mb-40 grid grid-cols-1 md:grid-cols-2 gap-24">
             {gridArticles.map((article, i) => (
-              <motion.div 
-                key={article.id} 
+              <motion.div
+                key={article.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -161,7 +174,7 @@ export default function Journal() {
                 <div className="overflow-hidden aspect-[16/10] mb-10 bg-[#131313]">
                   <img
                     alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
                     referrerPolicy="no-referrer"
                     src={article.img}
                   />
@@ -237,9 +250,8 @@ export default function Journal() {
                 <button
                   key={year}
                   onClick={() => setSelectedYear(year)}
-                  className={`text-[10px] font-bold uppercase tracking-[0.4em] transition-all ${
-                    selectedYear === year ? "text-[#e03a2f]" : "text-[#444444] hover:text-[#f5f5f5]"
-                  }`}
+                  className={`text-[10px] font-bold uppercase tracking-[0.4em] transition-all ${selectedYear === year ? "text-[#e03a2f]" : "text-[#444444] hover:text-[#f5f5f5]"
+                    }`}
                 >
                   {year}
                 </button>
@@ -286,7 +298,7 @@ export default function Journal() {
             <div className="min-h-screen flex flex-col">
               <header className="fixed top-0 w-full z-50 bg-[#0f0f0f]/80 backdrop-blur-md flex justify-between items-center px-6 md:px-12 py-8">
                 <span className="text-xl font-bold tracking-tighter text-[#f5f5f5]">STUDIO TACTILE</span>
-                <button 
+                <button
                   onClick={() => setSelectedArticle(null)}
                   className="text-[#f5f5f5] hover:text-[#e03a2f] transition-colors"
                 >
@@ -303,7 +315,7 @@ export default function Journal() {
                   <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[1.1] tracking-tighter uppercase mb-12">
                     {selectedArticle.title}
                   </h1>
-                  
+
                   {/* Tags display if available in UI structure - using simple list */}
                   <div className="flex gap-4 mb-12">
                     {selectedArticle.tags.map(tag => (
@@ -334,7 +346,7 @@ export default function Journal() {
               </main>
 
               <footer className="w-full border-t border-[#1c1b1b] bg-[#0f0f0f] px-12 py-20 text-center">
-                <button 
+                <button
                   onClick={() => setSelectedArticle(null)}
                   className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] hover:text-[#f5f5f5] transition-colors"
                 >

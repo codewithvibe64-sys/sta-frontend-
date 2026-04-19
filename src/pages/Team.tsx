@@ -6,19 +6,19 @@ export default function Team() {
       name: "Elias Vance",
       role: "Principal Architect",
       desc: "Pioneering the studio's commitment to material honesty and brutalist revival. Elias oversees structural conceptualization.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3w8gPMdurR-llSxav4WazIsaIvySaQrhSXew7R8aEnZoiUU6v2VUfWFdlyGMx6PLZ3MoeeZZ2EOO9p2HZvZWEeEHEQZWb73utt__6iOos3zAJmxK6OwsBwNoIdvcpf-o9b2EKRRdlftS_b0e7eH3VExrxGpT7mHAogUqK1CKIH4v0vxIsPiGt7jCAk4Ta5IguDbY6-rrh6FerNLup_IU3Q39U2RMy5Eto8cKr2pm0zsdgglRB1ShHJ1IPSlsw32hyIdJPHZeN3YA"
+      img: "/images/prabba.jpg"
     },
     {
       name: "Sarah Chen",
       role: "Design Lead",
       desc: "Expert in interior volume and light manipulation. Sarah bridges the gap between massive exteriors and intimate living spaces.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD2X02qq8aZUqFRFp3JGLr06ELcEsdRGxXB51WqZVTT7TnJR87tNW-ZImy8AEAy_iMNMgLKKgVPKexDx-6KHwPffNYQTse0GpxTw9JS1w13x6_WAWUMmtLs2yhjGDBHTaaGhqq9RzpDaZDCcbGrAzMq47XpHGLvwfbzlziV-KcFpooUdRH_Cw5fCsbhYXpLGK3xDQyLg-fd5vgWMRGTHtzmk83lFMO1EeX2HAIX5Yvqmw463z-bT1HvAexq5pFDCI1iOnzydu7G47k"
+      img: "/images/12.png"
     },
     {
       name: "Marcus Chen",
       role: "Technical Director",
       desc: "Managing complex delivery schedules and technical engineering feasibility for our largest commercial infrastructures.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAagjsDofpbK5uUYQ-AMG4Nzw3WXbpymRRi8KIhvzy4PGi2ZsXoLFP8pjNDBy5yLLEtOQpm2GgS_3R3oVnTI7oZnF_wCPQqcPq74HCpZ1Fpy9_42r3U0ow74bDAvGNqthz40Mgkx18fDeUCYO9J7NmCpc0OAhYHABGXwUWw1tF7_E9ipBl1MTu5zDOm9uyXbIHEC-T-BEeFQVoCt8Wk420_1VXp36NeeUJeekUqpk4CcQ_ey-f0pVPbD5D2rbCcSI-mgf0QMrGWivc"
+      img: "/images/13.png"
     }
   ];
 

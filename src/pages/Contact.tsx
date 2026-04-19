@@ -136,7 +136,7 @@ export default function Contact() {
                   alt="Minimalist dark monochromatic street map of Kumbakonam"
                   className="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-1000"
                   referrerPolicy="no-referrer"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ4H911O3RzfCjz-kiG30OJSNgjNXdSZBfSV5vLVJcnj7MN4bfYZq-RQ5STDNdwQHcpcPE-Ld2Jz3j3ju0iMql9kmKYypNReLc5A8QS2iGl2fzzI1-cy9FxC8tAb3zoffYA2KR5loG3PUySv8EcPq3sgaf3o-3owYRkjmzo0oGatXYbUuMvnjtl1SL-Z-p2sqjtze4CccsVIkH0lbLdiFtTvgfACxQtaWJI3udelOO16l97gmW4M-Lz5fly7X1VU7BQ8hsTc2LadE"
+                  src="/images/portfolio2.jpg"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex flex-col items-center gap-4">

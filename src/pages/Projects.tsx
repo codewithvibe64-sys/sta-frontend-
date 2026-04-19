@@ -38,14 +38,14 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
     >
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-[110] px-6 md:px-12 py-8 flex justify-between items-center bg-background/80 backdrop-blur-md border-b border-border">
-        <button 
+        <button
           onClick={onClose}
           className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted hover:text-foreground transition-colors"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           Back to Projects
         </button>
-        <button 
+        <button
           onClick={onClose}
           className="text-muted hover:text-accent transition-colors"
         >
@@ -142,7 +142,7 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
         </section>
 
         <footer className="mt-40 px-6 md:px-12 py-24 border-t border-border text-center">
-          <button 
+          <button
             onClick={onClose}
             className="group inline-flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-accent transition-colors"
           >
@@ -166,9 +166,8 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all relative pb-2 ${
-              activeTab === tab ? "text-foreground" : "text-muted hover:text-foreground"
-            }`}
+            className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all relative pb-2 ${activeTab === tab ? "text-foreground" : "text-muted hover:text-foreground"
+              }`}
           >
             {tab}
             {activeTab === tab && (
@@ -217,7 +216,7 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
       </div>
 
       <div className="pt-6">
-        <button 
+        <button
           onClick={onViewCaseStudy}
           className="bg-foreground text-background px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-accent hover:text-background transition-all duration-400"
         >
@@ -246,10 +245,10 @@ export default function Projects() {
       execution: "Cast-in-place Concrete",
       concept: "The design utilizes the natural thermal mass of the earth. By carving the living spaces into the basalt bedrock, we achieved a stable internal climate and a profound sense of grounding.",
       solution: "A monolithic concrete shell that emerges from the rock, featuring triple-glazed apertures that frame the aurora borealis while maintaining a R-value of 40.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBG0QDLhGXXFEK_tSY4XwRAKYDHO2ECH2O1stbwsVkzxEi_HFtA_l1BmGmWxhNeRccFEdL5BrcM9wfGCqQaLSHLqNqcaPDSXfvv6SwbpOIRVyVVKtYkK65m29EZ_8A0HagiNGl3Ar2XOsYlN64L1le5W0m_UdLUHR-arROfVxsRTFWeO0kl94cyLfdhRxPyhSJHSqua19QycMJ8QTdPtLVKHH034XhAlvbpCASBXmpRSCIkey6Wr_4o3Sj3d7B7KZPSSZ1JzMv_Djs",
+      img: "/images/portfolio1.jpg",
       gallery: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDtRQW80Q4EhEjL2M8VM5W9F9cLquaBG127tCuAq9uDVTDO3t8PJ2jqq61qLQeQU0_6wX31oc86tIK9SuoZPUW4R2TKs4So1OGWpQ193GYnyk64VzchkzYi_z4u_yXj5PCuyhlxAVENPBitFkY_2Z78ZJVFPlA0lMON__O6ZbSPjylyXjvxD8P0i41G397vr9_SU6KijdyDYdIUD-LNkYaSpgYcX3I0p8aRDuWxuodK7XfDiFRJW3f1xg5wX4g6TS1VgOBH0BPJLHY",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC36FwbRYgTEniAUkPtcUi2gBhSntQ4ZkOnzJ90jdOB7FEJbXfFj0BhtSzRXwg_kCy0xPSzG_69mAF6wpuldVa90IYkg48ct7t-IMGYxWzlxb-sWJMWG4oW1QsOWBOYaYAI2QTeobGas1iEW4qVHzsziYti7x1HEdA_dNBSs8qh1D0sxEylCm0vS1CqxjQmWBvnMnaeYCuMpG0idvngg3egIal3YynGiFj2GTRoNgokIiffxOY7iOPTpzSiyYz5MFIJNAa8spC1dgM"
+        "/images/hero1.jpg",
+        "/images/svc-architecture.png"
       ]
     },
     {
@@ -264,11 +263,11 @@ export default function Projects() {
       execution: "Steel & Glass Contrast",
       concept: "We introduced a central light-well that pierces through all four floors, bringing natural illumination to the core while preserving the heavy concrete perimeter.",
       solution: "A series of suspended glass meeting pods that float within the original industrial volume, creating a dialogue between the past and the future of work.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBV7B0-IPTTC5IspXaoI4tqgHWSdwur30aZuxWTpVmWi0H5ZHAjvsUZFTBdKiIt_uX2t7xlb6j3XuOAXqHeZqVdXzGzM9OLObq_BwedLdQvoQPRPGwXs0gt5Pz-CyrE1Ber_A6OKIOLMylb5y4TFGq-0UVbdGy1MChhW85Bb5FV9KNlR07azgf_yMFR1bvWL8ETUxez7j6blDbXTEmZXaSKpkRKXnNQe3OIr2wUuW89d2yOt_XBVByoI2esZc03d742jm6FYOjsBL4",
+      img: "/images/portfolio2.jpg",
       reverse: true,
       gallery: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCxmnWwgs8U8jZK8O6HfU25j-M6y0bPdfLcU05MNEm5JM258kBqOqv9E9LqDWMExzgf9k_7ngNrk7pnw_ZuFjiYJWQX4rZkOsPuOI4w9vEZ04zTG4TjOIXVqg1vf_WnhQe0-mXz43NhkHZb7V91v2Ab54rJj_kq1aZEYYf6mbjXXwrT30EzzC4XCB8Pw72Lb3oY2AX-BII9-cvfzq3nm00t3T7j8nnDynmmbASXIltIGzxPy1nnFUNQ0oLFBdRZagW1NzKjR5_L_OQ",
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDFj79wjX2ApTEwtOAp9Ii1ehhSGmL8JpDntv_LQiH0r1Fh1AQqNBq2p-BAZhPOt7D96ILbopjEZbqk-Iij4zmnD3aP3xS1lb_D58OWKoisK66ZozAA2v0_pHJ5LZNauxT899WDolf0TNw29FclhHARiIGgGiU1h7Ed-TXnDYJjzthzswlwoDNIBfbbK60lhBvdVCu_mF1tcMRqPIol6-y0oDYx1Y43PXJaGkXM0MVbtSmejDOLxRflUUKq8HV6oi8Z5odVd_jd26o"
+        "/images/hero2.jpg",
+        "/images/svc-renovation.jpeg"
       ]
     },
     {
@@ -283,9 +282,9 @@ export default function Projects() {
       execution: "Limestone & Basalt",
       concept: "The atrium uses a series of motorized limestone louvers that adjust based on the sun's position, creating a constantly shifting pattern of light and shadow.",
       solution: "A multi-sensory environment where the architecture itself becomes a kinetic sculpture, enhancing the visitor's perception of time and space.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCk-uy2_Lsr4EgmaENfbR93rFMkngi_AcQAyXRkDxKtAJqbnUL__WIRLITPP3vHef5HPgUC68w9uEqrwsswqiaO_5fkt6-oRgYdghM3uU7M2wyGc4DXJMeyzOp4HQATLevvDZ2dU97tS-aiRymmxZlxL3DpAaO2zeFmHfBZtQwb5MlMujSABiXxZUnGdj4Avbwa1x-Hq6qpdhmg5FMwkKuW6nHyK6NcUWY-9ytQ34MFhM9fpaxPlTR9IBVGW0eck18g1Rob5U6fn5s",
+      img: "/images/svc-interior.png",
       gallery: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC93_A_mNMFciSwuzOfIBg6K8UK8mrpnh3qGkduDwjthWwddMz1r2o10LKh7OTA2CgASjWGWWn8T-F2-bDarqEBmAN3dzCJy-JvMZlsSHHeeEbulhgIsv08vQqtKpJ_12stNQU5kR_lZXOj83Wt1QksuegE6vHXxlukZvxMlggpRyzUGSkIK3QyYgjZf4GPmmO87Z2_sYoyD11-E-_gvRNm1f_AFFVUV5R8PUHrDm7TqnTVsqVPi18nUT0zdhG94ei5z0dqiiJuT2c"
+        "/images/hero3.png"
       ]
     },
     {
@@ -300,15 +299,15 @@ export default function Projects() {
       execution: "3D Printed Graphene-Concrete",
       concept: "We trained a neural network on 20th-century brutalist masterpieces to generate new structural topologies that optimize for both load-bearing and aesthetic 'weight'.",
       solution: "The result is a pavilion that feels both ancient and alien—a complex web of graphene-reinforced concrete that pushes the limits of what is physically possible.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBeaJxm2n3e6gRGBcqX6ruVOOsxawIk_L1ia4QlrzGbTE9lSPj5guTtlBzQQlzxFVrzjhLwjwIEWb5KS7fQPneRLeDnH2VRHRyYcKMYhS1Fw6XyfqJUSXcPolLlvLjZdDja2lCo5JsB7_xFDf208rLG5pq2oU1K38CfgqSaNWLqP_t7drpmSVD9kotZpcvjP_LwW7Z5NuIyURaCYHQPeWn1bmRO5GGM_F1u6l19ZHZuWRCx7D7CwfbDDvAGCiL2eFrLPNd3z9Oa3Dk",
+      img: "/images/featured.jpg",
       gallery: [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDtRQW80Q4EhEjL2M8VM5W9F9cLquaBG127tCuAq9uDVTDO3t8PJ2jqq61qLQeQU0_6wX31oc86tIK9SuoZPUW4R2TKs4So1OGWpQ193GYnyk64VzchkzYi_z4u_yXj5PCuyhlxAVENPBitFkY_2Z78ZJVFPlA0lMON__O6ZbSPjylyXjvxD8P0i41G397vr9_SU6KijdyDYdIUD-LNkYaSpgYcX3I0p8aRDuWxuodK7XfDiFRJW3f1xg5wX4g6TS1VgOBH0BPJLHY"
+        "/images/hero4.jpg"
       ]
     }
   ];
 
-  const filteredProjects = activeFilter === "All" 
-    ? projects 
+  const filteredProjects = activeFilter === "All"
+    ? projects
     : projects.filter(p => p.category === activeFilter);
 
   const filters = ["All", "Architecture", "Interior", "Design Lab"];
@@ -316,16 +315,29 @@ export default function Projects() {
   return (
     <div className="pt-40 pb-32 selection:bg-accent selection:text-background">
       {/* Hero Section */}
-      <section className="px-6 md:px-12 mb-32">
-        <motion.h1 
+      <section className="px-6 md:px-12 mb-32 relative min-h-[50vh] flex flex-col justify-center group/hero">
+        {/* Background Image Behind the Text */}
+        <div className="absolute inset-0 md:left-1/4 -z-10 opacity-30 pointer-events-none overflow-hidden">
+          <img
+            src="/images/totem-kamen-lica.webp"
+            alt="Totem Kamen Lica"
+            className="w-full h-[120%] object-cover object-center grayscale brightness-75 transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover/hero:grayscale-0 group-hover/hero:brightness-100 group-hover/hero:scale-105"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)'
+            }}
+          />
+        </div>
+
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase max-w-5xl text-foreground"
+          className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase max-w-5xl text-foreground drop-shadow-2xl mix-blend-plus-lighter"
         >
-          Defining the <br/><span className="text-accent">Silent</span> Monolith.
+          Defining the <br /><span className="text-accent drop-shadow-2xl">Silent</span> Monolith.
         </motion.h1>
-        <p className="mt-12 text-muted text-xl max-w-2xl leading-relaxed font-medium">
+        <p className="mt-12 text-muted text-xl max-w-2xl leading-relaxed font-medium drop-shadow-lg">
           Our portfolio is a testament to architectural permanence. We design spaces that command attention through restraint, precision, and structural honesty.
         </p>
       </section>
@@ -334,12 +346,11 @@ export default function Projects() {
       <section className="px-6 md:px-12 mb-24">
         <div className="flex flex-wrap gap-x-12 gap-y-6 items-center">
           {filters.map(filter => (
-            <button 
+            <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`font-bold uppercase tracking-[0.4em] text-[10px] transition-all pb-2 border-b ${
-                activeFilter === filter ? "text-accent border-accent" : "text-muted/60 border-transparent hover:text-foreground"
-              }`}
+              className={`font-bold uppercase tracking-[0.4em] text-[10px] transition-all pb-2 border-b ${activeFilter === filter ? "text-accent border-accent" : "text-muted/60 border-transparent hover:text-foreground"
+                }`}
             >
               {filter === "All" ? "All Projects" : filter}
             </button>
@@ -350,7 +361,7 @@ export default function Projects() {
       {/* Project Grid */}
       <section className="px-6 md:px-12 space-y-48">
         {filteredProjects.map((project, i) => (
-          <motion.article 
+          <motion.article
             key={project.id}
             layout
             initial={{ opacity: 0, y: 40 }}
@@ -362,7 +373,7 @@ export default function Projects() {
             <div className={`lg:col-span-8 relative overflow-hidden aspect-[16/9] bg-background ${project.reverse ? 'lg:order-2' : ''}`}>
               <img
                 alt={project.title}
-                className="w-full h-full object-cover transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover:scale-105"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 src={project.img}
               />
@@ -383,9 +394,9 @@ export default function Projects() {
       {/* Full Case Study Overlay */}
       <AnimatePresence>
         {selectedProject && (
-          <CaseStudyView 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
+          <CaseStudyView
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
           />
         )}
       </AnimatePresence>
@@ -396,7 +407,7 @@ export default function Projects() {
         <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-16 max-w-4xl mx-auto uppercase leading-[0.9]">
           We specialize in challenging sites and radical material honesty.
         </h3>
-        <button 
+        <button
           onClick={() => navigate("/contact")}
           className="group inline-flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:text-accent transition-colors"
         >

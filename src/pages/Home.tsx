@@ -294,15 +294,15 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { date: "14.11.23", cat: "Architecture", title: "The Weight of Silence: Designing for the Quiet Life.", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDOCTfAmwrT1V7TrBK7COosFlDKc2wx_x4Af9maNHsTgSgQO8uCpujvYtjedg41otclZurGMjot_DWodA2jgAFRswLNLxFQtz7JGJawylo0PITgGiRLOJRgak7oh0mJRbTTCwAS-PKT27m3V6z1wo8UWsotcZEzV8nwq6l8deXnUayGrYhrJviJ04B1PlUdvrNPGVtpwcJGPoLj74rdG96TSzgRx3N06_LukvzWgtP5RQVbGQtXXEj9_JFOEztWxhnSGRiAZtL_Bn4" },
-            { date: "02.11.23", cat: "Sustainability", title: "Thermal Mass as a Poetic Instrument.", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBp6m9hClFQgSkwsrlchyN6E7nUeV4P1DCPychyamEmEmAG53WJBAQVhgCPSfoa6h0srTWoOY_1fWVOGr4nrt7gX0Nc0WbJ4YhLA7PTp05asHkk2EcaeOU090XeY2Em3MicnLI0641_ijeLspKw3IXjzR8Cp-EDeyByT8gHjBTKVtPJm4WQwsuq45W1l_9OL2uSAFn9ZzQuPbPV2JC7-rANMysv7IZ0BuwXPd0G0QDzouysRE_t-mOcgc2vE3zeHrBRpy6ccG4BPUw" },
-            { date: "22.10.23", cat: "Practice", title: "Why We Abandoned the Curve.", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSEdM7n12H2yYARZSVYrpCYG0DPjps2tGgyOdsQ5uAyWC070QsxvhEfATiA9udGZmDHPjGNzfCmasiIUvBic1J6qu58i7pFmu-HRD1DAAGKDwwhVRa3kMic7Fv74Cs7OeyZMdMKh08NyKZshOm7Z-ZtA9cqFHk_NmSY48OqhK8O44hh30w10TrNZg15bQjS9C2V4GR0iTZ38w7jjbgtlDvojFQkX9bhG2PAlie9klA20ZHbU7EGc7LyV0EPf8qknappSiJvjUkA5w" },
+            { date: "14.11.23", cat: "Architecture", title: "The Weight of Silence: Designing for the Quiet Life.", img: "/images/10.png" },
+            { date: "02.11.23", cat: "Sustainability", title: "Thermal Mass as a Poetic Instrument.", img: "/images/11.png" },
+            { date: "22.10.23", cat: "Practice", title: "Why We Abandoned the Curve.", img: "/images/9.png" },
           ].map((post, i) => (
             <Link to="/journal" key={i} className="group cursor-pointer">
               <div className="aspect-[4/5] bg-surface-container-low mb-8 overflow-hidden">
                 <img
                   alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
                   src={post.img}
                 />
