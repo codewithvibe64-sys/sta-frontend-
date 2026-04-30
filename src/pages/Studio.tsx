@@ -11,34 +11,39 @@ const stats = [
 
 const team = [
   {
-    name: "Vijaykumar",
-    role: "Principal Architect",
+    name: "R.Vijaykumar",
+    role: "Architect - Execution Head",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAFbFB1StuuVOJ1oyNeNc4puBh0W8dz5K_W2jqu7B_FveINbmV3J5Wt05PBcWAX_x_0PTV6Z-VYK7NbjR8cYCqeuEOVEuARI_89xDiHxRs11ZCk1Y1GodehFvq9oE6falsjTYaSCt7n64OifxKw1YP9qYL5oTsQJJJ4ZAVIVVQBavYGFdLhzYdNdrX9YlARYWy5wXx11MmZmys25VhXq9TrkHENJ4WvrIk-xXtTLpoTfF4fWjUsMXqz6c21C3uzvDKvhzF_VqZtQ8",
   },
   {
-    name: "Maya Rossi",
-    role: "Lead Designer",
+    name: "B.Govindraj",
+    role: "Architect - Design Head",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCn2_p_gibyphYwD4zgIij4o43n2mHyONfWZ72VvevPXmxYAU6cMv0b5AF-6-rqAPaDBMZERe2tQcrQJOgxmOz1B0r-0sWSmz2XnJh1QaIUqaOWt21iU_-wHKEb7hH9U8s39eqiopyBxAOMVZg2ksFfnb3wdJg7LyXsb2heb6nbuJ5gVAavMoPHoowie4ggLLFMQKRK0IIwW4oqpu_zfWAbzmiP8r3tvy5-27pULyKnQmP61htgFjM1Ww7Uv_Geo6ADiJfWwGC5ulM",
   },
   {
-    name: "Julian Vance",
-    role: "Urban Planner",
+    name: "M.Senthil velan",
+    role: "Architect - Interior Team head",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuARQjfSrqlk_UDLoYYHcEyrYibTEpUasljsulecvGrubTJPO6ukkNiizesIyMyQPQnY3FaBUwNeILyFs6ttu9YuALGEapfWAE_r51tmVKiyHnLFf23imO3qLHmSin7iMgtzvim82yIYbvkcF71XvC9YyMjxP3JsigrVAEN0RGJx9z0iIu_bSqLnPpNYs9VsDHSOoAgNC4Kx_YbxCiLXTmJtfXQAzeqgZUlesPT1FsdpQlEqxXwxkNkHAGj9G3Z86-GgN-ssfvHwdFg",
   },
   {
-    name: "Sarah Chen",
-    role: "Project Manager",
+    name: "Sowmiyaa",
+    role: "Architect - Client Relationship management",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDPK2GIbPlJryd6JqCM7ViIm03PloUWiKsHeXnQZ1cMybeRaBMu1XYU4hWP3BQAqH9zsfb4oG-Pl5lI65gb0sy4QaXVRwyU_gicbcNdft0h3dmgAai9PvHFROS5myTmvUbHvxxOsWAMcd5uA6UkECAro68A8GzhmR_nbWMT-BlfOLMcB4ZK6DocF3TkH8mdvC3FPzVOMhv15tx55E087foWvns2lSPhU0j2_mrR5w54UnzUYxgO5KdVs7a3FyFf0ENgteQYvifl7Eo",
+  },
+  {
+    name: "Priyadharshini",
+    role: "Architect",
+    img: "/images/prabba.jpg",
   },
 ];
 
 const clients = [
-  "Vantage Corp",
-  "Alpine Estates",
-  "Monolith Group",
-  "Horizon Developments",
-  "The Heights",
-  "Zenith Cultural Trust",
+  "SRV HORIZON",
+  "HAUS OF HORIZON",
+  "SRV THAILA MAHAL",
+  "AGAM FURNITURE",
+  "AVANTAS CONSTRUCTION",
+  "SR PROMOTORS",
 ];
 
 const careers = [
@@ -99,10 +104,10 @@ const careers = [
 ];
 
 const partners = [
-  { name: "Structural Engineering", partner: "Arup Group" },
-  { name: "Material Research", partner: "ETH Zurich" },
-  { name: "Sustainability", partner: "Transsolar" },
-  { name: "Digital Fabrication", partner: "KUKA Robotics" },
+  { name: "Promoters / Developers", partner: "Adisha Realty" },
+  { name: "Material Suppliers", partner: "Ramco Cement / Kajaria Tiles" },
+  { name: "Builders / Contractors", partner: "Sri Builders / RK Constructions" },
+  { name: "Structural Engineering", partner: "S. Kumar Structural Consultants, Vertex Structures" },
 ];
 
 // --- COMPONENT ---
@@ -151,10 +156,7 @@ export default function Studio() {
               <span className="text-accent drop-shadow-2xl">Permanent.</span>
             </motion.h1>
             <p className="text-base md:text-xl leading-relaxed text-muted max-w-2xl font-medium drop-shadow-lg backdrop-blur-sm bg-background/5 p-4 -ml-4 rounded-lg">
-              Studio Tactile is an architectural practice defined by the
-              intersection of raw materiality and spatial precision. We design
-              environments that prioritize longevity over trends, treating each
-              project as a site-specific monument.
+              Studio Tactile is a design practice focused on clarity, structure, and long-term use. We approach each project with defined planning and controlled execution. The aim is to create spaces that remain relevant beyond trends.
             </p>
           </header>
 
@@ -164,8 +166,7 @@ export default function Studio() {
                 Philosophy
               </span>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted leading-relaxed">
-                Architecture is the silent record of human intention. We build
-                for the next century, not the next decade.
+                Architecture records how we live. We build for long-term use, not short-term effect.
               </p>
             </div>
           </aside>

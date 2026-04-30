@@ -100,7 +100,8 @@ export default function Journal() {
               Thoughts on <br /><span className="text-[#e03a2f] drop-shadow-2xl">Permanence.</span>
             </motion.h1>
             <p className="text-[#888888] text-xl leading-relaxed max-w-xl font-medium drop-shadow-lg backdrop-blur-sm bg-black/10 p-4 -ml-4 rounded-lg">
-              An editorial collection of architectural philosophies, industry shifts, and the quiet pursuit of tactile excellence.
+              Experiments, observations, and work in progress. Notes from design, site, and
+upcoming sessions.
             </p>
           </div>
           <div className="md:col-span-4 flex md:justify-end">

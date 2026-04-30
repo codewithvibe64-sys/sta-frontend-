@@ -3,22 +3,34 @@ import { motion } from "motion/react";
 export default function Team() {
   const team = [
     {
-      name: "Elias Vance",
-      role: "Principal Architect",
-      desc: "Pioneering the studio's commitment to material honesty and brutalist revival. Elias oversees structural conceptualization.",
+      name: "R.Vijaykumar",
+      role: "Architect - Execution Head",
+      desc: "Overseeing structural conceptualization and driving project execution with uncompromising precision.",
+      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAFbFB1StuuVOJ1oyNeNc4puBh0W8dz5K_W2jqu7B_FveINbmV3J5Wt05PBcWAX_x_0PTV6Z-VYK7NbjR8cYCqeuEOVEuARI_89xDiHxRs11ZCk1Y1GodehFvq9oE6falsjTYaSCt7n64OifxKw1YP9qYL5oTsQJJJ4ZAVIVVQBavYGFdLhzYdNdrX9YlARYWy5wXx11MmZmys25VhXq9TrkHENJ4WvrIk-xXtTLpoTfF4fWjUsMXqz6c21C3uzvDKvhzF_VqZtQ8"
+    },
+    {
+      name: "B.Govindraj",
+      role: "Architect - Design Head",
+      desc: "Leading the conceptual narrative, focusing on material honesty and the brutalist revival of space.",
+      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCn2_p_gibyphYwD4zgIij4o43n2mHyONfWZ72VvevPXmxYAU6cMv0b5AF-6-rqAPaDBMZERe2tQcrQJOgxmOz1B0r-0sWSmz2XnJh1QaIUqaOWt21iU_-wHKEb7hH9U8s39eqiopyBxAOMVZg2ksFfnb3wdJg7LyXsb2heb6nbuJ5gVAavMoPHoowie4ggLLFMQKRK0IIwW4oqpu_zfWAbzmiP8r3tvy5-27pULyKnQmP61htgFjM1Ww7Uv_Geo6ADiJfWwGC5ulM"
+    },
+    {
+      name: "M.Senthil velan",
+      role: "Architect - Interior Team head",
+      desc: "Expert in interior volume, shaping how light and materials interact for functional daily use.",
+      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuARQjfSrqlk_UDLoYYHcEyrYibTEpUasljsulecvGrubTJPO6ukkNiizesIyMyQPQnY3FaBUwNeILyFs6ttu9YuALGEapfWAE_r51tmVKiyHnLFf23imO3qLHmSin7iMgtzvim82yIYbvkcF71XvC9YyMjxP3JsigrVAEN0RGJx9z0iIu_bSqLnPpNYs9VsDHSOoAgNC4Kx_YbxCiLXTmJtfXQAzeqgZUlesPT1FsdpQlEqxXwxkNkHAGj9G3Z86-GgN-ssfvHwdFg"
+    },
+    {
+      name: "Sowmiyaa",
+      role: "Architect - Client Relationship management",
+      desc: "Bridging the gap between the studio's technical execution and the client's vision for the future.",
+      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDPK2GIbPlJryd6JqCM7ViIm03PloUWiKsHeXnQZ1cMybeRaBMu1XYU4hWP3BQAqH9zsfb4oG-Pl5lI65gb0sy4QaXVRwyU_gicbcNdft0h3dmgAai9PvHFROS5myTmvUbHvxxOsWAMcd5uA6UkECAro68A8GzhmR_nbWMT-BlfOLMcB4ZK6DocF3TkH8mdvC3FPzVOMhv15tx55E087foWvns2lSPhU0j2_mrR5w54UnzUYxgO5KdVs7a3FyFf0ENgteQYvifl7Eo"
+    },
+    {
+      name: "Priyadharshini",
+      role: "Architect",
+      desc: "Contributing to the studio's architectural output, from initial design concepts to final handover.",
       img: "/images/prabba.jpg"
-    },
-    {
-      name: "Sarah Chen",
-      role: "Design Lead",
-      desc: "Expert in interior volume and light manipulation. Sarah bridges the gap between massive exteriors and intimate living spaces.",
-      img: "/images/12.png"
-    },
-    {
-      name: "Marcus Chen",
-      role: "Technical Director",
-      desc: "Managing complex delivery schedules and technical engineering feasibility for our largest commercial infrastructures.",
-      img: "/images/13.png"
     }
   ];
 

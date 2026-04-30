@@ -114,16 +114,24 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-2 border-y border-[#1c1b1b]">
         <div className="p-12 md:p-24 bg-[#0f0f0f] border-r border-[#1c1b1b] flex flex-col justify-center min-h-[400px]">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-8">Philosophy 01</span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Volume over<br />Square Footage.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Space over<br />size.</h2>
           <p className="text-[#888888] leading-relaxed max-w-xs text-sm">
-            True luxury is the quality of volume, the choreography of light, and the honesty of materials.
+            We focus on how a space feels and functions, not just how much area it covers.
           </p>
         </div>
         <div className="p-12 md:p-24 bg-[#0f0f0f] flex flex-col justify-center min-h-[400px]">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-8">Philosophy 02</span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Structure as<br />Decoration.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Clarity over<br />clutter.</h2>
           <p className="text-[#888888] leading-relaxed max-w-xs text-sm">
-            We strip away the unnecessary to reveal the essential structure of your daily experience.
+            We remove the unnecessary so the structure, light, and materials speak clearly.
+          </p>
+        </div>
+        <div className="p-12 md:p-24 bg-[#0f0f0f] flex flex-col justify-center min-h-[400px]">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-8">Philosophy 03</span>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Performance over<br />appearance.</h2>
+          <p className="text-[#888888] leading-relaxed max-w-xs text-sm">
+           We design for durability, efficiency, and long-term use. Spaces are made to perform, not
+just impress.
           </p>
         </div>
       </section>
@@ -135,28 +143,31 @@ export default function Home() {
             <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#e03a2f] mb-6">Manifesto</div>
             <h3 className="text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] uppercase break-words">Who is Studio Tactile?</h3>
           </div>
-          <p className="text-[#f5f5f5] text-xl leading-relaxed break-words">
-            We are a practice of cinematic brutalism. We view architecture as a physical manifestation of thought—permanent, heavy, and undeniably present.
+          <p className="text-[#f5f5f5] text-xl leading-relaxed break-words font-bold">
+            We design with clarity. We build with intent.<br />
+            Every space is shaped by function, structure, and use. Nothing is added without purpose.<br />
+            We detail and execute with the same precision.
           </p>
           <p className="text-[#888888] leading-relaxed break-words">
-            Founded on the belief that a building should feel as though it grew from its site, rather than being placed upon it. We balance technical precision with emotional resonance.
+            We respond to the site, climate, and context. Not trends.<br />
+            We focus on what lasts. Not what impresses for a moment.
           </p>
         </div>
         <div className="lg:col-span-6 lg:col-start-7 grid grid-cols-1 gap-12 md:gap-16">
           <div className="border-l-2 border-outline-variant/20 pl-8 pb-8 hover:border-[#e03a2f] transition-colors duration-500">
             <div className="text-[10px] font-bold uppercase text-[#888888] mb-2 tracking-widest">01. Planning</div>
-            <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Mathematical Rigor</h4>
-            <p className="text-sm text-[#888888] leading-relaxed break-words">Zoning and flow dictated by behavioral patterns, not just aesthetic trends.</p>
+            <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Precise Planning.</h4>
+            <p className="text-sm text-[#888888] leading-relaxed break-words">Zoning and flow are defined by how spaces are used. Decisions are based on function, not visual preference.</p>
           </div>
           <div className="border-l-2 border-outline-variant/20 pl-8 pb-8 hover:border-[#e03a2f] transition-colors duration-500">
             <div className="text-[10px] font-bold uppercase text-[#888888] mb-2 tracking-widest">02. Execution</div>
-            <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Material Honesty</h4>
-            <p className="text-sm text-[#888888] leading-relaxed break-words">Concrete, steel, and timber used in their rawest forms to celebrate their structural truth.</p>
+            <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Material Clarity.</h4>
+            <p className="text-sm text-[#888888] leading-relaxed break-words">Materials are used as they are. Structure is expressed, not concealed.</p>
           </div>
           <div className="border-l-2 border-outline-variant/20 pl-8 pb-8 hover:border-[#e03a2f] transition-colors duration-500">
             <div className="text-[10px] font-bold uppercase text-[#888888] mb-2 tracking-widest">03. Context</div>
-            <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Environmental Context</h4>
-            <p className="text-sm text-[#888888] leading-relaxed break-words">Design that breathes with the landscape, utilizing passive cooling and solar orientation.</p>
+            <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">Site Response.</h4>
+            <p className="text-sm text-[#888888] leading-relaxed break-words">Design aligns with climate, light, and orientation. Spaces are positioned for comfort and long-term use.</p>
           </div>
         </div>
       </section>
@@ -188,16 +199,16 @@ export default function Home() {
       <section className="px-6 md:px-12 py-32">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter uppercase">Scope of Craft</h2>
-          <div className="text-[#888888] max-w-sm md:text-right font-medium">From initial strategy to the final grain of timber—we control the entire narrative of the build.</div>
+          <div className="text-[#888888] max-w-sm md:text-right font-medium">We manage the entire process. From first decision to final execution.</div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
           {[
-            { title: "Architecture", desc: "Structural foundations and spatial volume.", img: svcArchitecture },
-            { title: "Interior", desc: "Human-scale environments and bespoke textures.", img: svcInterior },
-            { title: "Renovation", desc: "Restructuring the legacy of existing bones.", img: svcRenovation },
-            { title: "Turnkey", desc: "Total project management from site to keys.", img: svcTurnkey },
-            { title: "Vastu", desc: "Ancient geometry met with modern utility.", img: svcVastu },
-            { title: "Design Strategy", desc: "Visionary consulting for developers and estates.", img: svcDesign },
+            { title: "Architecture", desc: "Spaces defined by structure, proportion, and use.", img: svcArchitecture },
+            { title: "Interior", desc: "Designed for daily use, comfort, and clarity.", img: svcInterior },
+            { title: "Renovation", desc: "Existing spaces reworked with purpose and precision.", img: svcRenovation },
+            { title: "Turnkey", desc: "Complete execution from planning to handover.", img: svcTurnkey },
+            { title: "Vastu", desc: "Spatial alignment based on logic, balance, and use.", img: svcVastu },
+            { title: "Design Strategy", desc: "Early decisions that shape the entire outcome.", img: svcDesign },
           ].map((service, i) => (
             <div key={i} className="relative aspect-square overflow-hidden flex flex-col justify-end group cursor-default">
               {/* Background image — grayscale by default, full color on hover, zoom + rotate */}
@@ -223,13 +234,13 @@ export default function Home() {
       {/* Process */}
       <section className="bg-surface-container-lowest px-12 py-32 border-y border-[#1c1b1b]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-4xl font-black uppercase tracking-widest mb-24">The Lifecycle of a Thought</h2>
+          <h2 className="text-center text-4xl font-black uppercase tracking-widest mb-24">Design Strategy</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {[
-              { num: "01", title: "Consult", desc: "Defining needs, site analysis, and feasibility studies." },
-              { num: "02", title: "Design", desc: "Conceptual philosophy, precision 3D modeling and material specification." },
-              { num: "03", title: "Execute", desc: "On-site management and technical coordination." },
-              { num: "04", title: "Handover", desc: "Final refinement and the keys to your new reality." },
+              { num: "01", title: "Consult", desc: "Requirements, site conditions, and feasibility are defined clearly." },
+              { num: "02", title: "Design", desc: "Plans, layouts, and materials are developed with precision." },
+              { num: "03", title: "Execute", desc: "Construction is managed on-site with coordination and control." },
+              { num: "04", title: "Handover", desc: "Final detailing is completed before delivery." },
             ].map((step, i) => (
               <div key={i} className="text-center">
                 <div className="text-[4rem] font-extrabold text-[#1c1b1b] mb-4">{step.num}</div>
@@ -289,7 +300,11 @@ export default function Home() {
       {/* Journal Preview */}
       <section className="px-6 md:px-12 py-32 border-t border-[#1c1b1b]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
-          <h2 className="text-4xl font-extrabold tracking-tight uppercase">The Journal</h2>
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#e03a2f] mb-4 block">Thoughts on Permanence.</span>
+            <h2 className="text-4xl font-extrabold tracking-tight uppercase">The Journal</h2>
+            <p className="text-[#888888] mt-4 font-medium text-sm">Experiments, observations, and work in progress. Notes from design, site, and upcoming sessions.</p>
+          </div>
           <Link to="/journal" className="text-[10px] font-bold uppercase tracking-widest border-b border-[#f5f5f5] pb-1 hover:text-[#e03a2f] hover:border-[#e03a2f] transition-all">Read All Essays</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

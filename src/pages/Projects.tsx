@@ -234,17 +234,17 @@ export default function Projects() {
 
   const projects: Project[] = [
     {
-      id: "01",
-      title: "The Obsidian Void",
+      id: "08",
+      title: "The Vela House",
       category: "Architecture",
-      location: "Reykjavík, Iceland",
-      year: "2023",
-      context: "A private residential commission situated on the volcanic outskirts of the capital, facing extreme weather conditions.",
-      problem: "How to create a sanctuary that feels open to the landscape while providing absolute thermal and psychological security.",
-      approach: "Subterranean Integration",
-      execution: "Cast-in-place Concrete",
-      concept: "The design utilizes the natural thermal mass of the earth. By carving the living spaces into the basalt bedrock, we achieved a stable internal climate and a profound sense of grounding.",
-      solution: "A monolithic concrete shell that emerges from the rock, featuring triple-glazed apertures that frame the aurora borealis while maintaining a R-value of 40.",
+      location: "Thanjavur, TN, India.",
+      year: "2021",
+      context: "A north-facing residential plot set between open agricultural land on the east and south, with a neighboring house to the west. The site is exposed to sun, wind, and open views towards the surrounding fields. Designed as a contemporary farmhouse that remains connected to its rural setting.",
+      problem: "How to create a modern home that stays open to its surroundings, while managing heat, privacy, and maintaining a calm, usable living environment.",
+      approach: "Developed as a horizontal built form to retain openness and visual continuity with the landscape. Openings are directed towards the east and south to capture light, air, and views. Central spaces are planned to anchor daily living, with orientation and setbacks used to control heat and ventilation.",
+      execution: "A G+1 residence with five bedrooms, organized around a central living and pooja space facing the fields. Larger openings are placed towards open sides, while the west is buffered with reduced openings and landscape. The layout supports cross ventilation, natural light, and a balanced indoor-outdoor connection.",
+      concept: "Developed as a horizontal built form to retain openness and visual continuity with the landscape. Openings are directed towards the east and south to capture light, air, and views. Central spaces are planned to anchor daily living, with orientation and setbacks used to control heat and ventilation.",
+      solution: "A G+1 residence with five bedrooms, organized around a central living and pooja space facing the fields. Larger openings are placed towards open sides, while the west is buffered with reduced openings and landscape. The layout supports cross ventilation, natural light, and a balanced indoor-outdoor connection.",
       img: "/images/portfolio1.jpg",
       gallery: [
         "/images/hero1.jpg",
@@ -252,17 +252,17 @@ export default function Projects() {
       ]
     },
     {
-      id: "02",
-      title: "Vanguard HQ",
-      category: "Architecture",
-      location: "Berlin, Germany",
+      id: "09",
+      title: "The Delta’s Masala",
+      category: "Interior",
+      location: "Kumbakonam, TN, India.",
       year: "2022",
-      context: "Adaptive reuse of a decommissioned 1970s industrial pumping station into a tech-pioneer headquarters.",
-      problem: "Converting a rigid, windowless shell into a vibrant, collaborative workspace without losing its brutalist soul.",
-      approach: "Atrium Insertion",
-      execution: "Steel & Glass Contrast",
-      concept: "We introduced a central light-well that pierces through all four floors, bringing natural illumination to the core while preserving the heavy concrete perimeter.",
-      solution: "A series of suspended glass meeting pods that float within the original industrial volume, creating a dialogue between the past and the future of work.",
+      context: "A compact 180 sq.ft retail space within a commercial setting, previously used as a bike shop. The plan is triangular, with two acute corners and one right angle, creating spatial constraints. The project required conversion into a masala and nuts store with clear display, storage, and customer movement.",
+      problem: "How to organize a dense product range within a tight triangular layout, while managing budget, hygiene requirements, and maintaining a clean retail experience.",
+      approach: "Designed as a structured display system using linear shelving adapted to the triangular geometry. Circulation, storage, and billing are planned without wasting corner spaces. Material, pattern, and form are used in a controlled way to create identity within budget constraints.",
+      execution: "A compact interior integrating display, storage, and billing within a clear layout. Custom shelving maximizes product visibility while maintaining easy access and movement. Execution was handled with direct coordination, achieving a balanced result within cost and time limits.",
+      concept: "Designed as a structured display system using linear shelving adapted to the triangular geometry. Circulation, storage, and billing are planned without wasting corner spaces. Material, pattern, and form are used in a controlled way to create identity within budget constraints.",
+      solution: "A compact interior integrating display, storage, and billing within a clear layout. Custom shelving maximizes product visibility while maintaining easy access and movement. Execution was handled with direct coordination, achieving a balanced result within cost and time limits.",
       img: "/images/portfolio2.jpg",
       reverse: true,
       gallery: [
@@ -271,37 +271,143 @@ export default function Projects() {
       ]
     },
     {
-      id: "03",
-      title: "Kinetic Atrium",
+      id: "12",
+      title: "Mahaveer Residence",
       category: "Interior",
-      location: "Tokyo, Japan",
-      year: "2024",
-      context: "A public museum expansion focused on the intersection of light, movement, and static materials.",
-      problem: "Designing a space that actively participates in the art display rather than serving as a passive container.",
-      approach: "Light Well Modulation",
-      execution: "Limestone & Basalt",
-      concept: "The atrium uses a series of motorized limestone louvers that adjust based on the sun's position, creating a constantly shifting pattern of light and shadow.",
-      solution: "A multi-sensory environment where the architecture itself becomes a kinetic sculpture, enhancing the visitor's perception of time and space.",
+      location: "Kilpauk, Chennai, TN, India.",
+      year: "2023",
+      context: "A budget-conscious residential interior within a formal apartment setting. The project focused on achieving a clean, functional layout with a refined visual finish. Design scope was limited to interiors, with execution handled by the contractor.",
+      problem: "How to create a balanced and refined interior within budget, while maintaining clarity, usability, and a consistent finish across spaces.",
+      approach: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
+      execution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
+      concept: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
+      solution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
       img: "/images/svc-interior.png",
       gallery: [
         "/images/hero3.png"
       ]
     },
     {
-      id: "04",
-      title: "AI Generative Pavilion",
-      category: "Design Lab",
-      location: "Virtual / Experimental",
-      year: "2025",
-      context: "An exploration into algorithmic architecture where structural forms are co-created with Gemini Intelligence.",
-      problem: "Bridging the gap between pure mathematical optimization and human emotional resonance in brutalist forms.",
-      approach: "Neural Topology Optimization",
-      execution: "3D Printed Graphene-Concrete",
-      concept: "We trained a neural network on 20th-century brutalist masterpieces to generate new structural topologies that optimize for both load-bearing and aesthetic 'weight'.",
-      solution: "The result is a pavilion that feels both ancient and alien—a complex web of graphene-reinforced concrete that pushes the limits of what is physically possible.",
+      id: "01",
+      title: "Corner House",
+      category: "Architecture",
+      location: "Thiruthuraipoondi, Thiruvarur, TN, India.",
+      year: "2019",
+      context: "A budget-conscious residential interior within a formal apartment setting. The project focused on achieving a clean, functional layout with a refined visual finish. Design scope was limited to interiors, with execution handled by the contractor.",
+      problem: "How to create a balanced and refined interior within budget, while maintaining clarity, usability, and a consistent finish across spaces.",
+      approach: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
+      execution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
+      concept: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
+      solution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
       img: "/images/featured.jpg",
+      reverse: true,
       gallery: [
         "/images/hero4.jpg"
+      ]
+    },
+    {
+      id: "11",
+      title: "Terra House",
+      category: "Architecture",
+      location: "Coimbatore, TN, India.",
+      year: "2022",
+      context: "A residential living space designed to connect indoor areas with natural light and surrounding greenery. The layout allows visual continuity between living, seating, and outdoor edge spaces. Designed for a calm, everyday living environment.",
+      problem: "How to create an open and connected living space, while maintaining comfort, usability, and controlled light within the interior.",
+      approach: "Designed as an open layout with minimal partitions to allow light and air to flow freely. Furniture and spatial elements are used to define zones without closing the space. The material palette is kept light and natural to enhance brightness and warmth.",
+      execution: "A continuous living space with clear zones for seating, dining, and interaction. Large openings and controlled shading create patterned light and maintain comfort. The result is a balanced interior that feels open, calm, and connected to nature.",
+      concept: "Designed as an open layout with minimal partitions to allow light and air to flow freely. Furniture and spatial elements are used to define zones without closing the space. The material palette is kept light and natural to enhance brightness and warmth.",
+      solution: "A continuous living space with clear zones for seating, dining, and interaction. Large openings and controlled shading create patterned light and maintain comfort. The result is a balanced interior that feels open, calm, and connected to nature.",
+      img: "/images/portfolio1.jpg",
+      gallery: [
+        "/images/hero1.jpg"
+      ]
+    },
+    {
+      id: "15",
+      title: "Weekend Villa",
+      category: "Architecture",
+      location: "Mahabalipuram, TN, India.",
+      year: "2024",
+      context: "A serene getaway designed to blend with the coastal landscape.",
+      problem: "Balancing the harsh coastal climate with comfortable indoor-outdoor living.",
+      approach: "Utilization of deep overhangs and local materials.",
+      execution: "Careful orientation to catch sea breezes while protecting from afternoon sun.",
+      concept: "Creating a restorative environment that feels intimately connected to the site.",
+      solution: "A relaxed, open-plan villa that offers both refuge and expansive views.",
+      img: "/images/portfolio2.jpg",
+      reverse: true,
+      gallery: [
+        "/images/hero2.jpg"
+      ]
+    },
+    {
+      id: "18",
+      title: "GP residence",
+      category: "Architecture",
+      location: "Chennai, TN, India.",
+      year: "2025",
+      context: "Urban residential context focusing on modern living.",
+      problem: "Maximizing space and natural light in a dense urban plot.",
+      approach: "Vertical spatial organization and light wells.",
+      execution: "Integration of smart home technologies and sustainable materials.",
+      concept: "A quiet urban retreat.",
+      solution: "A multi-level home that balances privacy with open, light-filled living areas.",
+      img: "/images/svc-architecture.png",
+      gallery: [
+        "/images/hero3.png"
+      ]
+    },
+    {
+      id: "13",
+      title: "Commercial Office Space",
+      category: "Interior",
+      location: "Chennai, TN, India.",
+      year: "2023",
+      context: "Client: A1 Travels Pvt, Ltd. A corporate office needing a modern, efficient layout.",
+      problem: "Creating a productive workspace that reflects the company's dynamic brand.",
+      approach: "Open plan with designated quiet zones and collaborative spaces.",
+      execution: "Use of ergonomic furniture, acoustic treatments, and branded color accents.",
+      concept: "A workspace that fosters collaboration and focus.",
+      solution: "A balanced office interior that enhances employee well-being and productivity.",
+      img: "/images/svc-interior.png",
+      reverse: true,
+      gallery: [
+        "/images/hero4.jpg"
+      ]
+    },
+    {
+      id: "11B",
+      title: "Residential apartment Interior",
+      category: "Interior",
+      location: "Bangalore, Karnataka, India.",
+      year: "2024",
+      context: "A modern apartment requiring a tailored interior design.",
+      problem: "Personalizing a standard apartment layout to fit the client's lifestyle.",
+      approach: "Custom joinery and a curated material palette.",
+      execution: "Detail-oriented craftsmanship and smart storage solutions.",
+      concept: "Refined urban living.",
+      solution: "A cohesive, elegant interior that maximizes space and functionality.",
+      img: "/images/portfolio1.jpg",
+      gallery: [
+        "/images/hero1.jpg"
+      ]
+    },
+    {
+      id: "11C",
+      title: "IT corridor",
+      category: "Interior",
+      location: "Chennai, TN, India.",
+      year: "2026",
+      context: "Client: Fynxt Corporation. A large-scale tech office environment.",
+      problem: "Designing an inspiring and scalable workspace for a growing tech firm.",
+      approach: "Flexible floor plans and tech-integrated collaborative areas.",
+      execution: "Durable materials, advanced lighting systems, and biophilic design elements.",
+      concept: "An innovative hub for technology and collaboration.",
+      solution: "A state-of-the-art office interior designed for adaptability and future growth.",
+      img: "/images/featured.jpg",
+      reverse: true,
+      gallery: [
+        "/images/hero2.jpg"
       ]
     }
   ];
@@ -335,10 +441,12 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-[0.9] uppercase max-w-5xl text-foreground drop-shadow-2xl mix-blend-plus-lighter"
         >
-          Defining the <br /><span className="text-accent drop-shadow-2xl">Silent</span> Monolith.
+          Defining the <br /><span className="text-accent drop-shadow-2xl">Silent Monolith.</span>
         </motion.h1>
         <p className="mt-12 text-muted text-xl max-w-2xl leading-relaxed font-medium drop-shadow-lg">
-          Our portfolio is a testament to architectural permanence. We design spaces that command attention through restraint, precision, and structural honesty.
+          Spaces shaped with restraint, structure, and intent. Built to feel grounded in use and material.<br/>
+          Designed to remain, beyond time and trend.<br/>
+          Simple. Practical. Timeless.
         </p>
       </section>
 
