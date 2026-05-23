@@ -345,7 +345,7 @@ export default function Studio() {
                     <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground mb-8">Apply for this position</h4>
                     <div className="w-full bg-background border border-border overflow-hidden">
                       <iframe 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSdw_Xf-X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X/viewform?embedded=true" 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSfCFuuakblZtZZWweeks9PZJ-thRowOUPohAjZ2pgOp2_CY6w/viewform?embedded=true" 
                         width="100%" 
                         height="800" 
                         frameBorder="0" 
@@ -418,7 +418,7 @@ export default function Studio() {
                 <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground mb-8">Apply Now</h4>
                 <div className="w-full bg-background border border-border overflow-hidden">
                   <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdw_Xf-X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X/viewform?embedded=true" 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfCFuuakblZtZZWweeks9PZJ-thRowOUPohAjZ2pgOp2_CY6w/viewform?embedded=true" 
                     width="100%" 
                     height="800" 
                     frameBorder="0" 

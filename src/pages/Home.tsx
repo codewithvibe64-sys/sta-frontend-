@@ -28,45 +28,123 @@ const heroSlides = [
   { src: heroImg4, label: "A1 Travels Interior · Chennai" },
 ];
 
+const slideVariants = {
+  enter: {
+    opacity: 0,
+    scale: 1.15,
+    filter: "blur(25px) brightness(1.2)",
+  },
+  center: {
+    opacity: 1,
+    scale: 1.0,
+    filter: "blur(0px) brightness(1)",
+    transition: {
+      opacity: { duration: 1.2, ease: "easeOut" },
+      scale: { duration: 1.8, ease: [0.16, 1, 0.3, 1] }, // Cinematic focus stabilization
+      filter: { duration: 1.4, ease: "easeOut" },
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    filter: "blur(20px) brightness(0.8)",
+    transition: {
+      opacity: { duration: 1.0, ease: "easeIn" },
+      scale: { duration: 1.2, ease: "easeIn" },
+      filter: { duration: 1.0, ease: "easeIn" },
+    },
+  },
+};
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
-  // Auto-advance every 4 seconds
+  // Auto-advance every 5 seconds (reset on slide change for perfect UX)
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentSlide]);
+
+  const handleSlideChange = (newIndex: number) => {
+    if (newIndex === currentSlide) return;
+    setCurrentSlide(newIndex);
+  };
 
   return (
     <div className="bg-background selection:bg-[#e03a2f] selection:text-white">
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 pt-32 overflow-hidden group/hero">
+      <section
+        className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 pt-32 overflow-hidden group/hero"
+        onMouseMove={(e) => {
+          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+          const px = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1..1
+          const py = ((e.clientY - rect.top) / rect.height - 0.5) * 2; // -1..1
+          setParallax({ x: px * 18, y: py * 10 });
+        }}
+        onMouseLeave={() => setParallax({ x: 0, y: 0 })}
+      >
         {/* Slideshow Background */}
-        <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="sync">
-            <motion.img
-              key={currentSlide}
-              src={heroSlides[currentSlide].src}
-              alt={heroSlides[currentSlide].label}
-              className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover/hero:grayscale-0 group-hover/hero:brightness-100 transition-all duration-700 ease-in-out"
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -80 }}
-              transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
-            />
+        <motion.div
+          className="absolute left-0 right-0 top-24 bottom-0 z-0 overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.0, ease: 'easeOut' }}
+        >
+          <AnimatePresence mode="popLayout" initial={false}>
+            {heroSlides.map((slide, idx) => (
+              idx === currentSlide && (
+                <motion.div
+                  key={idx}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="absolute inset-0 w-full h-full"
+                  style={{ transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)` }}
+                >
+                  <motion.img
+                    src={slide.src}
+                    alt={slide.label}
+                    className="absolute inset-0 w-full h-full object-cover opacity-100 no-grayscale"
+                    style={{ filter: 'none', outline: '2px solid rgba(224,58,47,0.06)' }}
+                    animate={{ scale: [1.04, 1.09, 1.04] }}
+                    transition={{
+                      scale: { duration: 24, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }
+                    }}
+                  />
+                </motion.div>
+              )
+            ))}
           </AnimatePresence>
-          {/* Dark overlay — lightens on hover to reveal full color */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/40 to-black/40 z-10 group-hover/hero:via-[#0f0f0f]/10 group-hover/hero:to-transparent transition-all duration-700" />
-        </div>
 
-        {/* Slide indicators */}
+          <motion.div
+            className="absolute left-[-25%] top-1/4 w-[68%] h-[60%] rounded-full bg-[#e03a2f]/10 blur-4xl pointer-events-none"
+            animate={{ x: [0, 12, 0, -12, 0], y: [0, 6, 0, -6, 0], opacity: [0.12, 0.04, 0.12, 0.04, 0.12] }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+          />
+
+          <motion.div
+            className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.04),_transparent_18%)] pointer-events-none"
+            animate={{ opacity: [0.06, 0.01, 0.06] }}
+            transition={{ duration: 18, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+          />
+
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/30 to-black/30 z-10 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.28 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+          />
+        </motion.div>
+
         <div className="absolute bottom-8 right-6 md:right-12 z-20 flex items-center gap-3">
           {heroSlides.map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrentSlide(i)}
+              onClick={() => handleSlideChange(i)}
               className={`transition-all duration-500 rounded-full ${
                 i === currentSlide
                   ? "w-8 h-[3px] bg-[#e03a2f]"
