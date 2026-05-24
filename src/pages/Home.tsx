@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, type Variants } from "motion/react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -39,9 +39,9 @@ const slideVariants = {
     scale: 1.0,
     filter: "blur(0px) brightness(1)",
     transition: {
-      opacity: { duration: 1.2, ease: "easeOut" },
+      opacity: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] },
       scale: { duration: 1.8, ease: [0.16, 1, 0.3, 1] }, // Cinematic focus stabilization
-      filter: { duration: 1.4, ease: "easeOut" },
+      filter: { duration: 1.4, ease: [0.25, 0.1, 0.25, 1] },
     },
   },
   exit: {
@@ -49,12 +49,12 @@ const slideVariants = {
     scale: 0.95,
     filter: "blur(20px) brightness(0.8)",
     transition: {
-      opacity: { duration: 1.0, ease: "easeIn" },
-      scale: { duration: 1.2, ease: "easeIn" },
-      filter: { duration: 1.0, ease: "easeIn" },
+      opacity: { duration: 1.0, ease: [0.42, 0, 1, 1] },
+      scale: { duration: 1.2, ease: [0.42, 0, 1, 1] },
+      filter: { duration: 1.0, ease: [0.42, 0, 1, 1] },
     },
   },
-};
+} as unknown as Variants;
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -94,30 +94,26 @@ export default function Home() {
           transition={{ duration: 1.0, ease: 'easeOut' }}
         >
           <AnimatePresence mode="popLayout" initial={false}>
-            {heroSlides.map((slide, idx) => (
-              idx === currentSlide && (
-                <motion.div
-                  key={idx}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  className="absolute inset-0 w-full h-full"
-                  style={{ transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)` }}
-                >
-                  <motion.img
-                    src={slide.src}
-                    alt={slide.label}
-                    className="absolute inset-0 w-full h-full object-cover opacity-100 no-grayscale"
-                    style={{ filter: 'none', outline: '2px solid rgba(224,58,47,0.06)' }}
-                    animate={{ scale: [1.04, 1.09, 1.04] }}
-                    transition={{
-                      scale: { duration: 24, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }
-                    }}
-                  />
-                </motion.div>
-              )
-            ))}
+            <motion.div
+              key={currentSlide}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute inset-0 w-full h-full"
+              style={{ transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)` }}
+            >
+              <motion.img
+                src={heroSlides[currentSlide].src}
+                alt={heroSlides[currentSlide].label}
+                className="absolute inset-0 w-full h-full object-cover opacity-100 no-grayscale"
+                style={{ filter: 'none', outline: '2px solid rgba(224,58,47,0.06)' }}
+                animate={{ scale: [1.04, 1.09, 1.04] }}
+                transition={{
+                  scale: { duration: 24, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }
+                }}
+              />
+            </motion.div>
           </AnimatePresence>
 
           <motion.div
@@ -156,16 +152,20 @@ export default function Home() {
         </div>
 
         {/* Current project label */}
-        <motion.div
-          key={`label-${currentSlide}`}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="absolute bottom-8 left-6 md:left-12 z-20 text-[10px] font-bold uppercase tracking-[0.3em] text-[#444444]"
-        >
-          {heroSlides[currentSlide].label}
-        </motion.div>
+        <div className="absolute bottom-8 left-6 md:left-12 z-20 text-[10px] font-bold uppercase tracking-[0.3em] text-[#444444]">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={currentSlide}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.4 }}
+              className="inline-block"
+            >
+              {heroSlides[currentSlide].label}
+            </motion.span>
+          </AnimatePresence>
+        </div>
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -189,7 +189,7 @@ export default function Home() {
       </section>
 
       {/* Thinking Blocks - Simplified */}
-      <section className="grid grid-cols-1 md:grid-cols-2 border-y border-[#1c1b1b]">
+      <section className="grid grid-cols-1 md:grid-cols-3 border-y border-[#1c1b1b]">
         <div className="p-12 md:p-24 bg-[#0f0f0f] border-r border-[#1c1b1b] flex flex-col justify-center min-h-[400px]">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-8">Philosophy 01</span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Space over<br />size.</h2>
@@ -197,7 +197,7 @@ export default function Home() {
             We focus on how a space feels and functions, not just how much area it covers.
           </p>
         </div>
-        <div className="p-12 md:p-24 bg-[#0f0f0f] flex flex-col justify-center min-h-[400px]">
+        <div className="p-12 md:p-24 bg-[#0f0f0f] border-r border-[#1c1b1b] flex flex-col justify-center min-h-[400px]">
           <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#444444] mb-8">Philosophy 02</span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6 uppercase leading-tight">Clarity over<br />clutter.</h2>
           <p className="text-[#888888] leading-relaxed max-w-xs text-sm">
