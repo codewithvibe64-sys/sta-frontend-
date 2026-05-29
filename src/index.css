@@ -67,31 +67,25 @@
     @apply text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[1.1] tracking-tighter uppercase;
   }
 
-  /* Global Image Grayscale Transition */
+  /* Global Image Grayscale - Always visible, no hover effect */
   img:not(.no-grayscale) {
-    filter: grayscale(100%);
-    transition: filter 0.6s ease;
-  }
-
-  img:not(.no-grayscale):hover,
-  img:not(.no-grayscale):focus,
-  img:not(.no-grayscale):active {
     filter: grayscale(0%);
-  }
-
-  /* Mobile behavior: slight grayscale by default, full color on tap */
-  @media (max-width: 768px) {
-    img:not(.no-grayscale) {
-      filter: grayscale(40%);
-    }
-    img:not(.no-grayscale):active {
-      filter: grayscale(0%);
-    }
   }
 
   /* Exclusion for Case Study detail pages or specific images */
   .no-grayscale {
     filter: grayscale(0%) !important;
+  }
+
+  /* Scroll-triggered animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .scroll-reveal[data-aos="zoom-in-reveal"] {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

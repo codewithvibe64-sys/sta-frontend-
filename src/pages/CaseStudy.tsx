@@ -132,7 +132,7 @@ export default function CaseStudy() {
         <section className="px-6 md:px-12 mb-40 grid grid-cols-1 md:grid-cols-2 gap-12">
           {project.gallery.map((img, i) => (
             <div key={i} className="aspect-square overflow-hidden bg-[#131313]">
-              <img src={img} alt={`Gallery ${i}`} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
+              <img src={img} alt={`Gallery ${i}`} className="w-full h-full object-cover" data-aos="zoom-in" referrerPolicy="no-referrer" />
             </div>
           ))}
         </section>

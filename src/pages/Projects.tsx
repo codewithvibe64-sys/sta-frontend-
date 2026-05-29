@@ -1,7 +1,29 @@
-import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
+import { useState, useEffect, useRef } from "react";
 import { X, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+const detailsContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const detailsItemVariants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
+};
 
 interface Project {
   id: string;
@@ -18,6 +40,145 @@ interface Project {
   img: string;
   gallery: string[];
   reverse?: boolean;
+}
+
+const GalleryCarousel = ({ images, title }: { images: string[]; title: string }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div className="relative w-full overflow-hidden py-12 select-none">
+      {/* Outer frame container */}
+      <div className="relative w-full max-w-5xl mx-auto h-[320px] md:h-[580px] overflow-hidden flex items-center justify-center">
+        {/* Carousel Track */}
+        <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: "1200px" }}>
+          {images.map((img, i) => {
+            const offset = i - activeIndex;
+            const isActive = i === activeIndex;
+
+            // Offset-linked animations (Parallax shifting inside the frame)
+            const x = offset * 110 + "%"; // Slide layout offset
+            const imageParallaxX = offset * -25; // Parallax image offset (in percentage)
+            const scale = isActive ? 1.0 : 0.9;
+            const opacity = isActive ? 1.0 : 0.35;
+            const zIndex = isActive ? 20 : 10;
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-[85%] md:w-[75%] h-[90%] bg-[#0f0f0f] border border-[#1c1b1b] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.85)] rounded-sm"
+                style={{
+                  transformOrigin: "center center",
+                }}
+                animate={{
+                  x: x,
+                  scale: scale,
+                  opacity: opacity,
+                  zIndex: zIndex,
+                }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                {/* Parallax Image Container */}
+                <motion.div
+                  className="w-full h-full overflow-hidden"
+                  animate={{
+                    x: `${imageParallaxX}%`,
+                    scale: isActive ? 1.05 : 1.15,
+                  }}
+                  transition={{
+                    duration: 1.2,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
+                  <img
+                    src={img}
+                    alt={`${title} visual documentation ${i + 1}`}
+                    className="w-full h-full object-cover no-grayscale"
+                    referrerPolicy="no-referrer"
+                    style={{ filter: "none" }}
+                  />
+                </motion.div>
+                
+                {/* Subtle light/dark dynamic tint */}
+                <div className="absolute inset-0 bg-black/20 pointer-events-none transition-opacity duration-500 group-hover:bg-black/10" />
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Navigation Controls (Only render if there is more than 1 image) */}
+      {images.length > 1 && (
+        <div className="mt-8 flex items-center justify-center gap-12">
+          <button
+            onClick={handlePrev}
+            className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted hover:text-foreground transition-colors"
+            aria-label="Previous image"
+          >
+            <div className="w-10 h-px bg-border group-hover:bg-accent group-hover:w-16 transition-all duration-300"></div>
+            Prev
+          </button>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-muted/60 select-none">
+            {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+          </span>
+          <button
+            onClick={handleNext}
+            className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-muted hover:text-foreground transition-colors"
+            aria-label="Next image"
+          >
+            Next
+            <div className="w-10 h-px bg-border group-hover:bg-accent group-hover:w-16 transition-all duration-300"></div>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+function ProjectImage({ src, title }: { src: string; title: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Diagonal scroll-linked parallax: starts at bottom-right (6% X, 6% Y) and ends at top-left (-6% X, -6% Y)
+  const x = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+
+  return (
+    <div ref={containerRef} className="w-full h-full relative overflow-hidden bg-background">
+      <motion.img
+        src={src}
+        alt={title}
+        className="w-full h-full object-cover origin-center no-grayscale"
+        referrerPolicy="no-referrer"
+        style={{
+          x,
+          y,
+          scale: 1.15, // base buffer scale to ensure no edge clipping
+          filter: "none"
+        }}
+        whileHover={{ scale: 1.22 }}
+        transition={{
+          scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+        }}
+      />
+    </div>
+  );
 }
 
 function CaseStudyView({ project, onClose }: { project: Project; onClose: () => void }) {
@@ -55,25 +216,54 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
 
       <div className="pt-32 pb-24">
         {/* A. HERO IMAGE */}
-        <section className="w-full aspect-[21/9] mb-24 overflow-hidden bg-background">
+        <motion.section 
+          className="w-full aspect-[21/9] mb-24 overflow-hidden bg-background"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1.0 }}
+          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <img
             src={project.img}
             alt={project.title}
             className="w-full h-full object-cover no-grayscale"
             referrerPolicy="no-referrer"
           />
-        </section>
+        </motion.section>
 
         {/* B. PROJECT INFO */}
         <section className="px-6 md:px-12 mb-32">
-          <div className="flex flex-col md:grid md:grid-cols-12 gap-12">
-            <div className="md:col-span-8">
+          <motion.div 
+            className="flex flex-col md:grid md:grid-cols-12 gap-12"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.12,
+                }
+              }
+            }}
+          >
+            <motion.div 
+              className="md:col-span-8"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+              }}
+            >
               <span className="text-accent text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Case Study {project.id}</span>
               <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter leading-[0.9] uppercase text-foreground mb-12">
                 {project.title}
               </h1>
-            </div>
-            <div className="md:col-span-4 flex flex-col justify-end">
+            </motion.div>
+            <motion.div 
+              className="md:col-span-4 flex flex-col justify-end"
+              variants={{
+                hidden: { opacity: 0, x: 20 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+              }}
+            >
               <div className="border-l border-border pl-8 space-y-4">
                 <div>
                   <span className="block text-[10px] font-bold uppercase tracking-widest text-muted/60">Location</span>
@@ -88,57 +278,79 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
                   <span className="text-sm font-bold uppercase text-foreground">{project.category}</span>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
 
         <section className="px-6 md:px-12 mb-40">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-40">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-40"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15,
+                }
+              }
+            }}
+          >
             <div className="space-y-24">
-              <div>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 25 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                }}
+              >
                 <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">01 / Context</h2>
                 <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.context}
                 </p>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 25 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                }}
+              >
                 <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">02 / The Problem</h2>
                 <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.problem}
                 </p>
-              </div>
+              </motion.div>
             </div>
             <div className="space-y-24">
-              <div>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 25 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                }}
+              >
                 <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">03 / Concept & Approach</h2>
                 <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.concept}
                 </p>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 25 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                }}
+              >
                 <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent mb-8">04 / The Solution</h2>
                 <p className="text-xl md:text-2xl text-muted leading-relaxed font-medium">
                   {project.solution}
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="px-6 md:px-12">
-          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted/60 mb-16 text-center">Visual Documentation</h2>
-          <div className="space-y-12">
-            {project.gallery.map((img, i) => (
-              <div key={i} className="w-full bg-background overflow-hidden">
-                <img
-                  src={img}
-                  alt={`${project.title} documentation ${i + 1}`}
-                  className="w-full h-auto no-grayscale"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ))}
-          </div>
+          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted/60 mb-8 text-center">Visual Documentation</h2>
+          <GalleryCarousel images={project.gallery} title={project.title} />
         </section>
 
         <footer className="mt-40 px-6 md:px-12 py-24 border-t border-border text-center">
@@ -424,7 +636,7 @@ export default function Projects() {
       <section className="px-6 md:px-12 mb-32 relative min-h-[50vh] flex flex-col justify-center group/hero">
         {/* Background Image Behind the Text */}
         <div className="absolute inset-0 md:left-1/4 -z-10 opacity-30 pointer-events-none overflow-hidden">
-          <img
+          <motion.img
             src="/images/totem-kamen-lica.webp"
             alt="Totem Kamen Lica"
             className="w-full h-[120%] object-cover object-center grayscale brightness-75 transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover/hero:grayscale-0 group-hover/hero:brightness-100 group-hover/hero:scale-105"
@@ -432,6 +644,9 @@ export default function Projects() {
               maskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)'
             }}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 0.3, scale: 1.0 }}
+            transition={{ duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
           />
         </div>
 
@@ -443,25 +658,33 @@ export default function Projects() {
         >
           Defining the <br /><span className="text-accent drop-shadow-2xl">Silent Monolith.</span>
         </motion.h1>
-        <p className="mt-12 text-muted text-xl max-w-2xl leading-relaxed font-medium drop-shadow-lg">
+        <motion.p 
+          className="mt-12 text-muted text-xl max-w-2xl leading-relaxed font-medium drop-shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           Spaces shaped with restraint, structure, and intent. Built to feel grounded in use and material.<br/>
           Designed to remain, beyond time and trend.<br/>
           Simple. Practical. Timeless.
-        </p>
+        </motion.p>
       </section>
 
       {/* Filter Tabs */}
       <section className="px-6 md:px-12 mb-24">
         <div className="flex flex-wrap gap-x-12 gap-y-6 items-center">
-          {filters.map(filter => (
-            <button
+          {filters.map((filter, idx) => (
+            <motion.button
               key={filter}
               onClick={() => setActiveFilter(filter)}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.08, ease: "easeOut" }}
               className={`font-bold uppercase tracking-[0.4em] text-[10px] transition-all pb-2 border-b ${activeFilter === filter ? "text-accent border-accent" : "text-muted/60 border-transparent hover:text-foreground"
                 }`}
             >
               {filter === "All" ? "All Projects" : filter}
-            </button>
+            </motion.button>
           ))}
         </div>
       </section>
@@ -472,29 +695,31 @@ export default function Projects() {
           <motion.article
             key={project.id}
             layout
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.2, 0, 0, 1] }}
             className="flex flex-col lg:grid lg:grid-cols-12 gap-12 group"
           >
-            <div className={`lg:col-span-8 relative overflow-hidden aspect-[16/9] bg-background ${project.reverse ? 'lg:order-2' : ''}`}>
-              <img
-                alt={project.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover:scale-105"
-                referrerPolicy="no-referrer"
-                src={project.img}
-              />
+            {/* Project Image Column with Dynamic Diagonal Scroll-Linked Parallax */}
+            <div className={`lg:col-span-8 overflow-hidden aspect-[16/9] ${project.reverse ? 'lg:order-2' : ''}`}>
+              <ProjectImage src={project.img} title={project.title} />
             </div>
-            <div className={`lg:col-span-4 flex flex-col justify-center ${project.reverse ? 'lg:order-1' : ''}`}>
-              <div className="flex items-center gap-6 mb-8">
+            
+            {/* Project Details Column with Staggered Slide-up Reveals */}
+            <motion.div 
+              className={`lg:col-span-4 flex flex-col justify-center ${project.reverse ? 'lg:order-1' : ''}`}
+              variants={detailsContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+            >
+              <motion.div variants={detailsItemVariants} className="flex items-center gap-6 mb-8">
                 <span className="text-accent text-[10px] font-bold uppercase tracking-[0.4em]">Project {project.id}</span>
                 <div className="h-px flex-1 bg-border"></div>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 uppercase group-hover:text-accent transition-colors duration-500 leading-none">{project.title}</h2>
-              <p className="text-muted/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-12">{project.location}</p>
-              <ProjectDetails project={project} onViewCaseStudy={() => setSelectedProject(project)} />
-            </div>
+              </motion.div>
+              <motion.h2 variants={detailsItemVariants} className="text-4xl md:text-5xl font-black tracking-tighter mb-4 uppercase group-hover:text-accent transition-colors duration-500 leading-none">{project.title}</motion.h2>
+              <motion.p variants={detailsItemVariants} className="text-muted/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-12">{project.location}</motion.p>
+              <motion.div variants={detailsItemVariants}>
+                <ProjectDetails project={project} onViewCaseStudy={() => setSelectedProject(project)} />
+              </motion.div>
+            </motion.div>
           </motion.article>
         ))}
       </section>

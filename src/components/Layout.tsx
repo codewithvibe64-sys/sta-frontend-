@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ReactNode, useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import GeminiChat from "./GeminiChat";
+import VirtualGuide from "./VirtualGuide";
 
 interface LayoutProps {
   children: ReactNode;
@@ -120,6 +121,9 @@ export default function Layout({ children }: LayoutProps) {
       <main className="flex-grow">
         {children}
       </main>
+
+      {/* Floating Spatial Guide Avatar (Travels through all pages except Home) */}
+      <VirtualGuide />
 
       {/* Footer */}
       <footer className="w-full border-t border-[#1c1b1b] bg-[#0f0f0f] px-12 py-20">

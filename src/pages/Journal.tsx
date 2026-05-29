@@ -80,7 +80,7 @@ export default function Journal() {
           <img
             src="/images/IMG_20220907_201623.jpg"
             alt="Journal Background"
-            className="w-full h-[120%] object-cover object-center grayscale brightness-75 transition-all duration-[2000ms] ease-[cubic-bezier(0.2,0,0,1)] group-hover/hero:grayscale-0 group-hover/hero:brightness-100 group-hover/hero:scale-105"
+            className="w-full h-[120%] object-cover object-center" data-aos="zoom-in"
             style={{
               maskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 50%, black 80%, transparent)'
@@ -135,7 +135,7 @@ upcoming sessions.
               <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden">
                 <img
                   alt={featuredArticle.title}
-                  className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 hover:scale-105 transition-all duration-[2000ms]"
+                  className="w-full h-full object-cover" data-aos="zoom-in"
                   referrerPolicy="no-referrer"
                   src={featuredArticle.img}
                 />
@@ -175,7 +175,7 @@ upcoming sessions.
                 <div className="overflow-hidden aspect-[16/10] mb-10 bg-[#131313]">
                   <img
                     alt={article.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                    className="w-full h-full object-cover" data-aos="zoom-in"
                     referrerPolicy="no-referrer"
                     src={article.img}
                   />

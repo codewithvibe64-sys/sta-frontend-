@@ -355,7 +355,7 @@ export default function DesignLab() {
                     <div key={i} className="relative group aspect-video bg-[#0f0f0f] overflow-hidden">
                       <img 
                         src={img} 
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                        className="w-full h-full object-cover" data-aos="zoom-in" 
                         alt="Generated concept" 
                         referrerPolicy="no-referrer"
                       />
