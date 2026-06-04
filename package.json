@@ -1,0 +1,14 @@
+{
+  "name": "sta-website-root",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm start --prefix backend",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && npx shx mkdir -p dist && npx shx cp -r frontend/dist/. dist"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

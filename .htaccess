@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Forward all incoming root requests to the compiled frontend/dist folder
+  RewriteCond %{REQUEST_URI} !^/frontend/dist/
+  RewriteRule ^(.*)$ /frontend/dist/$1 [L]
+
+  # 2. SPA Fallback: Redirect non-existent files/directories to index.html for React Router
+  RewriteCond %{DOCUMENT_ROOT}/frontend/dist/$1 !-f
+  RewriteCond %{DOCUMENT_ROOT}/frontend/dist/$1 !-d
+  RewriteRule ^(.*)$ /frontend/dist/index.html [L]
+</IfModule>

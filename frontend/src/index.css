@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #0f0f0f;
+  --text: #f5f5f5;
+  --muted: #888888;
+  --border: #222222;
+  --accent: #e03a2f;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+
+  /* Mapping existing semantic colors to variables for theme support */
+  --color-surface-container-high: var(--border);
+  --color-surface-container-low: var(--border);
+  --color-surface-container-lowest: var(--bg);
+  --color-surface-dim: var(--bg);
+  --color-surface: var(--bg);
+  --color-on-surface: var(--text);
+  --color-on-background: var(--text);
+  --color-outline: var(--border);
+  --color-outline-variant: var(--border);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    @apply font-sans antialiased;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  /* Global responsiveness helpers */
+  img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .container {
+    @apply w-full max-w-full mx-auto;
+  }
+
+  .text-display {
+    @apply text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[1.1] tracking-tighter uppercase;
+  }
+
+  /* Global Image Grayscale - Always visible, no hover effect */
+  img:not(.no-grayscale) {
+    filter: grayscale(0%);
+  }
+
+  /* Exclusion for Case Study detail pages or specific images */
+  .no-grayscale {
+    filter: grayscale(0%) !important;
+  }
+
+  /* Scroll-triggered animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .scroll-reveal[data-aos="zoom-in-reveal"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 40s linear infinite;
+}
+
+/* Subtle grain effect - removed the heavy noise that might look like artifacts */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
