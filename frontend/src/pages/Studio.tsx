@@ -3,10 +3,16 @@ import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 
 // --- DATA ARRAYS ---
-const stats = [
+const studioMetrics = [
   { label: "Years of Practice", value: "8+" },
-  { label: "Completed Projects", value: "22" },
+  { label: "Completed Projects", value: "22+" },
   { label: "Active Sites", value: "8" },
+];
+
+const teamMetrics = [
+  { label: "Architects", value: "05+" },
+  { label: "Structural Engineers", value: "02+" },
+  { label: "Execution & Support Team", value: "08+" },
 ];
 
 const methodologySteps = [
@@ -289,6 +295,7 @@ export default function Studio() {
   const [selectedJobId, setSelectedJobId] = useState<string | null>(careers[0].id);
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [isMobileOverlayOpen, setIsMobileOverlayOpen] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0); // 0 = Studio Metrics, 1 = Team Metrics
 
   useEffect(() => {
     const handleScroll = () => {
@@ -492,22 +499,100 @@ export default function Studio() {
       </section>
 
       <section className="px-4 md:px-12 mb-24 md:mb-40" aria-label="Studio statistics">
-        <div className="grid grid-cols-1 md:grid-cols-3 border border-border">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`p-8 md:p-12 border-b md:border-b-0 md:border-r border-border ${
-                index === stats.length - 1 ? "border-b-0 md:border-r-0" : ""
+        {/* Toggle Switcher */}
+        <div className="flex justify-between items-center mb-8 border-b border-border pb-4">
+          <div className="flex gap-8">
+            <button
+              onClick={() => setActiveSlide(0)}
+              className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-all relative py-2 cursor-pointer ${
+                activeSlide === 0 ? "text-accent" : "text-muted/60 hover:text-foreground"
               }`}
             >
-              <p className="text-4xl md:text-6xl font-black text-foreground tracking-tighter">
-                {stat.value}
-              </p>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-muted/60 mt-4">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+              Practice Metrics
+              {activeSlide === 0 && (
+                <motion.div
+                  layoutId="activeStatsTab"
+                  className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-accent"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
+            <button
+              onClick={() => setActiveSlide(1)}
+              className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-all relative py-2 cursor-pointer ${
+                activeSlide === 1 ? "text-accent" : "text-muted/60 hover:text-foreground"
+              }`}
+            >
+              In-Office Team
+              {activeSlide === 1 && (
+                <motion.div
+                  layoutId="activeStatsTab"
+                  className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-accent"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
+          </div>
+          <div className="text-[8px] font-mono text-muted/40 uppercase hidden sm:block">
+            SYS_REF // STATS_SLIDE_0{activeSlide + 1}
+          </div>
+        </div>
+
+        {/* Slide Content with AnimatePresence */}
+        <div className="relative overflow-hidden border border-border bg-[#0f0f0f]/30 backdrop-blur-sm p-8 md:p-12 min-h-[300px] lg:min-h-[220px] flex items-center">
+          {/* Subtle blueprint grid overlay background */}
+          <div 
+            className="absolute inset-0 opacity-[0.015] pointer-events-none"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "20px 20px",
+            }}
+          />
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0, x: activeSlide === 0 ? -15 : 15 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: activeSlide === 0 ? 15 : -15 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full z-10"
+            >
+              {/* Left Column: Context / Descriptions */}
+              <div className="lg:col-span-5 space-y-4">
+                <span className="text-[8px] font-mono tracking-widest text-accent uppercase leading-none bg-accent/10 px-1.5 py-0.5 border border-accent/20 inline-block">
+                  {activeSlide === 0 ? "STUDIO METRICS" : "PEOPLE BEHIND PRACTICE"}
+                </span>
+                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-foreground leading-none">
+                  {activeSlide === 0 
+                    ? "QUANTIFIED FOCUS." 
+                    : "THE PEOPLE BEHIND THE PRACTICE."}
+                </h3>
+                <p className="text-[11px] text-muted leading-relaxed max-w-md">
+                  {activeSlide === 0 
+                    ? "A record of our spatial execution. Every project represents a rigorous process of mapping, massing, and construction permanence."
+                    : "Every project is supported by architects, engineers, consultants, and execution teams working as a single coordinated practice. Ensuring continuity from concept to completion."}
+                </p>
+              </div>
+
+              {/* Right Column: Stats Grid */}
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:border-l lg:border-border lg:pl-12">
+                {(activeSlide === 0 ? studioMetrics : teamMetrics).map((stat) => (
+                  <div key={stat.label} className="space-y-1.5 group">
+                    <p className="text-4xl md:text-5xl font-black text-foreground tracking-tighter group-hover:text-accent transition-colors duration-300">
+                      {stat.value}
+                    </p>
+                    <span className="block text-[9px] font-bold uppercase tracking-[0.25em] text-muted/60">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
