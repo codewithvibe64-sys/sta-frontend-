@@ -1,11 +1,28 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import { X, ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { MagneticButton, RollingTextLink, StoneCarvedButton } from "../components/InteractiveButton";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollRevealText from "../components/ScrollRevealText";
+
+// Corner House Images
+const cornerHouseHero = "/images/front_elevation.jpg";
+const cornerHouseNight = "/images/night_view.jpg";
+const cornerHouseCourt = "/images/court_2.jpg";
+const cornerHouseLiving = "/images/living.jpg";
+const cornerHouseDining = "/images/dining.jpg";
+const cornerHouseStaircase = "/images/staircase.jpg";
+
+// Delta's Masala Images
+const masalaImg1 = "/images/IMG_20220907_201623.jpg";
+const masalaImg2 = "/images/IMG_20220907_201935.jpg";
+const masalaImg3 = "/images/IMG_20220907_202031.jpg";
+const masalaImg4 = "/images/IMG_20220907_202051.jpg";
+const masalaImg5 = "/images/IMG_20220907_203310.jpg";
+const masalaImg6 = "/images/IMG_20220907_223614.jpg";
+const masalaImg7 = "/images/IMG_20220907_223808.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,19 +65,156 @@ interface Project {
   reverse?: boolean;
 }
 
-function CaseStudyImage({ src, alt }: { src: string; alt: string }) {
+function VisualDocumentationCluster({ 
+  src, 
+  alt, 
+  index, 
+  scrollContainerEl 
+}: { 
+  src: string; 
+  alt: string; 
+  index: number; 
+  scrollContainerEl: HTMLDivElement;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRefForScroll = useRef<HTMLDivElement | null>(null);
+  if (!containerRefForScroll.current) {
+    containerRefForScroll.current = scrollContainerEl;
+  }
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    container: containerRefForScroll,
+    offset: ["start end", "end start"]
+  });
+
+  const isEven = index % 2 === 0;
+
+  // Multi-layered parallax translation offsets (matching the owl cluster sample precisely):
+  const yCluster = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+  const yImage = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const yDots = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const yCircle = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const yTriangle = useTransform(scrollYProgress, [0, 1], ["25%", "-5%"]);
+  const rotateTriangle = useTransform(scrollYProgress, [0, 1], [-90, 40]);
+  const yHexagon = useTransform(scrollYProgress, [0, 1], ["20%", "-10%"]);
+  const rotateHexagon = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const yCaption = useTransform(scrollYProgress, [0, 1], isEven ? ["0%", "100%"] : ["0%", "200%"]);
+
   return (
-    <div className="w-full aspect-[16/10] relative overflow-hidden bg-[#0a0a0a] border border-border/40 shadow-2xl">
-      <motion.img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover no-grayscale"
-        referrerPolicy="no-referrer"
-        style={{ filter: "none" }}
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      />
-    </div>
+    <motion.div 
+      ref={containerRef}
+      style={{ y: yCluster }}
+      className="relative w-full max-w-[850px] h-[450px] sm:h-[580px] md:h-[680px] mx-auto mb-40 md:mb-56 overflow-visible"
+    >
+      {isEven ? (
+        // Style 1: Great Horned Owl Layout
+        <>
+          {/* Backdrop Circle (Moves slow: yCircle) - Laptop and tablet view */}
+          <motion.div
+            style={{ y: yCircle }}
+            className="absolute left-[5%] top-[10%] w-[clamp(200px,38vw,382px)] aspect-square rounded-full bg-accent/5 border border-accent/15 z-0 pointer-events-none hidden sm:block"
+          />
+
+          {/* Backdrop Hexagon (Moves & rotates: yHexagon, rotateHexagon) - Phone view */}
+          <motion.svg
+            style={{ y: yHexagon, rotate: rotateHexagon }}
+            className="absolute left-[5%] top-[10%] w-[clamp(180px,38vw,300px)] aspect-square z-0 pointer-events-none text-accent/25 block sm:hidden"
+            viewBox="0 0 382 382"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <polygon points="191,10 346,100 346,282 191,372 36,282 36,100" />
+          </motion.svg>
+
+          {/* Dotted Grid SVG (Moves opposite way: yDots) */}
+          <motion.svg
+            style={{ y: yDots }}
+            className="absolute left-[-5%] top-[15%] w-[clamp(150px,30vw,350px)] h-[clamp(150px,30vw,320px)] z-0 pointer-events-none text-accent/25 hidden sm:block"
+            viewBox="0 0 494 434"
+          >
+            <pattern id={`dots-blue-${index}`} x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="2" fill="currentColor" />
+            </pattern>
+            <rect width="100%" height="100%" fill={`url(#dots-blue-${index})`} />
+          </motion.svg>
+
+          {/* Main image card (Moves parallax: yImage) */}
+          <motion.div
+            style={{ y: yImage }}
+            className="absolute right-[5%] top-[10%] w-[55%] max-w-[500px] aspect-[4/5] z-10 overflow-hidden bg-[#131313] border border-border/40 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+          >
+            <motion.img
+              src={src}
+              alt={alt}
+              className="w-full h-full object-cover no-grayscale"
+              referrerPolicy="no-referrer"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            />
+          </motion.div>
+
+          {/* Floating Caption (Moves fast: yCaption) */}
+          <motion.div
+            style={{ y: yCaption }}
+            className="absolute right-[5%] bottom-0 sm:bottom-[-5%] z-20 font-mono text-[9px] md:text-[10px] tracking-[0.25em] text-accent uppercase text-right"
+          >
+            <span className="text-foreground/40 font-light">/{String(index + 1).padStart(2, "0")}</span> DETAIL VIEW
+          </motion.div>
+        </>
+      ) : (
+        // Style 2: Burrowing Owl Layout
+        <>
+          {/* Rotating Outline Triangle (Moves & Rotates: yTriangle, rotateTriangle) */}
+          <motion.svg
+            style={{ y: yTriangle, rotate: rotateTriangle }}
+            className="absolute right-[5%] top-[5%] w-[clamp(200px,45vw,448px)] aspect-square z-0 pointer-events-none text-muted/20"
+            viewBox="0 0 448 446"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <polygon points="224,10 438,436 10,436" />
+          </motion.svg>
+
+          {/* Dotted Grid SVG (Moves opposite way: yDots) */}
+          <motion.svg
+            style={{ y: yDots }}
+            className="absolute right-[-5%] bottom-[5%] w-[clamp(120px,25vw,280px)] h-[clamp(220px,45vw,500px)] z-0 pointer-events-none text-muted/15 hidden lg:block"
+            viewBox="0 0 310 588"
+          >
+            <pattern id={`dots-white-${index}`} x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="2" fill="currentColor" />
+            </pattern>
+            <rect width="100%" height="100%" fill={`url(#dots-white-${index})`} />
+          </motion.svg>
+
+          {/* Main image card (Moves parallax: yImage) */}
+          <motion.div
+            style={{ y: yImage }}
+            className="absolute left-[5%] top-[10%] w-[55%] max-w-[500px] aspect-[4/5] z-10 overflow-hidden bg-[#131313] border border-border/40 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+          >
+            <motion.img
+              src={src}
+              alt={alt}
+              className="w-full h-full object-cover no-grayscale"
+              referrerPolicy="no-referrer"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            />
+          </motion.div>
+
+          {/* Floating Caption (Moves fast: yCaption) */}
+          <motion.div
+            style={{ y: yCaption }}
+            className="absolute left-[5%] bottom-0 sm:bottom-[-10%] z-20 font-mono text-[9px] md:text-[10px] tracking-[0.25em] text-accent uppercase text-left"
+          >
+            <span className="text-foreground/40 font-light">/{String(index + 1).padStart(2, "0")}</span> DETAIL VIEW
+          </motion.div>
+        </>
+      )}
+    </motion.div>
   );
 }
 
@@ -157,6 +311,9 @@ function ProjectImage({ src, title }: { src: string; title: string }) {
 }
 
 function CaseStudyView({ project, onClose }: { project: Project; onClose: () => void }) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollContainer, setScrollContainer] = useState<HTMLDivElement | null>(null);
+
   // Lock scroll when overlay is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -167,6 +324,14 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
 
   return (
     <motion.div
+      ref={(el) => {
+        if (el) {
+          scrollContainerRef.current = el;
+          if (!scrollContainer) {
+            setScrollContainer(el);
+          }
+        }
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -326,11 +491,13 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
         <section className="px-6 md:px-12">
           <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted/60 mb-16 text-center">Visual Documentation</h2>
           <div className="max-w-5xl mx-auto space-y-16">
-            {project.gallery && project.gallery.map((img, idx) => (
-              <CaseStudyImage 
+            {scrollContainer && project.gallery && project.gallery.map((img, idx) => (
+              <VisualDocumentationCluster 
                 key={idx} 
                 src={img} 
                 alt={`${project.title} documentation ${idx + 1}`} 
+                index={idx}
+                scrollContainerEl={scrollContainer}
               />
             ))}
           </div>
@@ -412,9 +579,23 @@ function ProjectDetails({ project, onViewCaseStudy }: { project: Project; onView
 }
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("Architecture");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Listen to URL search parameter ?id=... to automatically open a project case study
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const projectId = searchParams.get("id");
+    if (projectId) {
+      const proj = projects.find(p => p.id === projectId);
+      if (proj) {
+        setSelectedProject(proj);
+        setActiveFilter(proj.category);
+      }
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -432,6 +613,7 @@ export default function Projects() {
   }, []);
 
   const projects: Project[] = [
+    /*
     {
       id: "08",
       title: "The Vela House",
@@ -450,6 +632,7 @@ export default function Projects() {
         "/images/svc-architecture.png"
       ]
     },
+    */
     {
       id: "09",
       title: "The Delta’s Masala",
@@ -462,13 +645,18 @@ export default function Projects() {
       execution: "A compact interior integrating display, storage, and billing within a clear layout. Custom shelving maximizes product visibility while maintaining easy access and movement. Execution was handled with direct coordination, achieving a balanced result within cost and time limits.",
       concept: "Designed as a structured display system using linear shelving adapted to the triangular geometry. Circulation, storage, and billing are planned without wasting corner spaces. Material, pattern, and form are used in a controlled way to create identity within budget constraints.",
       solution: "A compact interior integrating display, storage, and billing within a clear layout. Custom shelving maximizes product visibility while maintaining easy access and movement. Execution was handled with direct coordination, achieving a balanced result within cost and time limits.",
-      img: "/images/portfolio2.jpg",
+      img: masalaImg1,
       reverse: true,
       gallery: [
-        "/images/hero2.jpg",
-        "/images/svc-renovation.jpeg"
+        masalaImg2,
+        masalaImg3,
+        masalaImg4,
+        masalaImg5,
+        masalaImg6,
+        masalaImg7
       ]
     },
+    /*
     {
       id: "12",
       title: "Mahaveer Residence",
@@ -486,6 +674,7 @@ export default function Projects() {
         "/images/hero3.png"
       ]
     },
+    */
     {
       id: "01",
       title: "Corner House",
@@ -498,12 +687,17 @@ export default function Projects() {
       execution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
       concept: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
       solution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
-      img: "/images/featured.jpg",
+      img: cornerHouseHero,
       reverse: true,
       gallery: [
-        "/images/hero4.jpg"
+        cornerHouseNight,
+        cornerHouseCourt,
+        cornerHouseLiving,
+        cornerHouseDining,
+        cornerHouseStaircase
       ]
     },
+    /*
     {
       id: "11",
       title: "Terra House",
@@ -556,6 +750,8 @@ export default function Projects() {
         "/images/hero3.png"
       ]
     },
+    */
+    /*
     {
       id: "13",
       title: "Commercial Office Space",
@@ -609,13 +805,12 @@ export default function Projects() {
         "/images/hero2.jpg"
       ]
     }
+    */
   ];
 
-  const filteredProjects = activeFilter === "All"
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
+  const filteredProjects = projects.filter(p => p.category === activeFilter);
 
-  const filters = ["All", "Architecture", "Interior", "Design Lab"];
+  const filters = ["Architecture", "Interior", "Design Lab"];
 
   return (
     <div className="pt-40 pb-32 selection:bg-accent selection:text-background">
@@ -670,7 +865,7 @@ export default function Projects() {
               className={`font-bold uppercase tracking-[0.4em] text-[10px] transition-all pb-2 border-b ${activeFilter === filter ? "text-accent border-accent" : "text-muted/60 border-transparent hover:text-foreground"
                 }`}
             >
-              {filter === "All" ? "All Projects" : filter}
+              {filter === "All" ? "All" : filter}
             </motion.button>
           ))}
         </div>
@@ -724,7 +919,10 @@ export default function Projects() {
         {selectedProject && (
           <CaseStudyView
             project={selectedProject}
-            onClose={() => setSelectedProject(null)}
+            onClose={() => {
+              setSelectedProject(null);
+              navigate(location.pathname, { replace: true });
+            }}
           />
         )}
       </AnimatePresence>

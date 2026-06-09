@@ -28,9 +28,12 @@ const svcVastu        = "/images/svc-vastu.jpg";
 const svcDesign       = "/images/svc-design.jpg";
 
 // --- Featured + Portfolio images ---
+const cornerHouseHero = "/images/front_elevation.jpg";
+const masalaImg1 = "/images/IMG_20220907_201623.jpg";
+
 const featuredImg  = "/images/featured.jpg";
-const portfolioImg1 = "/images/portfolio1.jpg";
-const portfolioImg2 = "/images/portfolio2.jpg";
+const portfolioImg1 = cornerHouseHero;
+const portfolioImg2 = masalaImg1;
 
 const heroSlides = [
   { src: heroImg1, label: "Dinesh Residence · Coimbatore" },
@@ -874,10 +877,10 @@ export default function Home() {
           <Link to="/projects" className="text-[10px] font-bold uppercase tracking-[0.4em] border-b border-[#f5f5f5] pb-1 hover:text-[#e03a2f] hover:border-[#e03a2f] transition-all">View All Projects</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-          <Link to="/projects" className="group relative aspect-video overflow-hidden bg-[#131313]">
+          <Link to="/projects?id=01" className="group relative aspect-video overflow-hidden bg-[#131313]">
             <motion.img
               src={portfolioImg1}
-              alt="Aiswarya Residence"
+              alt="Corner House"
               className="w-full h-full object-cover"
               initial={{ scale: 1.15, filter: "grayscale(100%) brightness(0.8)" }}
               whileInView={{ 
@@ -889,13 +892,13 @@ export default function Home() {
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Aiswarya Residence</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Corner House</span>
             </div>
           </Link>
-          <Link to="/projects" className="group relative aspect-video overflow-hidden bg-[#131313]">
+          <Link to="/projects?id=09" className="group relative aspect-video overflow-hidden bg-[#131313]">
             <motion.img
               src={portfolioImg2}
-              alt="Delta Masala Interior"
+              alt="The Delta’s Masala"
               className="w-full h-full object-cover"
               initial={{ scale: 1.15, filter: "grayscale(100%) brightness(0.8)" }}
               whileInView={{ 
@@ -907,7 +910,7 @@ export default function Home() {
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Delta Masala Interior</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">The Delta’s Masala</span>
             </div>
           </Link>
         </div>

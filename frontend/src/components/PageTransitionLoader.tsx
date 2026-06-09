@@ -8,7 +8,11 @@ const BLUEPRINT_IMAGES = [
   "/images/svc-architecture.png",
 ];
 
-const DURATION = 7000; // 7.0 seconds execution duration
+const FIRST_LOAD_DURATION = 10000; // 10.0 seconds for the first time
+const SUBSEQUENT_LOAD_DURATION = 2000; // 3.0 seconds for subsequent loads
+
+// Module-level fallback for environments without sessionStorage support
+let isFirstLoadGlobal = true;
 
 // Plateau generator for CAD-like loading profile (spread over 7 seconds)
 const getSteppedProgress = (linearPct: number) => {
@@ -238,12 +242,28 @@ export default function PageTransitionLoader({
   useEffect(() => {
     if (!isActive) return;
 
+    // Determine the loading duration for this instance
+    let currentDuration = FIRST_LOAD_DURATION;
+    try {
+      const hasLoadedBefore = sessionStorage.getItem("hasLoadedBefore");
+      if (hasLoadedBefore === "true") {
+        currentDuration = SUBSEQUENT_LOAD_DURATION;
+      } else {
+        sessionStorage.setItem("hasLoadedBefore", "true");
+      }
+    } catch (e) {
+      if (!isFirstLoadGlobal) {
+        currentDuration = SUBSEQUENT_LOAD_DURATION;
+      }
+      isFirstLoadGlobal = false;
+    }
+
     const startTime = Date.now();
     let animationFrameId: number;
 
     const update = () => {
       const elapsed = Date.now() - startTime;
-      const linearPct = Math.min((elapsed / DURATION) * 100, 100);
+      const linearPct = Math.min((elapsed / currentDuration) * 100, 100);
       const steppedPct = Math.floor(getSteppedProgress(linearPct));
 
       setProgress(steppedPct);
