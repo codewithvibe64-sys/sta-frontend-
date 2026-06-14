@@ -1,0 +1,6 @@
+**/*.skp
+**/*.pdf
+node_modules/
+.vercel/
+dist/
+.git/

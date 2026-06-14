@@ -24,6 +24,49 @@ const masalaImg5 = "/images/IMG_20220907_203310.jpg";
 const masalaImg6 = "/images/IMG_20220907_223614.jpg";
 const masalaImg7 = "/images/IMG_20220907_223808.jpg";
 
+// Cube House @Srilanka Images
+const cubeHouseImg1 = "/images/cube_house_1.png";
+const cubeHouseImg2 = "/images/cube_house_1_1.png";
+const cubeHouseImg3 = "/images/cube_house_2.png";
+const cubeHouseImg4 = "/images/cube_house_2_2.png";
+const cubeHouseImg5 = "/images/cube_house_3.png";
+const cubeHouseImg6 = "/images/cube_house_3_3.png";
+
+// Luxury Salon Images
+const salonImg1 = "/images/salon_1.png";
+const salonImg2 = "/images/salon_2.png";
+const salonImg3 = "/images/salon_3.png";
+
+// Mahaveer Residence Images
+const mahaveerImg1 = "/images/mahaveer_1.png";
+const mahaveerImg2 = "/images/mahaveer_2.png";
+const mahaveerImg3 = "/images/mahaveer_3.png";
+const mahaveerImg4 = "/images/mahaveer_4.png";
+const mahaveerImg5 = "/images/mahaveer_5.png";
+const mahaveerImg6 = "/images/mahaveer_6.png";
+const mahaveerImg7 = "/images/mahaveer_7.png";
+const mahaveerImg8 = "/images/mahaveer_8.png";
+const mahaveerImg9 = "/images/mahaveer_9.png";
+
+// Kamath Residence Images
+const kamathImg1 = "/images/kamath_1.png";
+const kamathImg2 = "/images/kamath_2.png";
+const kamathImg3 = "/images/kamath_3.png";
+
+// Farm House Images
+const farmHouseImg1 = "/images/farm_house_1.png";
+const farmHouseImg2 = "/images/farm_house_2.png";
+const farmHouseImg3 = "/images/farm_house_3.png";
+const farmHouseImg4 = "/images/farm_house_4.png";
+const farmHouseImg5 = "/images/farm_house_5.png";
+const farmHouseImg6 = "/images/farm_house_6.png";
+const farmHouseImg7 = "/images/farm_house_7.png";
+const farmHouseImg8 = "/images/farm_house_8.png";
+const farmHouseImg9 = "/images/farm_house_9.png";
+const farmHouseImg10 = "/images/farm_house_10.png";
+const farmHouseImg11 = "/images/farm_house_11.jpg";
+const farmHouseImg12 = "/images/farm_house_12.jpg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const detailsContainerVariants = {
@@ -656,25 +699,51 @@ export default function Projects() {
         masalaImg7
       ]
     },
-    /*
+
     {
-      id: "12",
-      title: "Mahaveer Residence",
+      id: "03",
+      title: "Mr. Mahaveer Residence",
       category: "Interior",
-      location: "Kilpauk, Chennai, TN, India.",
+      location: "Kilpauk, Chennai, Tamil Nadu, India",
       year: "2023",
-      context: "A budget-conscious residential interior within a formal apartment setting. The project focused on achieving a clean, functional layout with a refined visual finish. Design scope was limited to interiors, with execution handled by the contractor.",
-      problem: "How to create a balanced and refined interior within budget, while maintaining clarity, usability, and a consistent finish across spaces.",
-      approach: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
-      execution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
-      concept: "Designed with a straightforward, functional layout using controlled materials and finishes. Emphasis was placed on clarity, proportion, and ease of use rather than experimentation. A focused design intervention was introduced in the pooja space to create a distinct identity.",
-      solution: "A clean interior layout with practical material selection and controlled detailing. The pooja unit was developed using custom-cut tiles and marble to create a refined focal element. The overall design remained simple and effective, achieving a balanced outcome within constraints.",
-      img: "/images/svc-interior.png",
+      context: "A contemporary residential interior designed for a modern family lifestyle within an apartment setting. The project focused on creating a sophisticated living environment that balances aesthetics, comfort, and functionality through a cohesive design language.",
+      problem: "How to develop a contemporary home that feels elegant and personalized while ensuring practicality for everyday living. The challenge was to maintain visual continuity across spaces while accommodating the functional requirements of a modern household.",
+      approach: "The design was guided by contemporary principles of clean lines, balanced proportions, and a refined material palette. Neutral tones, carefully selected finishes, and integrated storage solutions were used to create a seamless and uncluttered environment. Each space was designed to maximize usability while maintaining a calm and sophisticated character.",
+      execution: "A thoughtfully curated contemporary residence with cohesive detailing and functional planning throughout. The interiors combine modern materials, subtle textures, and efficient spatial organization to create an inviting and timeless living experience. The result is a well-balanced home that reflects contemporary living while offering comfort, practicality, and visual harmony.",
+      concept: "The design was guided by contemporary principles of clean lines, balanced proportions, and a refined material palette. Neutral tones, carefully selected finishes, and integrated storage solutions were used to create a seamless and uncluttered environment. Each space was designed to maximize usability while maintaining a calm and sophisticated character.",
+      solution: "A thoughtfully curated contemporary residence with cohesive detailing and functional planning throughout. The interiors combine modern materials, subtle textures, and efficient spatial organization to create an inviting and timeless living experience. The result is a well-balanced home that reflects contemporary living while offering comfort, practicality, and visual harmony.",
+      img: mahaveerImg1,
+      reverse: false,
       gallery: [
-        "/images/hero3.png"
+        mahaveerImg2,
+        mahaveerImg3,
+        mahaveerImg4,
+        mahaveerImg5,
+        mahaveerImg6,
+        mahaveerImg7,
+        mahaveerImg8,
+        mahaveerImg9
       ]
     },
-    */
+    {
+      id: "04",
+      title: "Luxury Salon",
+      category: "Interior",
+      location: "Thousand Lights, Chennai, Tamil Nadu, India",
+      year: "2021",
+      context: "A premium salon interior designed to deliver a sophisticated and immersive customer experience. The project aimed to establish a strong brand identity through a modern and luxurious environment that reflects professionalism, comfort, and contemporary aesthetics.",
+      problem: "How to create a high-end salon experience within the available footprint while accommodating multiple service zones. The challenge was to balance operational efficiency, customer comfort, and a refined visual identity without compromising the openness of the space.",
+      approach: "The design approach centered on modern luxury, utilizing clean geometries, elegant finishes, and carefully layered lighting. A restrained material palette was combined with rich textures and reflective surfaces to enhance the sense of sophistication. Spatial planning focused on creating a seamless customer journey while maintaining clear functional zones for salon operations.",
+      execution: "The result is a contemporary salon environment that feels both luxurious and welcoming. Thoughtfully curated materials, ambient lighting, and refined detailing work together to create a premium atmosphere. The layout supports efficient workflow while offering clients a comfortable and elevated experience, reinforcing the salon's identity as a modern lifestyle destination.",
+      concept: "The design approach centered on modern luxury, utilizing clean geometries, elegant finishes, and carefully layered lighting. A restrained material palette was combined with rich textures and reflective surfaces to enhance the sense of sophistication. Spatial planning focused on creating a seamless customer journey while maintaining clear functional zones for salon operations.",
+      solution: "The result is a contemporary salon environment that feels both luxurious and welcoming. Thoughtfully curated materials, ambient lighting, and refined detailing work together to create a premium atmosphere. The layout supports efficient workflow while offering clients a comfortable and elevated experience, reinforcing the salon's identity as a modern lifestyle destination.",
+      img: salonImg1,
+      reverse: true,
+      gallery: [
+        salonImg2,
+        salonImg3
+      ]
+    },
     {
       id: "01",
       title: "Corner House",
@@ -695,6 +764,75 @@ export default function Projects() {
         cornerHouseLiving,
         cornerHouseDining,
         cornerHouseStaircase
+      ]
+    },
+    {
+      id: "05",
+      title: "Cube House",
+      category: "Architecture",
+      location: "Sri Lanka",
+      year: "2020",
+      context: "Cube House was conceived as a contemporary residential elevation design focused on establishing a strong architectural identity through clean forms and balanced proportions. The scope of the project was limited to the exterior elevation, with emphasis placed on creating a modern visual expression for the residence.",
+      problem: "How to transform a conventional residential structure into a visually distinctive home through façade design alone. The challenge was to create a contemporary architectural character while working within the constraints of the existing building form and functional requirements.",
+      approach: "The design approach was centered on modern geometric compositions, clean lines, and a carefully balanced massing strategy. Horizontal and vertical elements were thoughtfully integrated to create depth, visual interest, and a sense of proportion. A restrained material palette and contemporary architectural language were employed to achieve a timeless yet striking appearance.",
+      execution: "The resulting elevation presents a bold and refined architectural identity that enhances the overall character of the residence. Through the use of contemporary forms, balanced detailing, and carefully articulated façade elements, the design achieves a modern aesthetic while maintaining simplicity and elegance. The project demonstrates how a focused elevation intervention can significantly transform the visual presence of a home.",
+      concept: "The design approach was centered on modern geometric compositions, clean lines, and a carefully balanced massing strategy. Horizontal and vertical elements were thoughtfully integrated to create depth, visual interest, and a sense of proportion. A restrained material palette and contemporary architectural language were employed to achieve a timeless yet striking appearance.",
+      solution: "The resulting elevation presents a bold and refined architectural identity that enhances the overall character of the residence. Through the use of contemporary forms, balanced detailing, and carefully articulated façade elements, the design achieves a modern aesthetic while maintaining simplicity and elegance. The project demonstrates how a focused elevation intervention can significantly transform the visual presence of a home.",
+      img: cubeHouseImg1,
+      reverse: false,
+      gallery: [
+        cubeHouseImg2,
+        cubeHouseImg3,
+        cubeHouseImg4,
+        cubeHouseImg5,
+        cubeHouseImg6
+      ]
+    },
+    {
+      id: "06",
+      title: "Kamath Residence",
+      category: "Architecture",
+      location: "Shimoga, Karnataka, India",
+      year: "2022",
+      context: "Located within a serene farm setting in Shimoga, the Kamath Residence was envisioned as a weekend retreat for a farming family. The project sought to create a comfortable and relaxing environment that offers a meaningful connection to the surrounding landscape while serving as a place for rest and gathering.",
+      problem: "How to design a residence that functions as a peaceful escape from daily routines while remaining rooted in the character of its agricultural surroundings. The challenge was to balance comfort and contemporary living with the simplicity and openness associated with a rural setting.",
+      approach: "The design approach focused on creating a seamless relationship between the built form and the natural environment. Spatial planning emphasized openness, natural light, and visual connectivity to the farm landscape. A restrained architectural language and carefully considered proportions were employed to create a calm and welcoming atmosphere suited for weekend living.",
+      execution: "The resulting residence offers a tranquil retreat that complements its rural context while providing the comforts of modern living. Thoughtful planning, strong connections to the outdoors, and a balanced architectural expression create a space that encourages relaxation, family interaction, and engagement with the surrounding farmland. The project successfully transforms the site into a contemporary countryside getaway for its occupants.",
+      concept: "The design approach focused on creating a seamless relationship between the built form and the natural environment. Spatial planning emphasized openness, natural light, and visual connectivity to the farm landscape. A restrained architectural language and carefully considered proportions were employed to create a calm and welcoming atmosphere suited for weekend living.",
+      solution: "The resulting residence offers a tranquil retreat that complements its rural context while providing the comforts of modern living. Thoughtful planning, strong connections to the outdoors, and a balanced architectural expression create a space that encourages relaxation, family interaction, and engagement with the surrounding farmland. The project successfully transforms the site into a contemporary countryside getaway for its occupants.",
+      img: kamathImg1,
+      reverse: true,
+      gallery: [
+        kamathImg2,
+        kamathImg3
+      ]
+    },
+    {
+      id: "07",
+      title: "Farm House",
+      category: "Architecture",
+      location: "Thanjavur, Tamil Nadu, India",
+      year: "2022",
+      context: "Situated adjacent to expansive agricultural land in Thanjavur, this farmhouse was designed as a contemporary family residence that embraces its rural setting. Positioned on a 50 ft × 80 ft site with road access from both the front and rear, the project responds directly to its unique site conditions while maximizing views toward the adjoining farmlands.",
+      problem: "How to create a spacious multi-storey residence that maintains a strong connection to the surrounding landscape while ensuring adequate natural light, ventilation, and privacy. The challenge was to accommodate five bedrooms and generous living spaces without compromising the openness and experiential quality of the home.",
+      approach: "The design was conceived around a series of interconnected courtyards that introduce light, air, and greenery into the heart of the residence. A double-height living space acts as the central gathering zone, creating a sense of volume and visual continuity across levels. The courtyards were strategically positioned to establish layered views and create a tunnel-like spatial experience, strengthening the relationship between the interior spaces and the surrounding farmland.",
+      execution: "The resulting farmhouse is a light-filled, contemporary residence that celebrates its rural context through thoughtful spatial planning. The double-height living area, multiple courtyards, and carefully framed views work together to create a dynamic yet comfortable living environment. By integrating open spaces throughout the home, the design achieves enhanced ventilation, natural illumination, and a seamless connection to the agricultural landscape, offering a distinctive living experience rooted in its surroundings.",
+      concept: "The design was conceived around a series of interconnected courtyards that introduce light, air, and greenery into the heart of the residence. A double-height living space acts as the central gathering zone, creating a sense of volume and visual continuity across levels. The courtyards were strategically positioned to establish layered views and create a tunnel-like spatial experience, strengthening the relationship between the interior spaces and the surrounding farmland.",
+      solution: "The resulting farmhouse is a light-filled, contemporary residence that celebrates its rural context through thoughtful spatial planning. The double-height living area, multiple courtyards, and carefully framed views work together to create a dynamic yet comfortable living environment. By integrating open spaces throughout the home, the design achieves enhanced ventilation, natural illumination, and a seamless connection to the agricultural landscape, offering a distinctive living experience rooted in its surroundings.",
+      img: farmHouseImg1,
+      reverse: false,
+      gallery: [
+        farmHouseImg2,
+        farmHouseImg3,
+        farmHouseImg4,
+        farmHouseImg5,
+        farmHouseImg6,
+        farmHouseImg7,
+        farmHouseImg8,
+        farmHouseImg9,
+        farmHouseImg10,
+        farmHouseImg11,
+        farmHouseImg12
       ]
     },
     /*
