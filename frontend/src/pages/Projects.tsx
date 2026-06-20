@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { useState, useEffect, useRef } from "react";
-import { X, ArrowLeft } from "lucide-react";
+import { X, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { MagneticButton, RollingTextLink, StoneCarvedButton } from "../components/InteractiveButton";
 import { gsap } from "gsap";
@@ -356,6 +356,30 @@ function ProjectImage({ src, title }: { src: string; title: string }) {
 function CaseStudyView({ project, onClose }: { project: Project; onClose: () => void }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollContainer, setScrollContainer] = useState<HTMLDivElement | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleSlideChange = (newIndex: number) => {
+    if (newIndex === currentSlide) return;
+    setCurrentSlide(newIndex);
+  };
+
+  const handlePrevSlide = () => {
+    if (!project.gallery || project.gallery.length === 0) return;
+    setCurrentSlide((prev) => (prev - 1 + project.gallery.length) % project.gallery.length);
+  };
+
+  const handleNextSlide = () => {
+    if (!project.gallery || project.gallery.length === 0) return;
+    setCurrentSlide((prev) => (prev + 1) % project.gallery.length);
+  };
 
   // Lock scroll when overlay is open
   useEffect(() => {
@@ -531,17 +555,115 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
           </motion.div>
         </section>
 
-        <section className="px-6 md:px-12">
+        <section className="px-6 md:px-12 mt-24 mb-16 overflow-hidden">
           <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted/60 mb-16 text-center">Visual Documentation</h2>
-          <div className="max-w-5xl mx-auto space-y-16">
-            {scrollContainer && project.gallery && project.gallery.map((img, idx) => (
-              <VisualDocumentationCluster 
-                key={idx} 
-                src={img} 
-                alt={`${project.title} documentation ${idx + 1}`} 
-                index={idx}
-                scrollContainerEl={scrollContainer}
-              />
+          
+          <motion.div
+            className="w-full flex items-center justify-center overflow-visible py-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.0 }}
+            style={{ perspective: "1200px" }}
+          >
+            {/* Slideshow Wrapper to absolute-position arrows next to the slides */}
+            <div className="relative w-full max-w-xl h-[280px] md:h-[450px] flex items-center justify-center">
+              
+              {/* 3D transformed slides container */}
+              <div 
+                className="w-full h-full flex items-center justify-center relative" 
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                {project.gallery && project.gallery.map((img, i) => {
+                  const rawOffset = i - currentSlide;
+                  const offset = rawOffset > project.gallery.length / 2
+                    ? rawOffset - project.gallery.length
+                    : rawOffset < -project.gallery.length / 2
+                      ? rawOffset + project.gallery.length
+                      : rawOffset;
+
+                  const rotateY = offset === 0 ? 0 : offset > 0 ? -42 : 42;
+                  const z = Math.abs(offset) === 0 ? 0 : Math.abs(offset) === 1 ? -180 : -320;
+                  const x = offset * (isMobile ? 120 : 220); // Dynamic responsive spacing
+                  const scale = Math.abs(offset) === 0 ? 1 : Math.abs(offset) === 1 ? 0.82 : 0.66;
+                  const opacity = Math.abs(offset) === 0 ? 1 : Math.abs(offset) === 1 ? 0.72 : 0.28;
+
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute w-[220px] md:w-[450px] h-[220px] md:h-[380px] bg-[#131313] border border-white/5 overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] cursor-pointer group"
+                      style={{
+                        transformOrigin: "center center",
+                      }}
+                      animate={{
+                        x: x,
+                        z: z,
+                        rotateY: rotateY,
+                        scale: scale,
+                        opacity: opacity,
+                        zIndex: 10 - Math.abs(offset),
+                      }}
+                      transition={{
+                        duration: 1.2,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      onClick={() => handleSlideChange(i)}
+                    >
+                      <img
+                        src={img}
+                        alt={`${project.title} documentation ${i + 1}`}
+                        className="w-full h-full object-cover no-grayscale"
+                        style={{ filter: "none" }}
+                      />
+                      {/* Subtle contrast gradient for readable overlay text */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-90 transition-opacity group-hover:opacity-80" />
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Left Prev Arrow Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevSlide();
+                }}
+                className="absolute left-4 md:left-[-80px] top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 bg-black/45 backdrop-blur-md flex items-center justify-center text-white hover:text-accent hover:border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer pointer-events-auto shadow-2xl"
+                aria-label="Previous Slide"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              {/* Right Next Arrow Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNextSlide();
+                }}
+                className="absolute right-4 md:right-[-80px] top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 bg-black/45 backdrop-blur-md flex items-center justify-center text-white hover:text-accent hover:border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer pointer-events-auto shadow-2xl"
+                aria-label="Next Slide"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-3 mt-8">
+            {project.gallery && project.gallery.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => handleSlideChange(i)}
+                className="group p-2 cursor-pointer transition-all duration-300"
+                aria-label={`Go to slide ${i + 1}`}
+              >
+                <div 
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === currentSlide 
+                      ? "w-8 bg-accent" 
+                      : "w-1.5 bg-muted/30 group-hover:bg-muted/60"
+                  }`} 
+                />
+              </button>
             ))}
           </div>
         </section>
