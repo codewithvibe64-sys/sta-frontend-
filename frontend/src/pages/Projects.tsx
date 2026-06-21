@@ -1189,7 +1189,19 @@ export default function Projects() {
 
       {/* CTA Section */}
       <section className="mt-64 px-6 md:px-12 py-48 bg-background border-y border-border text-center">
-        <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent mb-12 block">Inquiry</span>
+        <motion.span 
+          className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent mb-12 block cursor-pointer select-none origin-center w-max mx-auto"
+          animate={{ y: [0, -6, 0] }}
+          transition={{
+            duration: 3.5,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "loop"
+          }}
+          whileHover={{ scale: 1.25 }}
+        >
+          Inquiry
+        </motion.span>
         <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-16 max-w-4xl mx-auto uppercase leading-[0.9]">
           We specialize in challenging sites and radical material honesty.
         </h3>

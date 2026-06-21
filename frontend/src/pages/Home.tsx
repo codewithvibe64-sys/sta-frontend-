@@ -1064,7 +1064,19 @@ export default function Home() {
 
       {/* Contact CTA */}
       <section className="px-6 md:px-12 py-48 bg-[#131313] border-y border-[#1c1b1b] text-center">
-        <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#e03a2f] mb-12 block">Inquiry</span>
+        <motion.span 
+          className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#e03a2f] mb-12 block cursor-pointer select-none origin-center w-max mx-auto"
+          animate={{ y: [0, -6, 0] }}
+          transition={{
+            duration: 3.5,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "loop"
+          }}
+          whileHover={{ scale: 1.25 }}
+        >
+          Inquiry
+        </motion.span>
         <div className="mb-16 max-w-4xl mx-auto select-none" style={{ position: 'relative', height: 'clamp(40px, 6vw, 90px)', width: '100%' }}>
           <TextPressure
             text="Ready to build the permanent?"
