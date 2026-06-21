@@ -187,6 +187,11 @@ const partners = [
   { name: "Material Suppliers", partner: "Ramco Cement / Kajaria Tiles" },
   { name: "Builders / Contractors", partner: "Sri Builders / RK Constructions" },
   { name: "Structural Engineering", partner: "S. Kumar Structural Consultants, Vertex Structures" },
+  {
+    name: "Structural Design Engineer",
+    partner: "Thenmozhi V., M.Tech (Structural Engineering) | StrudFrame Engineering Consultants",
+    desc: "With over 10 years of experience in structural engineering, specializing in the analysis and design of RCC and steel structures for industrial, commercial, and residential projects. Skilled in STAAD.Pro and AutoCAD, with expertise in structural analysis, foundation design, connection detailing and construction drawing preparation."
+  }
 ];
 
 interface Projected3DModelProps {
@@ -1013,7 +1018,7 @@ export default function Studio() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {partners.map((collab) => (
             <article
-              key={collab.name}
+              key={collab.name + collab.partner}
               className="border-l border-border pl-6 md:pl-8 py-4 hover:border-accent transition-colors group"
             >
               <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-muted/60 mb-2 group-hover:text-accent transition-colors">
@@ -1022,6 +1027,11 @@ export default function Studio() {
               <h3 className="text-base md:text-lg font-bold uppercase tracking-tight text-foreground">
                 {collab.partner}
               </h3>
+              {collab.desc && (
+                <p className="mt-4 text-xs md:text-sm text-muted/65 leading-relaxed font-medium">
+                  {collab.desc}
+                </p>
+              )}
             </article>
           ))}
         </div>
