@@ -6,6 +6,7 @@ import { MagneticButton, RollingTextLink, StoneCarvedButton } from "../component
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollRevealText from "../components/ScrollRevealText";
+import TextPressure from "../components/TextPressure";
 
 // Corner House Images
 const cornerHouseHero = "/images/front_elevation.jpg";
@@ -404,6 +405,11 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] bg-background overflow-y-auto selection:bg-accent selection:text-background"
     >
+      {/* React 19 Document Metadata Hoisting */}
+      <title>{`${project.title} | Case Study | Studio Tactile`}</title>
+      <meta name="description" content={`${project.context} Architectural Case Study in ${project.location}.`} />
+      <link rel="canonical" href={`https://sta-website-tactile.vercel.app/projects?id=${project.id}`} />
+
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-[110] px-6 md:px-12 py-8 flex justify-between items-center bg-background/80 backdrop-blur-md border-b border-border">
         <button
@@ -759,6 +765,8 @@ export default function Projects() {
         setSelectedProject(proj);
         setActiveFilter(proj.category);
       }
+    } else {
+      setSelectedProject(null);
     }
   }, [location.search]);
 
@@ -1074,6 +1082,11 @@ export default function Projects() {
 
   return (
     <div className="pt-40 pb-32 selection:bg-accent selection:text-background">
+      {/* React 19 Document Metadata Hoisting */}
+      <title>Selected Works | Studio Tactile</title>
+      <meta name="description" content="Explore Studio Tactile's portfolio of architectural works, custom villa designs, commercial buildings, and luxury interior projects." />
+      <link rel="canonical" href="https://sta-website-tactile.vercel.app/projects" />
+
       {/* Hero Section */}
       <section className="px-6 md:px-12 mb-32 relative min-h-[50vh] flex flex-col justify-center group/hero">
         {/* Background Image Behind the Text */}
@@ -1166,9 +1179,9 @@ export default function Projects() {
                 />
               </motion.div>
               <motion.p variants={detailsItemVariants} className="text-muted/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-12">{project.location}</motion.p>
-              <motion.div variants={detailsItemVariants}>
-                <ProjectDetails project={project} onViewCaseStudy={() => setSelectedProject(project)} />
-              </motion.div>
+               <motion.div variants={detailsItemVariants}>
+                 <ProjectDetails project={project} onViewCaseStudy={() => navigate("?id=" + project.id)} />
+               </motion.div>
             </motion.div>
           </motion.article>
         ))}
@@ -1202,9 +1215,19 @@ export default function Projects() {
         >
           Inquiry
         </motion.span>
-        <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-16 max-w-4xl mx-auto uppercase leading-[0.9]">
-          We specialize in challenging sites and radical material honesty.
-        </h3>
+        <div className="mb-16 max-w-4xl mx-auto select-none" style={{ position: 'relative', height: 'clamp(40px, 6vw, 90px)', width: '100%' }}>
+          <TextPressure
+            text="Ready to build the permanent?"
+            flex={true}
+            alpha={false}
+            stroke={false}
+            width={true}
+            weight={true}
+            italic={true}
+            textColor="#f5f5f5"
+            minFontSize={20}
+          />
+        </div>
         <div className="flex justify-center mt-12">
           <MagneticButton to="/contact" text="START A CONVERSATION" />
         </div>

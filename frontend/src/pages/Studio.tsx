@@ -456,6 +456,11 @@ export default function Studio() {
 
   return (
     <main className="pt-24 md:pt-32 overflow-x-hidden selection:bg-accent selection:text-background">
+      {/* React 19 Document Metadata Hoisting */}
+      <title>The Studio | Philosophy &amp; Team | Studio Tactile</title>
+      <meta name="description" content="Learn about the design philosophy, team, and professional collaboration network at Studio Tactile. We believe in creating permanent anchors in an ephemeral world." />
+      <link rel="canonical" href="https://sta-website-tactile.vercel.app/studio" />
+
       {/* 1. STUDIO OVERVIEW (What We Do + Philosophy) */}
       <section
         className="px-4 md:px-12 mb-24 md:mb-40 relative min-h-[50vh] flex flex-col justify-center group/hero"

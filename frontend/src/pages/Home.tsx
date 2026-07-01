@@ -43,12 +43,13 @@ const heroSlides = [
 ];
 
 const services = [
-  { title: "Architecture", desc: "Spaces defined by structure, proportion, and use.", img: svcArchitecture, color: "#e03a2f" },
-  { title: "Interior", desc: "Designed for daily use, comfort, and clarity.", img: svcInterior, color: "#ffffff" },
-  { title: "Renovation", desc: "Existing spaces reworked with purpose and precision.", img: svcRenovation, color: "#888888" },
-  { title: "Turnkey", desc: "Complete execution from planning to handover.", img: svcTurnkey, color: "#e03a2f" },
-  { title: "Vastu", desc: "Spatial alignment based on logic, balance, and use.", img: svcVastu, color: "#ffffff" },
-  { title: "Design Strategy", desc: "Early decisions that shape the entire outcome.", img: svcDesign, color: "#888888" },
+  { title: "Residential Architecture", id: "residential-architecture", desc: "Timeless residences that combine functionality, innovation, and elegant design.", img: svcArchitecture, color: "#e03a2f" },
+  { title: "Luxury Villa Design", id: "luxury-villa-design", desc: "Resort-style private estates and beachfront weekend retreats.", img: svcDesign, color: "#ffffff" },
+  { title: "Commercial Architecture", id: "commercial-architecture", desc: "High-performance offices, retail spaces, and creative workspaces.", img: svcVastu, color: "#888888" },
+  { title: "Interior Design", id: "interior-design", desc: "Curated, material-rich indoor spaces designed for comfort and clarity.", img: svcInterior, color: "#ffffff" },
+  { title: "Landscape Design", id: "landscape-design", desc: "Integrating built form and nature with native flora and hardscaping.", img: svcTurnkey, color: "#888888" },
+  { title: "Renovation & Remodeling", id: "renovation-remodeling", desc: "Reworking and expanding older structures with purpose and precision.", img: svcRenovation, color: "#888888" },
+  { title: "Turnkey Construction", id: "turnkey-construction", desc: "Complete execution from design planning to hand-key construction.", img: svcTurnkey, color: "#e03a2f" },
 ];
 
 const slideVariants = {
@@ -291,6 +292,11 @@ export default function Home() {
 
   return (
     <div className="bg-background selection:bg-[#e03a2f] selection:text-white">
+      {/* React 19 Document Metadata Hoisting */}
+      <title>Studio Tactile | Contemporary Architecture &amp; Interior Design</title>
+      <meta name="description" content="Studio Tactile is a premium contemporary architecture and interior design practice based in India. We focus on structural honesty, spatial clarity, and silent brutalism." />
+      <link rel="canonical" href="https://sta-website-tactile.vercel.app/" />
+
       {/* Hero Section */}
       <section
         className="relative min-h-screen flex flex-col justify-start md:justify-end px-6 md:px-12 pb-16 md:pb-24 pt-32 overflow-hidden group/hero"
@@ -663,51 +669,56 @@ export default function Home() {
           <div className="sticky-wrapper w-[280px] md:w-[400px] mx-auto flex items-center justify-start overflow-visible my-auto">
             <motion.div className="gallery flex gap-[20px] md:gap-[30px] will-change-transform" style={{ x }}>
               {services.map((service, i) => (
-                <TiltCard
+                <Link
                   key={i}
-                  className="gallery-item shrink-0 w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-xl relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/5"
+                  to={`/services/${service.id}`}
+                  className="gallery-item shrink-0 block w-[280px] md:w-[400px] h-[350px] md:h-[500px] cursor-pointer rounded-xl overflow-hidden"
                 >
-                  {/* Background image — zoom & color reveal on scroll, premium hover interaction */}
-                  <motion.img
-                    src={service.img}
-                    alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    initial={{ scale: 1.15, filter: "grayscale(100%) brightness(0.6)" }}
-                    whileInView={{
-                      scale: 1.0,
-                      filter: "grayscale(0%) brightness(0.8)",
-                    }}
-                    whileHover={{ scale: 1.05, filter: "grayscale(0%) brightness(0.9)" }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 1.6,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                  />
-                  {/* Dark overlay — subtle interaction */}
-                  <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-all duration-700 pointer-events-none" />
-                  {/* Bottom gradient for text readability always */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-                  
-                  {/* Text content with 3D Parallax offset */}
-                  <div 
-                    className="absolute bottom-8 left-8 z-10 pr-8 pointer-events-none"
-                    style={{ transform: "translate3d(0, 0, 35px)", transformStyle: "preserve-3d" }}
+                  <TiltCard
+                    className="w-full h-full rounded-xl relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/5"
                   >
-                    <span 
-                      className="text-[11px] font-mono tracking-[0.25em] block mb-2 font-bold" 
-                      style={{ color: service.color }}
+                    {/* Background image — zoom & color reveal on scroll, premium hover interaction */}
+                    <motion.img
+                      src={service.img}
+                      alt={service.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      initial={{ scale: 1.15, filter: "grayscale(100%) brightness(0.6)" }}
+                      whileInView={{
+                        scale: 1.0,
+                        filter: "grayscale(0%) brightness(0.8)",
+                      }}
+                      whileHover={{ scale: 1.05, filter: "grayscale(0%) brightness(0.9)" }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 1.6,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                    />
+                    {/* Dark overlay — subtle interaction */}
+                    <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-all duration-700 pointer-events-none" />
+                    {/* Bottom gradient for text readability always */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+                    
+                    {/* Text content with 3D Parallax offset */}
+                    <div 
+                      className="absolute bottom-8 left-8 z-10 pr-8 pointer-events-none"
+                      style={{ transform: "translate3d(0, 0, 35px)", transformStyle: "preserve-3d" }}
                     >
-                      0{i + 1}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-black mb-2 uppercase text-white tracking-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-white/75 leading-relaxed font-medium">
-                      {service.desc}
-                    </p>
-                  </div>
-                </TiltCard>
+                      <span 
+                        className="text-[11px] font-mono tracking-[0.25em] block mb-2 font-bold" 
+                        style={{ color: service.color }}
+                      >
+                        0{i + 1}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-black mb-2 uppercase text-white tracking-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-xs md:text-sm text-white/75 leading-relaxed font-medium">
+                        {service.desc}
+                      </p>
+                    </div>
+                  </TiltCard>
+                </Link>
               ))}
             </motion.div>
           </div>

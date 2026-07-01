@@ -17,6 +17,8 @@ export default function Layout({ children, isIntroActive = false }: LayoutProps)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isLoaderActive, setIsLoaderActive] = useState(true);
 
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+
   // Auto-hide header on scroll
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -44,6 +46,7 @@ export default function Layout({ children, isIntroActive = false }: LayoutProps)
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsMobileServicesOpen(false);
   }, [location]);
 
   // Prevent scroll when menu is open
@@ -58,14 +61,74 @@ export default function Layout({ children, isIntroActive = false }: LayoutProps)
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Projects", path: "/projects" },
+    { name: "Services", path: "#", isDropdown: true },
     { name: "Studio", path: "/studio" },
     { name: "Journal", path: "/journal" },
     { name: "Contact", path: "/contact" },
     { name: "Portal", path: "/login" },
   ];
 
+  const servicesMenu = [
+    { name: "Residential Architecture", path: "/services/residential-architecture" },
+    { name: "Luxury Villa Design", path: "/services/luxury-villa-design" },
+    { name: "Commercial Architecture", path: "/services/commercial-architecture" },
+    { name: "Interior Design", path: "/services/interior-design" },
+    { name: "Landscape Design", path: "/services/landscape-design" },
+    { name: "Renovation & Remodeling", path: "/services/renovation-remodeling" },
+    { name: "Turnkey Construction", path: "/services/turnkey-construction" }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* React 19 Local Business JSON-LD Schema Hoisting */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ArchitecturalOffice",
+          "name": "Studio Tactile",
+          "image": "https://sta-website-tactile.vercel.app/images/hero1.jpg",
+          "@id": "https://sta-website-tactile.vercel.app/#organization",
+          "url": "https://sta-website-tactile.vercel.app/",
+          "telephone": "+919600221902",
+          "priceRange": "$$$$",
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "Kumbakonam Office",
+              "addressLocality": "Kumbakonam",
+              "addressRegion": "Tamil Nadu",
+              "postalCode": "612001",
+              "addressCountry": "IN"
+            },
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "Thousand Lights",
+              "addressLocality": "Chennai",
+              "addressRegion": "Tamil Nadu",
+              "postalCode": "600006",
+              "addressCountry": "IN"
+            }
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "sameAs": [
+            "https://instagram.com/studiotactile",
+            "https://www.linkedin.com/company/studio-tactile-architects"
+          ]
+        })}
+      </script>
+
       <PageTransitionLoader 
         isIntroActive={isIntroActive} 
         onStart={() => setIsLoaderActive(true)}
@@ -82,20 +145,56 @@ export default function Layout({ children, isIntroActive = false }: LayoutProps)
         <Link to="/" className="text-xl font-bold tracking-tighter text-[#f5f5f5]">STUDIO TACTILE</Link>
         
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-12">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`font-bold uppercase tracking-[0.2em] text-[10px] transition-colors duration-400 ease-out cursor-pointer active:opacity-80 ${
-                location.pathname === link.path
-                  ? "text-[#f5f5f5]"
-                  : "text-[#888888] hover:text-[#f5f5f5]"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
+        <nav className="hidden md:flex gap-12 items-center">
+          {navLinks.map((link) => {
+            if (link.isDropdown) {
+              return (
+                <div key={link.name} className="relative group py-2">
+                  <button
+                    className={`font-bold uppercase tracking-[0.2em] text-[10px] transition-colors duration-400 ease-out cursor-pointer active:opacity-80 flex items-center gap-1 ${
+                      location.pathname.startsWith("/services/")
+                        ? "text-[#f5f5f5]"
+                        : "text-[#888888] hover:text-[#f5f5f5]"
+                    }`}
+                  >
+                    {link.name}
+                    <svg className="w-2.5 h-2.5 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+                    </svg>
+                  </button>
+                  {/* Dropdown Menu Wrapper (transparent bridge to preserve hover state) */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 z-50">
+                    <div className="bg-[#0f0f0f]/95 border border-[#1c1b1b] backdrop-blur-md p-6 flex flex-col gap-4 min-w-[260px] shadow-2xl">
+                      {servicesMenu.map((subLink) => (
+                        <Link
+                          key={subLink.path}
+                          to={subLink.path}
+                          className={`text-[9px] font-bold uppercase tracking-widest transition-colors hover:text-accent ${
+                            location.pathname === subLink.path ? "text-accent" : "text-[#888888]"
+                          }`}
+                        >
+                          {subLink.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`font-bold uppercase tracking-[0.2em] text-[10px] transition-colors duration-400 ease-out cursor-pointer active:opacity-80 ${
+                  location.pathname === link.path
+                    ? "text-[#f5f5f5]"
+                    : "text-[#888888] hover:text-[#f5f5f5]"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-8">
@@ -110,20 +209,57 @@ export default function Layout({ children, isIntroActive = false }: LayoutProps)
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-40 bg-[#0f0f0f] transition-transform duration-500 ease-[cubic-bezier(0.2,0,0,1)] ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="flex flex-col h-full justify-center px-12 space-y-8">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`text-4xl font-bold uppercase tracking-tighter transition-all duration-500 ${
-                location.pathname === link.path ? 'text-[#e03a2f]' : 'text-[#f5f5f5]'
-              }`}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              {link.name}
-            </Link>
-          ))}
+      <div className={`fixed inset-0 z-40 bg-[#0f0f0f] transition-transform duration-500 ease-[cubic-bezier(0.2,0,0,1)] ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} overflow-y-auto pt-24`}>
+        <div className="flex flex-col min-h-[80vh] justify-center px-12 py-12 space-y-6">
+          {navLinks.map((link, i) => {
+            if (link.isDropdown) {
+              return (
+                <div key={link.name} className="flex flex-col">
+                  <button
+                    onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                    className={`text-4xl font-bold uppercase tracking-tighter text-left transition-all duration-500 flex items-center justify-between ${
+                      location.pathname.startsWith("/services/") ? 'text-[#e03a2f]' : 'text-[#f5f5f5]'
+                    }`}
+                    style={{ transitionDelay: `${i * 100}ms` }}
+                  >
+                    <span>{link.name}</span>
+                    <svg className={`w-6 h-6 transform transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                    </svg>
+                  </button>
+                  
+                  {/* Collapsable Submenu */}
+                  <div className={`flex flex-col gap-4 pl-4 overflow-hidden transition-all duration-500 ${isMobileServicesOpen ? 'max-h-[400px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    {servicesMenu.map((subLink) => (
+                      <Link
+                        key={subLink.path}
+                        to={subLink.path}
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`text-sm font-bold uppercase tracking-wider ${
+                          location.pathname === subLink.path ? "text-[#e03a2f]" : "text-[#888888] hover:text-[#f5f5f5]"
+                        }`}
+                      >
+                        {subLink.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-4xl font-bold uppercase tracking-tighter transition-all duration-500 ${
+                  location.pathname === link.path ? 'text-[#e03a2f]' : 'text-[#f5f5f5]'
+                }`}
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </div>
       </div>
 

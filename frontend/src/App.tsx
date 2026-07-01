@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ComingSoon from "./pages/ComingSoon";
 import IntroVideo from "./components/IntroVideo";
+import ServiceDetail from "./pages/ServiceDetail";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(() => {
@@ -34,6 +35,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/studio" element={<Studio />} />
             <Route path="/journal" element={<Navigate to="/coming-soon" replace />} />
             <Route path="/coming-soon" element={<ComingSoon />} />
