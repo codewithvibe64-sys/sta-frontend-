@@ -259,7 +259,7 @@ export default function DesignLab() {
       {/* React 19 Document Metadata Hoisting */}
       <title>Design Lab | Computational Architecture | Studio Tactile</title>
       <meta name="description" content="Explore our spatial research, AI experiments, generative pavilion concepts, and architectural studies combining computational workflows with physical craftsmanship." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/design-lab" />
+      <link rel="canonical" href="https://stadesign.net/design-lab" />
 
       <section className="px-6 md:px-12 mb-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">

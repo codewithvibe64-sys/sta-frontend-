@@ -295,7 +295,7 @@ export default function Home() {
       {/* React 19 Document Metadata Hoisting */}
       <title>Studio Tactile | Contemporary Architecture &amp; Interior Design</title>
       <meta name="description" content="Studio Tactile is a premium contemporary architecture and interior design practice based in India. We focus on structural honesty, spatial clarity, and silent brutalism." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/" />
+      <link rel="canonical" href="https://stadesign.net/" />
 
       {/* Hero Section */}
       <section

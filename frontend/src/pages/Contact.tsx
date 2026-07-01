@@ -105,7 +105,7 @@ export default function Contact() {
       {/* React 19 Document Metadata Hoisting */}
       <title>Inquire | Contact Studio Tactile</title>
       <meta name="description" content="Start a collaboration with Studio Tactile. Contact our Chennai and Thanjavur offices for architectural commissions, interior design projects, and inquiries." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/contact" />
+      <link rel="canonical" href="https://stadesign.net/contact" />
 
       <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-x-12 px-6 md:px-12">
         {/* Left Column: Identity & Direct Contacts */}

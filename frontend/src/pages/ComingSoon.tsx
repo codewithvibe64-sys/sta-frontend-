@@ -940,7 +940,7 @@ export default function ComingSoon() {
       {/* React 19 Document Metadata Hoisting */}
       <title>The Journal | Studio Tactile</title>
       <meta name="description" content="Curated insights, architectural reviews, and studio updates from Studio Tactile. Journal coming soon." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/coming-soon" />
+      <link rel="canonical" href="https://stadesign.net/coming-soon" />
 
       {/* Background Grids */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none z-0" />

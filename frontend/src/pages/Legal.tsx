@@ -4,7 +4,7 @@ export default function Legal() {
       {/* React 19 Document Metadata Hoisting */}
       <title>Legal &amp; Identity | Studio Tactile</title>
       <meta name="description" content="Studio Tactile's privacy policy, terms of condition, founding principles, and copyright notices." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/legal" />
+      <link rel="canonical" href="https://stadesign.net/legal" />
 
       <section className="max-w-screen-xl mx-auto px-12">
         <div className="flex flex-col md:grid md:grid-cols-12 gap-8">

@@ -86,9 +86,9 @@ export default function Layout({ children, isIntroActive = false }: LayoutProps)
           "@context": "https://schema.org",
           "@type": "ArchitecturalOffice",
           "name": "Studio Tactile",
-          "image": "https://sta-website-tactile.vercel.app/images/hero1.jpg",
-          "@id": "https://sta-website-tactile.vercel.app/#organization",
-          "url": "https://sta-website-tactile.vercel.app/",
+          "image": "https://stadesign.net/images/hero1.jpg",
+          "@id": "https://stadesign.net/#organization",
+          "url": "https://stadesign.net/",
           "telephone": "+919600221902",
           "priceRange": "$$$$",
           "address": [

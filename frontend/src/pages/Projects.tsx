@@ -408,7 +408,7 @@ function CaseStudyView({ project, onClose }: { project: Project; onClose: () => 
       {/* React 19 Document Metadata Hoisting */}
       <title>{`${project.title} | Case Study | Studio Tactile`}</title>
       <meta name="description" content={`${project.context} Architectural Case Study in ${project.location}.`} />
-      <link rel="canonical" href={`https://sta-website-tactile.vercel.app/projects?id=${project.id}`} />
+      <link rel="canonical" href={`https://stadesign.net/projects?id=${project.id}`} />
 
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-[110] px-6 md:px-12 py-8 flex justify-between items-center bg-background/80 backdrop-blur-md border-b border-border">
@@ -1085,7 +1085,7 @@ export default function Projects() {
       {/* React 19 Document Metadata Hoisting */}
       <title>Selected Works | Studio Tactile</title>
       <meta name="description" content="Explore Studio Tactile's portfolio of architectural works, custom villa designs, commercial buildings, and luxury interior projects." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/projects" />
+      <link rel="canonical" href="https://stadesign.net/projects" />
 
       {/* Hero Section */}
       <section className="px-6 md:px-12 mb-32 relative min-h-[50vh] flex flex-col justify-center group/hero">

@@ -74,7 +74,7 @@ export default function ServiceDetail() {
       {/* React 19 Document Metadata Hoisting */}
       <title>{`${service.title} | Studio Tactile`}</title>
       <meta name="description" content={service.metaDescription} />
-      <link rel="canonical" href={`https://sta-website-tactile.vercel.app/services/${service.id}`} />
+      <link rel="canonical" href={`https://stadesign.net/services/${service.id}`} />
 
       {/* 1. Hero Section */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden border-b border-border">

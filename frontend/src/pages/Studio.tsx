@@ -459,7 +459,7 @@ export default function Studio() {
       {/* React 19 Document Metadata Hoisting */}
       <title>The Studio | Philosophy &amp; Team | Studio Tactile</title>
       <meta name="description" content="Learn about the design philosophy, team, and professional collaboration network at Studio Tactile. We believe in creating permanent anchors in an ephemeral world." />
-      <link rel="canonical" href="https://sta-website-tactile.vercel.app/studio" />
+      <link rel="canonical" href="https://stadesign.net/studio" />
 
       {/* 1. STUDIO OVERVIEW (What We Do + Philosophy) */}
       <section

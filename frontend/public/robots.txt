@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sta-website-tactile.vercel.app/sitemap.xml
+Sitemap: https://stadesign.net/sitemap.xml
