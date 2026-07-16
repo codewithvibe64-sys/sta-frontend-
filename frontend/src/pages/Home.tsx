@@ -80,6 +80,98 @@ const slideVariants = {
   },
 } as unknown as Variants;
 
+interface ServiceType {
+  title: string;
+  id: string;
+  desc: string;
+  img: string;
+  color: string;
+}
+
+function Horizontal3DServiceCard({
+  service,
+  index,
+  currentSlideVal,
+  isMobile,
+}: {
+  service: ServiceType;
+  index: number;
+  currentSlideVal: any;
+  isMobile: boolean;
+}) {
+  const cardOffset = useTransform(currentSlideVal, (val: number) => index - val);
+
+  // Spacing between cards (responsive)
+  const spacing = isMobile ? 300 : 450;
+
+  // 3D transforms based on card's horizontal distance from active center card:
+  const x = useTransform(cardOffset, (val: number) => val * spacing);
+  const rotateY = useTransform(cardOffset, [-2, -1, 0, 1, 2], [42, 35, 0, -35, -42]);
+  const z = useTransform(cardOffset, [-2, -1, 0, 1, 2], [-400, -200, 0, -200, -400]);
+  const scale = useTransform(cardOffset, [-2, -1, 0, 1, 2], [0.72, 0.85, 1.0, 0.85, 0.72]);
+  const opacity = useTransform(cardOffset, [-2.5, -2, -1, 0, 1, 2, 2.5], [0, 0.35, 0.8, 1.0, 0.8, 0.35, 0]);
+
+  // Premium filters for active vs inactive card styling (grayscale, brightness, blur)
+  const imgFilter = useTransform(cardOffset, (val: number) => {
+    const absVal = Math.min(Math.abs(val), 1); // Clamp between 0 and 1
+    const grayscale = absVal * 100;
+    const brightness = 0.95 - absVal * 0.55;
+    const blur = absVal * 1.5;
+    return `grayscale(${grayscale}%) brightness(${brightness}) blur(${blur}px)`;
+  });
+
+  return (
+    <motion.div
+      style={{
+        x,
+        z,
+        rotateY,
+        scale,
+        opacity,
+        zIndex: useTransform(cardOffset, (val: number) => Math.round(10 - Math.abs(val) * 2))
+      }}
+      className="absolute w-[280px] md:w-[400px] h-[350px] md:h-[500px] rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/5 bg-[#131313] origin-center"
+    >
+      <div className="block w-full h-full relative">
+        <TiltCard className="w-full h-full rounded-xl relative overflow-hidden group">
+          {/* Background image — zoom & color reveal controlled by scroll distance */}
+          <motion.img
+            src={service.img}
+            alt={service.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: imgFilter }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+          {/* Dark overlay — subtle interaction */}
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 pointer-events-none" />
+          {/* Bottom gradient for text readability always */}
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+          
+          {/* Text content with 3D Parallax offset */}
+          <div 
+            className="absolute bottom-8 left-8 z-10 pr-8 pointer-events-none"
+            style={{ transform: "translate3d(0, 0, 35px)", transformStyle: "preserve-3d" }}
+          >
+            <span 
+              className="text-[11px] font-mono tracking-[0.25em] block mb-2 font-bold" 
+              style={{ color: service.color }}
+            >
+              0{index + 1}
+            </span>
+            <h3 className="text-2xl md:text-3xl font-black mb-2 uppercase text-white tracking-tight">
+              {service.title}
+            </h3>
+            <p className="text-xs md:text-sm text-white/75 leading-relaxed font-medium">
+              {service.desc}
+            </p>
+          </div>
+        </TiltCard>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
@@ -92,22 +184,7 @@ export default function Home() {
     offset: ["start start", "end end"],
   });
 
-  const [scrollDistance, setScrollDistance] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobileSize = window.innerWidth < 768;
-      const width = isMobileSize ? 280 : 400;
-      const gap = isMobileSize ? 20 : 30;
-      setScrollDistance((services.length - 1) * (width + gap));
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
+  const currentSlideVal = useTransform(scrollYProgress, [0, 1], [0, services.length - 1]);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -666,61 +743,24 @@ export default function Home() {
           </div>
 
           {/* Sticky Horizontal Scroll Container */}
-          <div className="sticky-wrapper w-[280px] md:w-[400px] mx-auto flex items-center justify-start overflow-visible my-auto">
-            <motion.div className="gallery flex gap-[20px] md:gap-[30px] will-change-transform" style={{ x }}>
+          <div 
+            className="sticky-wrapper w-full flex items-center justify-center overflow-visible my-auto h-[400px] md:h-[550px]"
+            style={{ perspective: "1500px" }}
+          >
+            <div 
+              className="relative w-[280px] md:w-[400px] h-full flex items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
               {services.map((service, i) => (
-                <Link
+                <Horizontal3DServiceCard
                   key={i}
-                  to={`/services/${service.id}`}
-                  className="gallery-item shrink-0 block w-[280px] md:w-[400px] h-[350px] md:h-[500px] cursor-pointer rounded-xl overflow-hidden"
-                >
-                  <TiltCard
-                    className="w-full h-full rounded-xl relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/5"
-                  >
-                    {/* Background image — zoom & color reveal on scroll, premium hover interaction */}
-                    <motion.img
-                      src={service.img}
-                      alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      initial={{ scale: 1.15, filter: "grayscale(100%) brightness(0.6)" }}
-                      whileInView={{
-                        scale: 1.0,
-                        filter: "grayscale(0%) brightness(0.8)",
-                      }}
-                      whileHover={{ scale: 1.05, filter: "grayscale(0%) brightness(0.9)" }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 1.6,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                    />
-                    {/* Dark overlay — subtle interaction */}
-                    <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-all duration-700 pointer-events-none" />
-                    {/* Bottom gradient for text readability always */}
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-                    
-                    {/* Text content with 3D Parallax offset */}
-                    <div 
-                      className="absolute bottom-8 left-8 z-10 pr-8 pointer-events-none"
-                      style={{ transform: "translate3d(0, 0, 35px)", transformStyle: "preserve-3d" }}
-                    >
-                      <span 
-                        className="text-[11px] font-mono tracking-[0.25em] block mb-2 font-bold" 
-                        style={{ color: service.color }}
-                      >
-                        0{i + 1}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-black mb-2 uppercase text-white tracking-tight">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs md:text-sm text-white/75 leading-relaxed font-medium">
-                        {service.desc}
-                      </p>
-                    </div>
-                  </TiltCard>
-                </Link>
+                  service={service}
+                  index={i}
+                  currentSlideVal={currentSlideVal}
+                  isMobile={isMobile}
+                />
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Bottom spacing helper */}

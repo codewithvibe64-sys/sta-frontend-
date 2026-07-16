@@ -105,7 +105,7 @@ export default function TiltCard({
   return (
     <div
       style={{ perspective: `${perspective}px`, transformStyle: "preserve-3d" }}
-      className="inline-block overflow-visible"
+      className="w-full h-full block overflow-visible"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
